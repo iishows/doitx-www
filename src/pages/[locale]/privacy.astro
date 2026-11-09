@@ -1,0 +1,32 @@
+---
+import LegalDocument from "../../components/LegalDocument.astro";
+import { githubStarsLabel } from "../../github";
+import { getPrivacyCopy } from "../../i18n/legal";
+import { DEFAULT_LOCALE, isLocale, LOCALES } from "../../i18n/locales";
+import type { Locale } from "../../i18n/locales";
+
+export function getStaticPaths() {
+  return LOCALES.filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => ({
+    params: { locale },
+    props: { locale },
+  }));
+}
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+if (!isLocale(locale) || locale === DEFAULT_LOCALE) {
+  throw new Error(`unsupported privacy locale: ${locale}`);
+}
+
+const copy = getPrivacyCopy(locale);
+const starsLabel = await githubStarsLabel();
+---
+
+<LegalDocument
+  locale={locale}
+  copy={copy}
+  starsLabel={starsLabel}
+/>

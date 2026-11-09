@@ -1,0 +1,122 @@
+---
+import Prose from "./Prose.astro";
+import Button from "./Button.astro";
+import SiteFrame from "./SiteFrame.astro";
+import { ogPublicPath } from "../og-pages";
+import { DOCS_URL, GITHUB_URL } from "../site";
+import { DEFAULT_LOCALE, isLocale } from "../i18n/locales";
+import type { Locale } from "../i18n/locales";
+import { getAlternativesHubPageCopy } from "../i18n/alternatives-hub-page";
+
+interface Props {
+  locale?: Locale;
+}
+
+const propLocale = Astro.props.locale;
+const locale: Locale = isLocale(propLocale)
+  ? propLocale
+  : isLocale(Astro.currentLocale)
+    ? Astro.currentLocale
+    : DEFAULT_LOCALE;
+const copy = getAlternativesHubPageCopy(locale);
+---
+
+<SiteFrame
+  title={copy.title}
+  description={copy.description}
+  faq={copy.faq}
+  ogImage={ogPublicPath("alternatives")}
+>
+  <h1>{copy.h1}</h1>
+  <p class="alt-note">{copy.updated}</p>
+  <ul>
+    {copy.changelog.map((line) => <li>{line}</li>)}
+  </ul>
+
+  <h2>{copy.tldrHeading}</h2>
+  {copy.tldr.map((paragraph) => <p>{paragraph}</p>)}
+
+  <h2>{copy.comparisonHeading}</h2>
+  <div class="alt-table-wrap">
+    <table class="alt-table">
+      <caption class="sr-only">{copy.caption}</caption>
+      <thead>
+        <tr>
+          <th scope="col">{copy.productLabel}</th>
+          {copy.columns.map((column) => <th scope="col">{column}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {
+          copy.rows.map((row) => (
+            <tr>
+              <th scope="row">
+                <a href={row.href}>{row.product}</a>
+              </th>
+              <td>{row.license}</td>
+              <td>{row.selfHost}</td>
+              <td>{row.model}</td>
+              <td>{row.price}</td>
+              <td>{row.setup}</td>
+              <td>{row.chat}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <h2>{copy.agentsHeading}</h2>
+  <ul class="alt-index">
+    {
+      copy.cards.map((card) => (
+        <li>
+          <article class="alt-card">
+            <h3>
+              <a href={card.href}>{card.name}</a>
+            </h3>
+            {card.paragraphs.map((paragraph) => (
+              <p><Prose text={paragraph} /></p>
+            ))}
+            {card.heading && (
+              <p>
+                <a href={card.href}>{card.heading}</a>
+              </p>
+            )}
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>{copy.timelineHeading}</h2>
+  <ul>
+    {
+      copy.timeline.map((item) => (
+        <li>
+          <strong>{item.when}.</strong> {item.what}
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>{copy.howtoHeading}</h2>
+  {copy.howto.map((paragraph) => <p>{paragraph}</p>)}
+
+  <h2 id="faq">{copy.faqHeading}</h2>
+  {
+    copy.faq.map((item, index) => (
+      <section aria-labelledby={`roundup-faq-${index}`}>
+        <h3 id={`roundup-faq-${index}`}>{item.question}</h3>
+        <p>{item.answer}</p>
+      </section>
+    ))
+  }
+
+  <h2>{copy.getStarted.heading}</h2>
+  <p>{copy.getStarted.body}</p>
+  <div class="alt-actions">
+    <Button href={DOCS_URL} external>{copy.getStarted.docs}</Button>
+    <Button href={GITHUB_URL} variant="secondary" external>{copy.getStarted.github}</Button>
+  </div>
+</SiteFrame>

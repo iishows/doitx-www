@@ -1,0 +1,123 @@
+---
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { postSlug } from "../../blog/slug";
+import { formatPostDate, isoDate } from "../../blog/format";
+import { blogPostStructuredData } from "../../blog/structured-data";
+import { getBlogUiCopy } from "../../i18n/blog";
+import type { Locale } from "../../i18n/locales";
+import { localeHomePath } from "../../i18n/locales";
+import { blogOgId, ogPublicPath } from "../../og-pages";
+import { SITE_URL } from "../../site";
+import ComparisonTable from "../ComparisonTable.astro";
+import FaqList from "../FaqList.astro";
+import SiteFrame from "../SiteFrame.astro";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  locale: Locale;
+}
+
+const { post, locale } = Astro.props;
+const ui = getBlogUiCopy(locale);
+const base = localeHomePath(locale);
+
+const { Content, headings } = await render(post);
+
+const toc = [
+  { slug: "tldr", text: ui.tldr },
+  { slug: "comparison", text: ui.comparison },
+  ...headings
+    .filter((heading) => heading.depth === 2)
+    .map((heading) => ({ slug: heading.slug, text: heading.text })),
+  { slug: "faq", text: ui.faq },
+  { slug: "sources", text: ui.sources },
+  { slug: "related", text: ui.related },
+];
+
+const pageUrl = new URL(`${base === "/" ? "" : base}/blog/${postSlug(post)}/`, SITE_URL).toString();
+const image = new URL(ogPublicPath(blogOgId(postSlug(post))), SITE_URL).toString();
+const structuredData = blogPostStructuredData({
+  pageUrl,
+  title: post.data.title,
+  description: post.data.description,
+  published: isoDate(post.data.published),
+  updated: isoDate(post.data.updated),
+  image,
+  categoryLabel: ui.categoryLabels[post.data.category],
+  categoryUrl: new URL(`${base === "/" ? "" : base}/blog/${post.data.category}/`, SITE_URL).toString(),
+});
+---
+
+<SiteFrame
+  title={`${post.data.title} – Doitx`}
+  description={post.data.description}
+  {structuredData}
+  ogImage={ogPublicPath(blogOgId(postSlug(post)))}
+  ogType="article"
+>
+  <p class="alt-crumb">
+    <a href={`${base === "/" ? "" : base}/blog/`}>{ui.crumbBlog}</a>
+    <span aria-hidden="true"> / </span>
+    <a href={`${base === "/" ? "" : base}/blog/${post.data.category}/`}>{ui.categoryLabels[post.data.category]}</a>
+  </p>
+  <h1>{post.data.title}</h1>
+  <p class="post-meta">
+    <span>{ui.published} {formatPostDate(post.data.published, ui.dateLocale)}</span>
+    <span>{ui.updated} {formatPostDate(post.data.updated, ui.dateLocale)}</span>
+    <span>{post.data.author}</span>
+  </p>
+  <aside class="tldr">
+    <h2 id="tldr">{ui.tldr}</h2>
+    <p>{post.data.tldr}</p>
+  </aside>
+  {
+    toc.length > 0 && (
+      <nav class="toc" aria-label={ui.contents}>
+        <p>{ui.contents}</p>
+        <ol>
+          {toc.map((heading) => (
+            <li>
+              <a href={`#${heading.slug}`}>{heading.text}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )
+  }
+  <h2 id="comparison">{ui.comparison}</h2>
+  <ComparisonTable
+    caption={post.data.comparison.caption}
+    columns={post.data.comparison.columns}
+    rows={post.data.comparison.rows}
+  />
+  <div class="blog-body">
+    <Content />
+  </div>
+  <FaqList items={post.data.faq} />
+  <h2 id="sources">{ui.sources}</h2>
+  <ul class="source-list">
+    {
+      post.data.sources.map((source) => (
+        <li>
+          <a href={source.href} target="_blank" rel="noreferrer">
+            {source.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <h2 id="related">{ui.related}</h2>
+  <ul class="blog-related">
+    {
+      post.data.related.map((link) => (
+        <li>
+          <a href={link.href}>
+            <span>{link.title}</span>
+            <span>{link.description}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</SiteFrame>

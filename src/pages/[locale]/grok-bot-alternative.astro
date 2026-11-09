@@ -1,0 +1,26 @@
+---
+import GrokPage from "../../components/pages/GrokPage.astro";
+import { DEFAULT_LOCALE, LOCALES, isLocale } from "../../i18n/locales";
+import type { Locale } from "../../i18n/locales";
+import { SITE_URL } from "../../site";
+
+export function getStaticPaths() {
+  return LOCALES.filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => ({
+    params: { locale },
+    props: { locale },
+  }));
+}
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+if (!isLocale(locale) || locale === DEFAULT_LOCALE) {
+  throw new Error(`unsupported grok locale: ${locale}`);
+}
+
+const pageUrl = new URL(Astro.url.pathname, SITE_URL).toString();
+---
+
+<GrokPage locale={locale} pageUrl={pageUrl} />

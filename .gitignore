@@ -1,0 +1,10 @@
+node_modules
+dist
+.astro
+*.log
+.DS_Store
+playwright-report
+blob-report
+test-results
+.vercel
+playwright-report-www

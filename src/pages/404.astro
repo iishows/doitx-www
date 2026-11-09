@@ -1,0 +1,37 @@
+---
+import Button from "../components/Button.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { githubStarsLabel } from "../github";
+import { getNotFoundCopy } from "../i18n/support";
+import { DEFAULT_LOCALE, isLocale } from "../i18n/locales";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SELF_HOST_GUIDE_PATH } from "../site";
+
+const locale: import("../i18n/locales").Locale = isLocale(Astro.currentLocale)
+  ? Astro.currentLocale
+  : DEFAULT_LOCALE;
+const copy = getNotFoundCopy(locale);
+const starsLabel = await githubStarsLabel();
+---
+
+<BaseLayout
+  title={`${copy.h1} · Doitx`}
+  description={copy.description}
+  index={false}
+>
+  <div class="container">
+    <Header starsLabel={starsLabel} />
+    <main id="main" class="privacy-copy">
+      <h1>{copy.h1}</h1>
+      <p>{copy.description}</p>
+      <div class="cta-actions">
+        <Button href="/">{copy.homeLabel}</Button>
+        <Button href={SELF_HOST_GUIDE_PATH} variant="secondary">
+          {copy.docsLabel}
+        </Button>
+      </div>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

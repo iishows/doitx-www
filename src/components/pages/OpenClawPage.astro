@@ -1,0 +1,117 @@
+---
+import Button from "../Button.astro";
+import FaqSection from "../FaqSection.astro";
+import Footer from "../Footer.astro";
+import Header from "../Header.astro";
+import Prose from "../Prose.astro";
+import SetupSteps from "../SetupSteps.astro";
+import VsCard from "../VsCard.astro";
+import { faqPageStructuredData } from "../../guide";
+import { githubStarsLabel } from "../../github";
+import type { Locale } from "../../i18n/locales";
+import { getOpenClawPageCopy } from "../../i18n/openclaw-page";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { ogPublicPath } from "../../og-pages";
+import { APP_URL, GITHUB_URL, SELF_HOST_GUIDE_PATH } from "../../site";
+import { vsCard } from "../../vs-points";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getOpenClawPageCopy(locale);
+const starsLabel = await githubStarsLabel();
+const structuredData = faqPageStructuredData(copy.faqs);
+const card = vsCard("openclaw-alternative");
+---
+
+<BaseLayout
+  title={copy.title}
+  description={copy.description}
+  {structuredData}
+  localeAlternates={false}
+  ogImage={ogPublicPath("openclaw-alternative")}
+>
+  <div class="container">
+    <Header starsLabel={starsLabel} locale={locale} />
+    <main id="main" class="privacy-copy guide">
+      <h1>{copy.h1}</h1>
+      <p class="alt-note">{copy.updated}</p>
+      {card && <VsCard otherName={copy.vsOther} rakazo={card.rakazo} other={card.other} />}
+      <SetupSteps />
+      {copy.intro.map((paragraph) => <p><Prose text={paragraph} /></p>)}
+
+      <h2>{copy.setup.heading}</h2>
+      {copy.setup.paragraphs.map((paragraph) => <p><Prose text={paragraph} /></p>)}
+
+      <h2>{copy.dayToDay.heading}</h2>
+      {copy.dayToDay.paragraphs.map((paragraph) => <p><Prose text={paragraph} /></p>)}
+
+      <h2>{copy.comparison.heading}</h2>
+      <div class="guide-table-wrap">
+        <table>
+          <caption>{copy.comparison.caption}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{copy.comparison.topic}</th>
+              <th scope="col">{copy.comparison.rakazo}</th>
+              <th scope="col">{copy.comparison.other}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              copy.comparison.rows.map((row) => (
+                <tr>
+                  <th scope="row">{row.aspect}</th>
+                  <td><Prose text={row.rakazo} /></td>
+                  <td><Prose text={row.openclaw} /></td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <h2>{copy.differences.heading}</h2>
+      <h3>{copy.differences.teammateTitle}</h3>
+      {copy.differences.teammate.map((paragraph) => <p>{paragraph}</p>)}
+      <h3>{copy.differences.computerTitle}</h3>
+      {copy.differences.computer.map((paragraph) => <p>{paragraph}</p>)}
+      <h3>{copy.differences.modelsTitle}</h3>
+      {copy.differences.models.map((paragraph) => <p>{paragraph}</p>)}
+      <h3>{copy.differences.licenseTitle}</h3>
+      <p>{copy.differences.license}</p>
+
+      <h2>{copy.fits.heading}</h2>
+      <h3>{copy.fits.rakazoTitle}</h3>
+      <p><Prose text={copy.fits.rakazo} /></p>
+      <h3>{copy.fits.otherTitle}</h3>
+      <p><Prose text={copy.fits.other} /></p>
+
+      <h2>{copy.sources.heading}</h2>
+      <ul class="source-list">
+        {copy.sources.links.map((link) => (
+          <li><a href={link.href} {...(link.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}>{link.label}</a></li>
+        ))}
+      </ul>
+
+      <FaqSection items={copy.faqs} />
+
+      <h2>{copy.related.heading}</h2>
+      <ul>
+        <li><a href="/">{copy.related.home}</a></li>
+        <li><a href={SELF_HOST_GUIDE_PATH}>{copy.related.selfHost}</a></li>
+      </ul>
+
+      <h2 id="selfhost">{copy.getStarted.heading}</h2>
+      <p>{copy.getStarted.body}</p>
+      <div class="cta-actions">
+        <Button href={SELF_HOST_GUIDE_PATH}>{copy.getStarted.selfHostGuide}</Button>
+        <Button href={APP_URL} variant="secondary">{copy.getStarted.cloud}</Button>
+        <Button href={GITHUB_URL} variant="secondary" external>{copy.getStarted.github}</Button>
+      </div>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

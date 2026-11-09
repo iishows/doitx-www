@@ -1,0 +1,112 @@
+---
+import type { Alternative } from "../alternatives";
+import { GET_STARTED, OPEN_SOURCE_REASONS } from "../alternatives";
+import { ogPublicPath } from "../og-pages";
+import { DOCS_URL, GITHUB_URL } from "../site";
+import { vsCard } from "../vs-points";
+import { localeAltPath } from "../i18n/locales";
+import { getAlternativesHubCopy } from "../i18n/alternatives-hub";
+import { DEFAULT_LOCALE, type Locale } from "../i18n/locales";
+import Button from "./Button.astro";
+import InlineCode from "./InlineCode.astro";
+import SetupSteps from "./SetupSteps.astro";
+import SiteFrame from "./SiteFrame.astro";
+import VsCard from "./VsCard.astro";
+
+type Props = {
+  page: Alternative;
+  locale?: Locale;
+};
+
+const { page, locale = DEFAULT_LOCALE } = Astro.props;
+const card = vsCard(page.slug);
+const altPath = localeAltPath(locale);
+const hubCopy = getAlternativesHubCopy(locale);
+const altLabel = hubCopy.hubLabel;
+---
+
+<SiteFrame
+  title={page.title}
+  description={page.description}
+  faq={page.faq}
+  ogImage={ogPublicPath(page.slug)}
+>
+  <p class="alt-crumb"><a href={altPath}>{altLabel}</a></p>
+  <h1>{page.h1}</h1>
+  <p class="page-updated">{hubCopy.updatedLabel} {page.comparedOn}.</p>
+  {page.intro.map((paragraph) => <p><InlineCode text={paragraph} /></p>)}
+  {
+    page.sections?.map((section) => (
+      <section>
+        <h2>{section.heading}</h2>
+        {section.paragraphs.map((paragraph) => (
+          <p>
+            <InlineCode text={paragraph} />
+          </p>
+        ))}
+      </section>
+    ))
+  }
+  {card && <VsCard otherName={page.otherName} rakazo={card.rakazo} other={card.other} />}
+  {page.slug === "hermes-alternative" && <SetupSteps />}
+
+  <div class="alt-table-wrap">
+    <table class="alt-table">
+      <caption class="sr-only">Doitx {hubCopy.topicLabel.toLowerCase()} {page.otherName}</caption>
+      <thead>
+        <tr>
+          <th scope="col">{hubCopy.topicLabel}</th>
+          <th scope="col">Doitx</th>
+          <th scope="col">{page.otherName}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          page.rows.map((row) => (
+            <tr>
+              <th scope="row">{row.topic}</th>
+              <td><InlineCode text={row.rakazo} /></td>
+              <td><InlineCode text={row.other} /></td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <h2>{hubCopy.openSourceHeading}</h2>
+  <ul>
+    {OPEN_SOURCE_REASONS.map((reason) => <li>{reason}</li>)}
+  </ul>
+
+  <h2>{GET_STARTED.heading}</h2>
+  <p>{GET_STARTED.copy}</p>
+  <div class="alt-actions">
+    <Button href={DOCS_URL} external>{GET_STARTED.docsLabel}</Button>
+    <Button href={GITHUB_URL} variant="secondary" external>{GET_STARTED.githubLabel}</Button>
+  </div>
+
+  <h2 id="faq">FAQ</h2>
+  {
+    page.faq.map((item, index) => (
+      <section aria-labelledby={`${page.slug}-faq-${index}`}>
+        <h3 id={`${page.slug}-faq-${index}`}>{item.question}</h3>
+        <p><InlineCode text={item.answer} /></p>
+      </section>
+    ))
+  }
+
+  <h2>{hubCopy.sourcesHeading}</h2>
+  <ul class="source-list">
+    {
+      page.sources.map((source) => (
+        <li>
+          <a href={source.href} target="_blank" rel="noreferrer">
+            {source.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="alt-note"><a href={altPath}>{altLabel}</a></p>
+</SiteFrame>

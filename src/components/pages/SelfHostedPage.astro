@@ -1,0 +1,160 @@
+---
+import ArchitectureDiagram from "../ArchitectureDiagram.astro";
+import Button from "../Button.astro";
+import CaptionedImage from "../CaptionedImage.astro";
+import FaqSection from "../FaqSection.astro";
+import Footer from "../Footer.astro";
+import Header from "../Header.astro";
+import Prose from "../Prose.astro";
+import {
+  CADDY_SNIPPET,
+  PUBLISHED_IMAGES_INSTALL,
+  PUBLISHED_IMAGES_SERVER,
+  SOURCE_CHECKOUT,
+  SOURCE_DEV,
+  faqPageStructuredData,
+} from "../../guide";
+import { githubStarsLabel } from "../../github";
+import type { Locale } from "../../i18n/locales";
+import { getSelfHostPageCopy } from "../../i18n/self-host-page";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { ogPublicPath } from "../../og-pages";
+import {
+  APP_URL,
+  DOCS_URL,
+  GITHUB_URL,
+  OPENCLAW_ALTERNATIVE_PATH,
+  SELF_HOST_RESTRICTED_URL,
+  SELF_HOST_SECRETS_URL,
+  SETUP_PROMPT_URL,
+} from "../../site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getSelfHostPageCopy(locale);
+const starsLabel = await githubStarsLabel();
+const structuredData = faqPageStructuredData(copy.faqs);
+---
+
+<BaseLayout
+  title={copy.title}
+  description={copy.description}
+  {structuredData}
+  localeAlternates={false}
+  ogImage={ogPublicPath("self-hosted-ai-agent")}
+>
+  <div class="container">
+    <Header starsLabel={starsLabel} locale={locale} />
+    <main id="main" class="privacy-copy guide">
+      <h1>{copy.h1}</h1>
+      {copy.intro.map((paragraph) => <p><Prose text={paragraph} /></p>)}
+
+      <ArchitectureDiagram />
+
+      <h2>{copy.gives.heading}</h2>
+      <h3>{copy.gives.dataOwnership.title}</h3>
+      <p>{copy.gives.dataOwnership.body}</p>
+      <h3>{copy.gives.modelChoice.title}</h3>
+      <p>{copy.gives.modelChoice.body}</p>
+      <h3>{copy.gives.costControl.title}</h3>
+      <p>{copy.gives.costControl.body}</p>
+
+      <h2 id="self-host-only">{copy.only.heading}</h2>
+      <p><Prose text={copy.only.intro} /></p>
+      <ul>
+        {copy.only.items.map((item) => <li><Prose text={item} /></li>)}
+      </ul>
+      <p><Prose text={copy.only.trail} /></p>
+
+      <h2>{copy.requirements.heading}</h2>
+      <ul>
+        <li><Prose text={copy.requirements.images} /></li>
+        <li><Prose text={copy.requirements.source} /></li>
+      </ul>
+
+      <h2 id="selfhost">{copy.install.heading}</h2>
+      <p>{copy.install.intro}</p>
+      <pre><code>{PUBLISHED_IMAGES_INSTALL}</code></pre>
+      <p><Prose text={copy.install.afterInstall} /></p>
+      <p><Prose text={copy.install.open} /></p>
+      <CaptionedImage
+        src="/graphics/chat/create-bot.png"
+        width={1200}
+        height={800}
+        alt={copy.figureCreateBot.alt}
+        caption={copy.figureCreateBot.caption}
+      />
+      <CaptionedImage
+        src="/graphics/chat/model.png"
+        width={1200}
+        height={800}
+        alt={copy.figureModel.alt}
+        caption={copy.figureModel.caption}
+      />
+      <CaptionedImage
+        src="/graphics/chat/routine.png"
+        width={1200}
+        height={800}
+        alt={copy.figureRoutine.alt}
+        caption={copy.figureRoutine.caption}
+      />
+      <CaptionedImage
+        src="/graphics/chat/approval.png"
+        width={1200}
+        height={800}
+        alt={copy.figureApproval.alt}
+        caption={copy.figureApproval.caption}
+      />
+      <p><Prose text={copy.setupPromptNote} /></p>
+
+      <h2>{copy.server.heading}</h2>
+      <p><Prose text={copy.server.body} /></p>
+      <pre><code>{PUBLISHED_IMAGES_SERVER}</code></pre>
+      <p><Prose text={copy.server.envBody} /></p>
+      <pre><code>{CADDY_SNIPPET}</code></pre>
+      <p><Prose text={copy.server.caddyBody} /></p>
+      <p><Prose text={copy.server.blocked} /></p>
+
+      <h2>{copy.source.heading}</h2>
+      <p>{copy.source.intro}</p>
+      <pre><code>{SOURCE_CHECKOUT}</code></pre>
+      <p><Prose text={copy.source.secretsBody} /></p>
+      <p><Prose text={copy.source.loopbackBody} /></p>
+      <pre><code>{SOURCE_DEV}</code></pre>
+      <p><Prose text={copy.source.composeBody} /></p>
+
+      <h2>{copy.clients.heading}</h2>
+      <p><Prose text={copy.clients.existing} /></p>
+      <p>{copy.clients.mac}</p>
+      <p><Prose text={copy.clients.mobile} /></p>
+
+      <h2>{copy.reference.heading}</h2>
+      <ul class="source-list">
+        <li><a href={DOCS_URL}>{copy.reference.guide}</a></li>
+        <li><a href={SELF_HOST_SECRETS_URL}>{copy.reference.secrets}</a></li>
+        <li><a href={SELF_HOST_RESTRICTED_URL}>{copy.reference.restricted}</a></li>
+        <li><a href={SETUP_PROMPT_URL}>{copy.reference.prompt}</a></li>
+        <li><a href={GITHUB_URL}>{copy.reference.source}</a></li>
+      </ul>
+
+      <FaqSection items={copy.faqs} />
+
+      <h2>{copy.related.heading}</h2>
+      <ul>
+        <li><a href="/">{copy.related.home}</a></li>
+        <li><a href={OPENCLAW_ALTERNATIVE_PATH}>{copy.related.openclaw}</a></li>
+      </ul>
+
+      <h2>{copy.getStarted.heading}</h2>
+      <p>{copy.getStarted.body}</p>
+      <div class="cta-actions">
+        <Button href={APP_URL}>{copy.getStarted.cloud}</Button>
+        <Button href={GITHUB_URL} variant="secondary" external>{copy.getStarted.github}</Button>
+      </div>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

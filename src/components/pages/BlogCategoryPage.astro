@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import { categoryIsIndexed } from "../../blog/indexability";
+import { postSlug } from "../../blog/slug";
+import type { BlogCategory } from "../../blog/indexability";
+import { getBlogUiCopy } from "../../i18n/blog";
+import type { Locale } from "../../i18n/locales";
+import { localeHomePath } from "../../i18n/locales";
+import SiteFrame from "../SiteFrame.astro";
+
+interface Props {
+  category: BlogCategory;
+  locale: Locale;
+}
+
+const { category, locale } = Astro.props;
+const ui = getBlogUiCopy(locale);
+const label = ui.categoryLabels[category];
+const base = localeHomePath(locale);
+
+const posts = (await getCollection("blog"))
+  .filter((entry) => (entry.data.locale ?? "en") === locale)
+  .filter((entry) => entry.data.category === category)
+  .sort((a, b) => b.data.updated.getTime() - a.data.updated.getTime());
+const indexed = categoryIsIndexed(category);
+---
+
+<SiteFrame
+  title={ui.categoryTitle(label)}
+  description={ui.categoryDescription(label)}
+  index={indexed}
+>
+  <p class="alt-crumb">
+    <a href={`${base === "/" ? "" : base}/blog/`}>{ui.crumbBlog}</a>
+  </p>
+  <h1>{label}</h1>
+  <ul class="blog-index">
+    {
+      posts.map((entry) => (
+        <li>
+          <a class="alt-card" href={`${base === "/" ? "" : base}/blog/${postSlug(entry)}/`}>
+            <h2>{entry.data.title}</h2>
+            <p>{entry.data.description}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</SiteFrame>

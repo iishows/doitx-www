@@ -1,0 +1,9 @@
+---
+import GrokPage from "../components/pages/GrokPage.astro";
+import { DEFAULT_LOCALE } from "../i18n/locales";
+import { SITE_URL } from "../site";
+
+const pageUrl = new URL(Astro.url.pathname, SITE_URL).toString();
+---
+
+<GrokPage locale={DEFAULT_LOCALE} pageUrl={pageUrl} />

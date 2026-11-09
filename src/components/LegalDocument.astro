@@ -1,0 +1,87 @@
+---
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import type { LegalCopy, LegalRun } from "../i18n/legal";
+import type { Locale } from "../i18n/locales";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+type Props = {
+  locale: Locale;
+  copy: LegalCopy;
+  starsLabel: string;
+};
+
+const { locale, copy, starsLabel } = Astro.props;
+---
+
+<BaseLayout
+  title={`${copy.title} · Doitx`}
+  description={copy.description}
+  locale={locale}
+>
+  <div class="container">
+    <Header starsLabel={starsLabel} />
+    <main id="main" class="privacy-copy">
+      <h1>{copy.h1}</h1>
+      <p><strong>Last updated: {copy.lastUpdated}</strong></p>
+      <p>{copy.intro}</p>
+      {copy.disclaimer && <p>{copy.disclaimer}</p>}
+      {
+        copy.sections.map((section) => (
+          <>
+            <h2 id={section.id}>{section.heading}</h2>
+            {section.blocks.map((block) => {
+              if (block.kind === "list") {
+                return (
+                  <ul>
+                    {block.items.map((item) => (
+                      <li>
+                        {item.map((run: LegalRun) =>
+                          run.href ? (
+                            <a href={run.href}>{run.text}</a>
+                          ) : run.strong ? (
+                            <strong>{run.text}</strong>
+                          ) : (
+                            run.text
+                          ),
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                );
+              }
+              if (block.kind === "address") {
+                return (
+                  <p>
+                    {block.lines.map((line, index) => (
+                      <>
+                        {index > 0 && <br />}
+                        {line.map((run: LegalRun) =>
+                          run.href ? <a href={run.href}>{run.text}</a> : run.text,
+                        )}
+                      </>
+                    ))}
+                  </p>
+                );
+              }
+              return (
+                <p>
+                  {block.runs.map((run: LegalRun) =>
+                    run.href ? (
+                      <a href={run.href}>{run.text}</a>
+                    ) : run.strong ? (
+                      <strong>{run.text}</strong>
+                    ) : (
+                      run.text
+                    ),
+                  )}
+                </p>
+              );
+            })}
+          </>
+        ))
+      }
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

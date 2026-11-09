@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { BLOG_CATEGORIES } from "../../../blog/indexability";
+import { postSlug } from "../../../blog/slug";
+import { DEFAULT_LOCALE, LOCALES, isLocale } from "../../../i18n/locales";
+import type { Locale } from "../../../i18n/locales";
+import BlogCategoryPage from "../../../components/pages/BlogCategoryPage.astro";
+import BlogPostPage from "../../../components/pages/BlogPostPage.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const locales = LOCALES.filter((locale) => locale !== DEFAULT_LOCALE);
+  return locales.flatMap((locale) => {
+    const localized = posts.filter((post) => (post.data.locale ?? "en") === locale);
+    return [
+      ...BLOG_CATEGORIES.map((category) => ({
+        params: { locale, slug: category },
+        props: { kind: "category" as const, category, locale },
+      })),
+      ...localized.map((post) => ({
+        params: { locale, slug: postSlug(post) },
+        props: { kind: "post" as const, post, locale },
+      })),
+    ];
+  });
+}
+
+type Props =
+  | { kind: "post"; post: CollectionEntry<"blog">; locale: Locale }
+  | { kind: "category"; category: (typeof BLOG_CATEGORIES)[number]; locale: Locale };
+
+const props = Astro.props as Props;
+if (!isLocale(props.locale) || props.locale === DEFAULT_LOCALE) {
+  throw new Error(`unsupported blog locale: ${props.locale}`);
+}
+---
+
+{
+  props.kind === "post" ? (
+    <BlogPostPage post={props.post} locale={props.locale} />
+  ) : (
+    <BlogCategoryPage category={props.category} locale={props.locale} />
+  )
+}

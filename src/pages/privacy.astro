@@ -1,0 +1,15 @@
+---
+import LegalDocument from "../components/LegalDocument.astro";
+import { githubStarsLabel } from "../github";
+import { getPrivacyCopy } from "../i18n/legal";
+import { DEFAULT_LOCALE } from "../i18n/locales";
+
+const copy = getPrivacyCopy(DEFAULT_LOCALE);
+const starsLabel = await githubStarsLabel();
+---
+
+<LegalDocument
+  locale={DEFAULT_LOCALE}
+  copy={copy}
+  starsLabel={starsLabel}
+/>

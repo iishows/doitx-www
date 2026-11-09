@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import { BLOG_CATEGORIES } from "../../blog/indexability";
+import { postSlug } from "../../blog/slug";
+import { formatPostDate } from "../../blog/format";
+import { getBlogUiCopy } from "../../i18n/blog";
+import type { Locale } from "../../i18n/locales";
+import { localeHomePath } from "../../i18n/locales";
+import SiteFrame from "../SiteFrame.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const ui = getBlogUiCopy(locale);
+
+const posts = (await getCollection("blog"))
+  .filter((entry) => (entry.data.locale ?? "en") === locale)
+  .sort((a, b) => b.data.updated.getTime() - a.data.updated.getTime());
+const home = localeHomePath(locale);
+const blogBase = home === "/" ? "/blog/" : `${home}blog/`;
+---
+
+<SiteFrame title={ui.blogTitle} description={ui.blogDescription}>
+  <h1>{ui.indexHeading}</h1>
+  <nav class="blog-cats" aria-label={ui.categoriesLabel}>
+    {
+      BLOG_CATEGORIES.map((category) => (
+        <a href={`${blogBase}${category}/`}>{ui.categoryLabels[category]}</a>
+      ))
+    }
+  </nav>
+  <ul class="blog-index">
+    {
+      posts.map((post) => (
+        <li>
+          <a class="alt-card" href={`${blogBase}${postSlug(post)}/`}>
+            <p class="blog-kicker">{ui.categoryLabels[post.data.category]}</p>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+            <p class="page-updated">{ui.updated} {formatPostDate(post.data.updated, ui.dateLocale)}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</SiteFrame>

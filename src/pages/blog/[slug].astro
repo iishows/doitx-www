@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { BLOG_CATEGORIES } from "../../blog/indexability";
+import { postSlug } from "../../blog/slug";
+import { DEFAULT_LOCALE } from "../../i18n/locales";
+import BlogCategoryPage from "../../components/pages/BlogCategoryPage.astro";
+import BlogPostPage from "../../components/pages/BlogPostPage.astro";
+
+export async function getStaticPaths() {
+  const locale = DEFAULT_LOCALE;
+  const posts = await getCollection("blog");
+  const localized = posts.filter((post) => (post.data.locale ?? "en") === locale);
+  return [
+    ...BLOG_CATEGORIES.map((category) => ({
+      params: { slug: category },
+      props: { kind: "category" as const, category },
+    })),
+    ...localized.map((post) => ({
+      params: { slug: postSlug(post) },
+      props: { kind: "post" as const, post },
+    })),
+  ];
+}
+
+type Props =
+  | { kind: "post"; post: CollectionEntry<"blog"> }
+  | { kind: "category"; category: (typeof BLOG_CATEGORIES)[number] };
+
+const props = Astro.props as Props;
+const locale = DEFAULT_LOCALE;
+---
+
+{
+  props.kind === "post" ? (
+    <BlogPostPage post={props.post} locale={locale} />
+  ) : (
+    <BlogCategoryPage category={props.category} locale={locale} />
+  )
+}

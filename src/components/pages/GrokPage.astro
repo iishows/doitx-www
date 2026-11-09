@@ -1,0 +1,182 @@
+---
+import Button from "../Button.astro";
+import CaptionedImage from "../CaptionedImage.astro";
+import Footer from "../Footer.astro";
+import Header from "../Header.astro";
+import Prose from "../Prose.astro";
+import VsCard from "../VsCard.astro";
+import { INSTALL_COMMAND, grokAlternativeStructuredData } from "../../grok-alternative";
+import { githubStarsLabel } from "../../github";
+import { getGrokPageCopy } from "../../i18n/grok-page";
+import type { Locale } from "../../i18n/locales";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { ogPublicPath } from "../../og-pages";
+import { DOCS_URL, GITHUB_URL } from "../../site";
+import { vsCard } from "../../vs-points";
+
+interface Props {
+  locale: Locale;
+  pageUrl: string;
+}
+
+const { locale, pageUrl } = Astro.props;
+const copy = getGrokPageCopy(locale);
+const starsLabel = await githubStarsLabel();
+const structuredData = grokAlternativeStructuredData(pageUrl, copy.faq.items);
+const card = vsCard("grok-bot-alternative");
+
+const figures = {
+  chat: { webp: "/graphics/grok/chat.webp", avif: "/graphics/grok/chat.avif", width: 1200, height: 800 },
+  routine: { webp: "/graphics/grok/routine.webp", avif: "/graphics/grok/routine.avif", width: 1200, height: 800 },
+  models: { webp: "/graphics/grok/models.webp", avif: "/graphics/grok/models.avif", width: 1280, height: 900 },
+};
+
+const sectionFigures: Record<number, keyof typeof figures> = { 1: "routine", 2: "models" };
+---
+
+<BaseLayout
+  title={copy.title}
+  description={copy.description}
+  {structuredData}
+  localeAlternates={false}
+  ogImage={ogPublicPath("grok-bot-alternative")}
+>
+  <div class="container">
+    <Header starsLabel={starsLabel} locale={locale} />
+    <main id="main" class="guide">
+      <h1>{copy.h1}</h1>
+      <p class="alt-note">{copy.updated}</p>
+      {card && <VsCard otherName={copy.vsOther} rakazo={card.rakazo} other={card.other} />}
+      {copy.intro.map((paragraph) => <p><Prose text={paragraph} /></p>)}
+      <CaptionedImage
+        src={figures.chat.webp}
+        avif={figures.chat.avif}
+        width={figures.chat.width}
+        height={figures.chat.height}
+        alt={copy.figures.chat.alt}
+        caption={copy.figures.chat.caption}
+        loading="lazy"
+      />
+      {
+        copy.sections.map((section, index) => {
+          const key = sectionFigures[index];
+          const figure = key ? figures[key] : undefined;
+          const figureCopy = key ? copy.figures[key] : undefined;
+          return (
+            <section>
+              <h2>{section.heading}</h2>
+              {section.paragraphs.map((paragraph) => (
+                <p><Prose text={paragraph} /></p>
+              ))}
+              {figure && figureCopy && (
+                <CaptionedImage
+                  src={figure.webp}
+                  avif={figure.avif}
+                  width={figure.width}
+                  height={figure.height}
+                  alt={figureCopy.alt}
+                  caption={figureCopy.caption}
+                  loading="lazy"
+                />
+              )}
+            </section>
+          );
+        })
+      }
+
+      <h2>{copy.compare.heading}</h2>
+      <div class="compare-scroll">
+        <table class="compare">
+          <caption class="sr-only">{copy.compare.caption}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{copy.compare.topic}</th>
+              <th scope="col">{copy.vsRakazo}</th>
+              <th scope="col">{copy.vsOther}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              copy.compare.rows.map((row) => (
+                <tr>
+                  <th scope="row">{row.aspect}</th>
+                  <td>{row.rakazo}</td>
+                  <td>{row.grok}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p>{copy.compare.note}</p>
+      <ul class="source-list">
+        {
+          copy.sources.map((source) => (
+            <li>
+              <a href={source.href} target="_blank" rel="noreferrer">
+                {source.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>{copy.selfHost.heading}</h2>
+      <p>{copy.selfHost.lead}</p>
+      <pre><code>{INSTALL_COMMAND}</code></pre>
+      {copy.selfHost.after.map((paragraph) => <p>{paragraph}</p>)}
+      <div class="cta-actions">
+        <Button href={DOCS_URL} external>{copy.selfHost.docs}</Button>
+        <Button href={GITHUB_URL} variant="secondary" external>{copy.selfHost.github}</Button>
+      </div>
+
+      <h2>{copy.other.heading}</h2>
+      <p><Prose text={copy.other.lead} /></p>
+      <ul class="other-cards">
+        {
+          copy.other.cards.filter((item) => item.image).map((item) => (
+            <li class="other-card">
+              <a
+                class="other-card__link"
+                href={item.href}
+                {...(item.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+              >
+                <picture>
+                  <source type="image/avif" srcset={`/graphics/grok/alts/${item.image!.file}.avif`} />
+                  <img
+                    src={`/graphics/grok/alts/${item.image!.file}.webp`}
+                    alt={item.image!.alt}
+                    width={1280}
+                    height={800}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+                <span class="other-card__name">{item.label}</span>
+              </a>
+              <p><Prose text={item.note} /></p>
+            </li>
+          ))
+        }
+      </ul>
+      {
+        copy.other.cards.filter((item) => !item.image).map((item) => (
+          <p>
+            <a href={item.href}>{item.label}</a> — <Prose text={item.note} />
+          </p>
+        ))
+      }
+
+      <h2 id="faq">{copy.faq.heading}</h2>
+      {
+        copy.faq.items.map((item) => (
+          <section>
+            <h3>{item.question}</h3>
+            <p><Prose text={item.answer} /></p>
+          </section>
+        ))
+      }
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

@@ -1,0 +1,57 @@
+---
+type Props = {
+  text: string;
+};
+
+const { text } = Astro.props;
+
+type Part =
+  | { kind: "text"; value: string }
+  | { kind: "code"; value: string }
+  | { kind: "link"; label: string; href: string }
+  | { kind: "strong"; value: string };
+
+const pattern = () =>
+  /\[([^\]]+)\]\(([^)\s]+)\)|`([^`]+)`|\*\*([^*]+)\*\*/g;
+
+function parse(value: string): Part[] {
+  const parts: Part[] = [];
+  let last = 0;
+  for (const match of value.matchAll(pattern())) {
+    const index = match.index ?? 0;
+    if (index > last) parts.push({ kind: "text", value: value.slice(last, index) });
+    if (match[1] !== undefined) {
+      parts.push({ kind: "link", label: match[1], href: match[2] ?? "" });
+    } else if (match[3] !== undefined) {
+      parts.push({ kind: "code", value: match[3] });
+    } else {
+      parts.push({ kind: "strong", value: match[4] ?? "" });
+    }
+    last = index + match[0].length;
+  }
+  if (last < value.length || parts.length === 0) {
+    parts.push({ kind: "text", value: value.slice(last) });
+  }
+  return parts;
+}
+
+const parts = parse(text);
+---
+
+{
+  parts.map((part) => {
+    if (part.kind === "link") {
+      return (
+        <a
+          href={part.href}
+          {...(part.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+        >
+          {part.label}
+        </a>
+      );
+    }
+    if (part.kind === "code") return <code>{part.value}</code>;
+    if (part.kind === "strong") return <strong>{part.value}</strong>;
+    return part.value;
+  })
+}
