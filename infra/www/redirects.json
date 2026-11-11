@@ -9,6 +9,14 @@
       "source": "/docs/:path*",
       "has": [{ "type": "host", "value": { "eq": "doitx.ai" } }],
       "destination": "/docs/:path*"
+    },
+    {
+      "source": "/blog/openclaw-vs-hermes-vs-rakazo",
+      "destination": "/blog/openclaw-vs-hermes-vs-doitx/"
+    },
+    {
+      "source": "/en/blog/openclaw-vs-hermes-vs-rakazo",
+      "destination": "/en/blog/openclaw-vs-hermes-vs-doitx/"
     }
   ]
 }

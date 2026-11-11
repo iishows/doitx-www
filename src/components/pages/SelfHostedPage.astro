@@ -14,6 +14,7 @@ import {
   SOURCE_DEV,
   faqPageStructuredData,
 } from "../../guide";
+import { docsUrl } from "../../docs";
 import { githubStarsLabel } from "../../github";
 import type { Locale } from "../../i18n/locales";
 import { getSelfHostPageCopy } from "../../i18n/self-host-page";
@@ -21,12 +22,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { ogPublicPath } from "../../og-pages";
 import {
   APP_URL,
-  DOCS_URL,
   GITHUB_URL,
   OPENCLAW_ALTERNATIVE_PATH,
-  SELF_HOST_RESTRICTED_URL,
-  SELF_HOST_SECRETS_URL,
-  SETUP_PROMPT_URL,
 } from "../../site";
 
 interface Props {
@@ -133,10 +130,10 @@ const structuredData = faqPageStructuredData(copy.faqs);
 
       <h2>{copy.reference.heading}</h2>
       <ul class="source-list">
-        <li><a href={DOCS_URL}>{copy.reference.guide}</a></li>
-        <li><a href={SELF_HOST_SECRETS_URL}>{copy.reference.secrets}</a></li>
-        <li><a href={SELF_HOST_RESTRICTED_URL}>{copy.reference.restricted}</a></li>
-        <li><a href={SETUP_PROMPT_URL}>{copy.reference.prompt}</a></li>
+        <li><a href={docsUrl(locale, "self-host")}>{copy.reference.guide}</a></li>
+        <li><a href={docsUrl(locale, "self-host-secrets")}>{copy.reference.secrets}</a></li>
+        <li><a href={docsUrl(locale, "self-host-restricted-network")}>{copy.reference.restricted}</a></li>
+        <li><a href={docsUrl(locale)}>{copy.reference.prompt}</a></li>
         <li><a href={GITHUB_URL}>{copy.reference.source}</a></li>
       </ul>
 

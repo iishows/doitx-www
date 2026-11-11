@@ -9,11 +9,11 @@ category: "guides"
 tldr: "The published-image installer is a short script: Docker, Compose, curl, and OpenSSL, then an account and a model. Pull time depends on your connection. A public hostname, TLS, and a secrets review are a longer job than the first local chat."
 sources:
   - label: "Doitx self-hosting guide"
-    href: "https://doitx.ai/docs"
+    href: "https://doitx.ai/en/docs/self-host/"
   - label: "Self-hosted AI agent"
     href: "https://doitx.ai/self-hosted-ai-agent/"
   - label: "Self-host secrets checklist"
-    href: "https://doitx.ai/docs"
+    href: "https://doitx.ai/en/docs/self-host-secrets/"
 related:
   - href: "/self-hosted-ai-agent/"
     title: "Self-hosted AI agent"
@@ -24,7 +24,7 @@ related:
   - href: "/hermes-alternative/"
     title: "Open source Hermes alternative"
     description: "Desktop and CLI setup next to Doitx's installer."
-  - href: "/blog/openclaw-vs-hermes-vs-rakazo/"
+  - href: "/blog/openclaw-vs-hermes-vs-doitx/"
     title: "OpenClaw vs Hermes Agent vs Doitx"
     description: "Which shape is simplest depends on the product you want."
   - href: "/alternatives/"
@@ -66,7 +66,7 @@ comparison:
 
 The title is the shape of the local install, not a stopwatch result. Doitx's published images start from one script. Docker then downloads the images, and that download is the part that varies. When the app is up, you create an account, connect a model, and the first chat is the product. A hostname on the public internet, TLS, and a review of secrets are a separate piece of work.
 
-This page follows the [self-hosting guide](https://doitx.ai/docs) and the [self-hosted AI agent page](/self-hosted-ai-agent/). Those stay the reference if a command changes.
+This page follows the [self-hosting guide](https://doitx.ai/en/docs/self-host/) and the [self-hosted AI agent page](/self-hosted-ai-agent/). Those stay the reference if a command changes.
 
 ## What you are running
 
@@ -92,7 +92,7 @@ A source checkout is different. It wants Node.js 22.22.2 or newer on the 22.x li
 From an empty directory on the machine that should run Doitx:
 
 ```bash
-mkdir -p rakazo && cd rakazo &&
+mkdir -p doitx && cd doitx &&
 curl -fsSLO https://raw.githubusercontent.com/iishows/doitx/main/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
@@ -163,7 +163,7 @@ A minimal Caddy site is a reverse proxy to `127.0.0.1:5173`. Replace the example
 
 In the mobile app, tap **Use a custom server** on the sign-in screen and enter the same HTTPS origin as `WEB_ORIGIN`.
 
-This server path is why a public install is not the same job as the local script. You are choosing a hostname, a TLS terminator, who may sign up, and where secrets live. The [secrets checklist](https://doitx.ai/docs) names the values and how to recover them. The [restricted-network guide](https://doitx.ai/docs) covers mirrors when the installer or the image pull is blocked.
+This server path is why a public install is not the same job as the local script. You are choosing a hostname, a TLS terminator, who may sign up, and where secrets live. The [secrets checklist](https://doitx.ai/en/docs/self-host-secrets/) names the values and how to recover them. The [restricted-network guide](https://doitx.ai/en/docs/self-host-restricted-network/) covers mirrors when the installer or the image pull is blocked.
 
 ## Install from source only if you are developing
 
@@ -183,6 +183,6 @@ The desktop app's **This computer** option is the same published images, started
 
 ## How this sits next to other agents
 
-OpenClaw and Hermes Agent are also open source and can run on hardware you control. Their install docs describe a gateway or a desktop app and a CLI, plus config files under a home directory. Doitx's published-image path is the script above, then chat. The [comparison of those three](/blog/openclaw-vs-hermes-vs-rakazo/) is about that difference in shape, not a race.
+OpenClaw and Hermes Agent are also open source and can run on hardware you control. Their install docs describe a gateway or a desktop app and a CLI, plus config files under a home directory. Doitx's published-image path is the script above, then chat. The [comparison of those three](/blog/openclaw-vs-hermes-vs-doitx/) is about that difference in shape, not a race.
 
 If the first chat on loopback is the goal, stay on the published images, create the owner account, and connect one model. If the goal is a public URL, budget time for TLS and the secrets checklist after the installer finishes.

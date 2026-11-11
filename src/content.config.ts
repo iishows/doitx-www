@@ -2,7 +2,7 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { readFile } from "node:fs/promises";
-import { DOCS_SLUGS } from "./docs";
+import { DOCS_LOCALES, DOCS_SLUGS, docsEntryId } from "./docs";
 import { rewriteDocsLinks } from "./docs-links";
 
 const blog = defineCollection({
@@ -47,11 +47,21 @@ const docs = defineCollection({
     name: "repo-docs",
     async load({ store, renderMarkdown, watcher }) {
       store.clear();
-      for (const slug of DOCS_SLUGS) {
-        const url = new URL(`../docs/${slug}.md`, import.meta.url);
-        const body = rewriteDocsLinks(await readFile(url, "utf8"), slug);
-        store.set({ id: slug, data: {}, body, rendered: await renderMarkdown(body) });
-        watcher?.add(url.pathname);
+      for (const locale of DOCS_LOCALES) {
+        for (const slug of DOCS_SLUGS) {
+          const url = new URL(
+            locale === "zh" ? `../docs/zh/${slug}.md` : `../docs/${slug}.md`,
+            import.meta.url,
+          );
+          const body = rewriteDocsLinks(await readFile(url, "utf8"), slug, locale);
+          store.set({
+            id: docsEntryId(locale, slug),
+            data: {},
+            body,
+            rendered: await renderMarkdown(body),
+          });
+          watcher?.add(url.pathname);
+        }
       }
     },
   },

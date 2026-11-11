@@ -24,7 +24,7 @@ related:
   - href: "/hermes-alternative/"
     title: "开源 Hermes 替代品"
     description: "桌面与命令行安装，对比 Doitx 的安装器。"
-  - href: "/blog/openclaw-vs-hermes-vs-rakazo/"
+  - href: "/blog/openclaw-vs-hermes-vs-doitx/"
     title: "OpenClaw 对比 Hermes Agent 对比 Doitx"
     description: "哪个形态最简单，取决于你想要的产品。"
   - href: "/alternatives/"
@@ -92,7 +92,7 @@ Postgres、机器人文件、浏览器配置和审计日志都留在你运维的
 在应运行 Doitx 的机器上，从一个空目录开始：
 
 ```bash
-mkdir -p rakazo && cd rakazo &&
+mkdir -p doitx && cd doitx &&
 curl -fsSLO https://raw.githubusercontent.com/iishows/doitx/main/infra/compose/install-images.sh &&
 bash install-images.sh
 ```
@@ -183,6 +183,6 @@ bash install-images.sh
 
 ## 这与其他智能体的关系
 
-OpenClaw 和 Hermes Agent 同样是开源项目，也能跑在你掌控的硬件上。它们的安装文档描述的是一个网关，或一个桌面应用加一个命令行，以及主目录下的配置文件。Doitx 的已发布镜像路径就是上面的脚本，然后是聊天。[这三者的对比](/blog/openclaw-vs-hermes-vs-rakazo/)讲的是这种形态差异，不是一场竞赛。
+OpenClaw 和 Hermes Agent 同样是开源项目，也能跑在你掌控的硬件上。它们的安装文档描述的是一个网关，或一个桌面应用加一个命令行，以及主目录下的配置文件。Doitx 的已发布镜像路径就是上面的脚本，然后是聊天。[这三者的对比](/blog/openclaw-vs-hermes-vs-doitx/)讲的是这种形态差异，不是一场竞赛。
 
 如果目标是在回环地址上完成第一次聊天，就留在已发布镜像上，创建所有者账号并连接一个模型。如果目标是公网 URL，安装器结束后还要为 TLS 和密钥清单预留时间。

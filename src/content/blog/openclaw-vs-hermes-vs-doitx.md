@@ -17,7 +17,7 @@ sources:
   - label: "Hermes Agent desktop"
     href: "https://hermes-agent.nousresearch.com/docs/user-guide/desktop"
   - label: "Doitx self-hosting guide"
-    href: "https://doitx.ai/docs"
+    href: "https://doitx.ai/en/docs/self-host/"
 related:
   - href: "/openclaw-alternative/"
     title: "Open source OpenClaw alternative"

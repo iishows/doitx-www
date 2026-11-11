@@ -1,0 +1,105 @@
+---
+import type { InstallCopy } from "../i18n/install";
+import { LATEST_RELEASE_URL } from "../site";
+
+type Props = {
+  copy: InstallCopy;
+};
+
+const { copy } = Astro.props;
+
+const commands = [
+  {
+    id: "windows",
+    label: copy.windows,
+    prompt: "PS>",
+    command: "irm https://doitx.ai/install.ps1 | iex",
+  },
+  {
+    id: "linux",
+    label: copy.linux,
+    prompt: "$",
+    command: "curl -fsSL https://doitx.ai/install.sh | bash",
+  },
+] as const;
+---
+
+<section id="install" class="section install">
+  <div class="section-intro">
+    <div class="eyebrow">{copy.eyebrow}</div>
+    <h2 class="section-heading">{copy.heading}</h2>
+    <p class="section-copy">{copy.copy}</p>
+  </div>
+  <div class="install-grid">
+    {
+      commands.map((item) => (
+        <article class="install-card">
+          <header class="install-card__head">
+            {item.id === "windows" ? (
+              <svg class="install-card__icon install-card__icon--fill" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1" />
+                <rect x="13" y="3.5" width="7.5" height="7.5" rx="1" />
+                <rect x="3.5" y="13" width="7.5" height="7.5" rx="1" />
+                <rect x="13" y="13" width="7.5" height="7.5" rx="1" />
+              </svg>
+            ) : (
+              <svg class="install-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <path d="M7 9.5l3 3-3 3" />
+                <path d="M13 15.5h4" />
+              </svg>
+            )}
+            <h3>{item.label}</h3>
+          </header>
+          <div class="install-command">
+            <span class="install-command__prompt" aria-hidden="true">{item.prompt}</span>
+            <code>{item.command}</code>
+            <button
+              class="install-copy"
+              type="button"
+              data-copy-command={item.command}
+              data-copy-label={copy.copyLabel}
+              data-copied-label={copy.copiedLabel}
+              data-copy-failed={copy.failedLabel}
+              aria-label={copy.copyLabel}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="8" y="8" width="12" height="12" rx="2" />
+                <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+              </svg>
+              <span class="install-copy__label">{copy.copyLabel}</span>
+            </button>
+          </div>
+          <a class="install-card__manual" href={LATEST_RELEASE_URL} target="_blank" rel="noopener">
+            {copy.manual}
+            <span aria-hidden="true"> →</span>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+  <p class="install-note">{copy.note}</p>
+</section>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-copy-command]")) {
+    const label = button.querySelector<HTMLElement>(".install-copy__label");
+    const { copyCommand, copyLabel, copiedLabel, copyFailed } = button.dataset;
+    if (!label || !copyCommand || !copyLabel || !copiedLabel || !copyFailed) continue;
+
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(copyCommand);
+        label.textContent = copiedLabel;
+        window.setTimeout(() => {
+          label.textContent = copyLabel;
+        }, 2000);
+      } catch {
+        label.textContent = copyFailed;
+        window.setTimeout(() => {
+          label.textContent = copyLabel;
+        }, 2400);
+      }
+    });
+  }
+</script>

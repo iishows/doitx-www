@@ -4,4 +4,4 @@ import { markdownResponse } from "../agent-content";
 import { DOCS_SLUGS } from "../docs";
 
 export const GET: APIRoute = async ({ request }) =>
-  markdownResponse((await getEntry("docs", DOCS_SLUGS[0]))?.body ?? "", request.method);
+  markdownResponse((await getEntry("docs", `zh/${DOCS_SLUGS[0]}`))?.body ?? "", request.method);

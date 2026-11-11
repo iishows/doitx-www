@@ -3,14 +3,16 @@ import Button from "./Button.astro";
 import Footer from "./Footer.astro";
 import GetStartedActions from "./GetStartedActions.astro";
 import Header from "./Header.astro";
+import InstallCommands from "./InstallCommands.astro";
 import { LandingBotAvatar } from "./LandingBotAvatar";
 import PhoneMockup from "./PhoneMockup.astro";
-import { ProductDemo } from "./ProductDemo";
-import { demoMessages, getDemoBots } from "../i18n/demo";
+import { TeamWorkspaceDemo } from "./TeamWorkspaceDemo";
+import { docsLocale, docsPath } from "../docs";
 import FeatureIllustration from "./FeatureIllustration.astro";
 import CapabilityIllustration from "./CapabilityIllustration.astro";
 import RepoCard from "./RepoCard.astro";
 import RosterBotAvatar from "./RosterBotAvatar.astro";
+import TeamScenarios from "./TeamScenarios.astro";
 import type { Locale } from "../i18n/locales";
 import imessageLogo from "./brand-logos/imessage.svg?raw";
 import slackLogo from "./brand-logos/slack.svg?raw";
@@ -22,6 +24,8 @@ import {
   HOME_MODEL_PROVIDERS,
   getHomeCopy,
 } from "../i18n/home";
+import { getInstallCopy } from "../i18n/install";
+import { getTeamCopy } from "../i18n/teams";
 import {
   DEFAULT_LOCALE,
   LOCALES,
@@ -52,6 +56,8 @@ const locale: Locale = isLocale(Astro.currentLocale)
   : DEFAULT_LOCALE;
 
 const copy = getHomeCopy(locale);
+const installCopy = getInstallCopy(locale);
+const teamCopy = getTeamCopy(locale);
 const enCopy = getHomeCopy(DEFAULT_LOCALE);
 const availableLanguages = LOCALES.map((supportedLocale) =>
   getHomeCopy(supportedLocale).availableLanguage
@@ -157,8 +163,10 @@ const structuredData = homeStructuredData({
       </section>
 
       <section id="demo">
-        <ProductDemo bots={getDemoBots(locale)} strings={demoMessages(locale)} client:load />
+        <TeamWorkspaceDemo locale={locale} client:load />
       </section>
+
+      <TeamScenarios copy={teamCopy} />
 
       <section id="roster" class="section">
         <div class="section-intro">
@@ -302,7 +310,7 @@ const structuredData = homeStructuredData({
           </div>
           <div class="selfhost__actions">
             <Button href={GITHUB_URL} external data-attr="selfhost-github">{copy.hero.viewOnGithub}</Button>
-            <Button href="/docs/self-host/" variant="secondary">{copy.openSource.readTheDocs}</Button>
+            <Button href={docsPath(docsLocale(locale), "self-host")} variant="secondary">{copy.openSource.readTheDocs}</Button>
           </div>
         </div>
         <div class="card-grid-3">
@@ -357,6 +365,8 @@ const structuredData = homeStructuredData({
         </div>
         <PhoneMockup locale={locale} />
       </section>
+
+      <InstallCommands copy={installCopy} />
 
       <section id="open-source" class:list={["section", recentChanges.length > 0 && "open-source"]}>
         <div>

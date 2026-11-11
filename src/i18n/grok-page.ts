@@ -141,7 +141,7 @@ const EN: GrokPageCopy = {
   ],
   other: {
     heading: "Other alternatives",
-    lead: "Hosted assistants and open source agents are both on the [alternatives roundup](/alternatives/). [OpenClaw vs Hermes Agent vs Doitx](/blog/openclaw-vs-hermes-vs-rakazo/) compares the three you run yourself, and [best open source AI agents in 2026](/blog/best-open-source-ai-agents-2026/) includes libraries as well as apps.",
+    lead: "Hosted assistants and open source agents are both on the [alternatives roundup](/alternatives/). [OpenClaw vs Hermes Agent vs Doitx](/blog/openclaw-vs-hermes-vs-doitx/) compares the three you run yourself, and [best open source AI agents in 2026](/blog/best-open-source-ai-agents-2026/) includes libraries as well as apps.",
     cards: [
       {
         href: "/muse-alternative/",
@@ -349,7 +349,7 @@ const ZH: GrokPageCopy = {
   ],
   other: {
     heading: "其他替代品",
-    lead: "托管助手和开源智能体都收录在[替代品汇总](/alternatives/)中。[OpenClaw vs Hermes Agent vs Doitx](/blog/openclaw-vs-hermes-vs-rakazo/)对比了你自己运行的三个方案，[2026 年最佳开源 AI 智能体](/blog/best-open-source-ai-agents-2026/)则同时涵盖库和应用。",
+    lead: "托管助手和开源智能体都收录在[替代品汇总](/alternatives/)中。[OpenClaw vs Hermes Agent vs Doitx](/blog/openclaw-vs-hermes-vs-doitx/)对比了你自己运行的三个方案，[2026 年最佳开源 AI 智能体](/blog/best-open-source-ai-agents-2026/)则同时涵盖库和应用。",
     cards: [
       {
         href: "/muse-alternative/",

@@ -60,6 +60,13 @@ async function fetchLatestDownloadLinks() {
 
 const redirects = (JSON.parse(await readFile(redirectsPath, "utf8")).redirects ?? [])
 
+// 只应用无条件的精确路径重定向；带 host 条件或通配符的规则留给 Vercel。
+const simpleRedirects = new Map(
+  redirects
+    .filter((rule) => !rule.has && !rule.source.includes(":") && !rule.source.includes("*"))
+    .map((rule) => [rule.source.replace(/\/+$/, ""), rule.destination]),
+);
+
 const MIME = {
   ".html": "text/html; charset=utf-8",
   ".md": "text/markdown; charset=utf-8",
@@ -117,6 +124,11 @@ const server = createServer(async (req, res) => {
   // /redirects.json: 给 Vercel 式客户端转发保留
   if (pathname === "/redirects.json") {
     return send(res, 200, { "content-type": "application/json; charset=utf-8" }, JSON.stringify({ redirects }));
+  }
+
+  const redirectTarget = simpleRedirects.get(pathname.replace(/\/+$/, ""));
+  if (redirectTarget) {
+    return send(res, 301, { location: redirectTarget }, "");
   }
 
   // 其余路由全部按静态文件服务

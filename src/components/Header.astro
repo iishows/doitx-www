@@ -1,7 +1,16 @@
 ---
+import { DOCS_SLUGS, docsHomePath, docsPath } from "../docs";
+import { integrationsHomePath } from "../i18n/integrations";
 import { getHomeCopy } from "../i18n/home";
 import type { HomeCopy } from "../i18n/home";
-import { DEFAULT_LOCALE, localeHomePath } from "../i18n/locales";
+import {
+  DEFAULT_LOCALE,
+  LOCALES,
+  LOCALE_HREFLANG,
+  LOCALE_HTML_LANG,
+  LOCALE_LABELS,
+  localeHomePath,
+} from "../i18n/locales";
 import type { Locale } from "../i18n/locales";
 import { APP_URL, GITHUB_URL } from "../site";
 import Logo from "./Logo.astro";
@@ -18,16 +27,58 @@ const locale = Astro.props.locale ?? DEFAULT_LOCALE;
 const copy = Astro.props.copy ?? getHomeCopy(locale).nav;
 const homeHref = Astro.props.homeHref ?? localeHomePath(locale);
 
+const docsHref = docsHomePath(locale);
+const docsBase = docsHref.replace(/\/+$/, "");
+
 const NAV_LINKS = [
-  { href: "/docs/", label: copy.docs },
-  { href: "/integrations/", label: copy.integrations },
+  { href: docsHref, label: copy.docs },
+  { href: integrationsHomePath(locale), label: copy.integrations },
   { href: "/blog/", label: copy.blog },
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
+type Section =
+  | { type: "docs"; slug: string }
+  | { type: "integrations"; slug?: string }
+  | { type: "other" };
+
+const DOCS_SLUG_SET = new Set<string>(DOCS_SLUGS);
+const sectionParts = currentPath.split("/").filter(Boolean);
+if (sectionParts[0] === "en") sectionParts.shift();
+const section: Section =
+  sectionParts[0] === "docs"
+    ? {
+        type: "docs",
+        slug:
+          sectionParts[1] && DOCS_SLUG_SET.has(sectionParts[1])
+            ? sectionParts[1]
+            : DOCS_SLUGS[0],
+      }
+    : sectionParts[0] === "integrations"
+      ? { type: "integrations", slug: sectionParts[1] }
+      : { type: "other" };
+
+const languagesLabel = getHomeCopy(locale).footer.languagesLabel;
+
+function languageHref(target: Locale): string {
+  if (section.type === "docs") {
+    const docsLocale = target === "zh" || target === "zh-tw" ? "zh" : "en";
+    return docsPath(docsLocale, section.slug);
+  }
+  if (section.type === "integrations") {
+    const base = target === "zh" || target === "zh-tw" ? "/integrations/" : "/en/integrations/";
+    return section.slug ? `${base}${section.slug}/` : base;
+  }
+  return localeHomePath(target);
+}
+
 function isCurrent(href: string): boolean {
-  return (href.replace(/\/+$/, "") || "/") === currentPath;
+  const normalized = href.replace(/\/+$/, "") || "/";
+  if (normalized === docsBase) {
+    return currentPath === docsBase || currentPath.startsWith(`${docsBase}/`);
+  }
+  return normalized === currentPath;
 }
 ---
 
@@ -59,6 +110,29 @@ function isCurrent(href: string): boolean {
       <span aria-hidden="true">★</span>
       <span>{starsLabel}</span>
     </a>
+    <details class="language-menu header-language" data-language-menu>
+      <summary aria-label={languagesLabel}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
+        <span class="header-language__label">{LOCALE_LABELS[locale]}</span>
+        <svg class="language-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+      </summary>
+      <ul>
+        {
+          LOCALES.map((targetLocale) => (
+            <li>
+              <a
+                href={languageHref(targetLocale)}
+                hreflang={LOCALE_HREFLANG[targetLocale]}
+                lang={LOCALE_HTML_LANG[targetLocale]}
+                aria-current={targetLocale === locale ? "true" : undefined}
+              >
+                {LOCALE_LABELS[targetLocale]}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
     <div class="site-header__cta">
       <a class="button button--primary button--small" href={APP_URL}>
         {copy.getStarted}
@@ -105,6 +179,26 @@ function isCurrent(href: string): boolean {
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         menu.open = false;
+      }
+    });
+  }
+
+  const languageMenu = document.querySelector<HTMLDetailsElement>("[data-language-menu]");
+
+  if (languageMenu) {
+    languageMenu.addEventListener("click", (event) => {
+      if ((event.target as HTMLElement).closest("a")) languageMenu.open = false;
+    });
+
+    document.addEventListener("click", (event) => {
+      if (languageMenu.open && !languageMenu.contains(event.target as Node)) {
+        languageMenu.open = false;
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        languageMenu.open = false;
       }
     });
   }

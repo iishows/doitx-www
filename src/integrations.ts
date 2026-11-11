@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import type { PluginCategory } from "@rakazo/core";
 import { PLUGIN_CATEGORIES } from "@rakazo/core";
 import { z } from "zod";
+import { getIntegrationsCopy, type IntegrationsLocale } from "./i18n/integrations";
 import { CATALOG_URL, SITE_URL } from "./site";
 
 const IntegrationSchema = z.object({
@@ -188,14 +189,24 @@ export function integrationUrlSlug(slug: string): string {
   return slug.replace(/^_+/, "").replaceAll("_", "-");
 }
 
-export function integrationPath(slug: string): string {
-  return `${INTEGRATIONS_PATH}${integrationUrlSlug(slug)}/`;
+export function integrationsPath(locale: IntegrationsLocale = "zh"): string {
+  return locale === "zh" ? INTEGRATIONS_PATH : `/en${INTEGRATIONS_PATH}`;
+}
+
+export function integrationPath(slug: string, locale: IntegrationsLocale = "zh"): string {
+  return `${integrationsPath(locale)}${integrationUrlSlug(slug)}/`;
+}
+
+export function integrationMarkdownPath(slug: string, locale: IntegrationsLocale): string {
+  return `${integrationPath(slug, locale).slice(0, -1)}.md`;
 }
 
 /** Round down so the headline count stays true as the catalog shifts. */
-export function integrationCountLabel(): string {
+export function integrationCountLabel(locale: IntegrationsLocale = "zh"): string {
   const count = INTEGRATIONS.length;
-  return count >= 1000 ? `${(Math.floor(count / 100) * 100).toLocaleString("en-US")}+` : String(count);
+  return count >= 1000
+    ? `${(Math.floor(count / 100) * 100).toLocaleString(locale === "zh" ? "zh-CN" : "en-US")}+`
+    : String(count);
 }
 
 export function relatedIntegrations(integration: Integration, limit = 6): Integration[] {
@@ -219,47 +230,65 @@ export const CHAT_CHANNELS = [
   { name: "Feishu / Lark", slug: null },
 ] as const;
 
-export function integrationBreadcrumbs(integration: Integration) {
+export function integrationBreadcrumbs(
+  integration: Integration,
+  locale: IntegrationsLocale = "zh",
+) {
+  const copy = getIntegrationsCopy(locale);
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Integrations", item: `${SITE_URL}${INTEGRATIONS_PATH}` },
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: copy.breadcrumb,
+        item: `${SITE_URL}${integrationsPath(locale)}`,
+      },
       {
         "@type": "ListItem",
         position: 2,
         name: integration.name,
-        item: `${SITE_URL}${integrationPath(integration.slug)}`,
+        item: `${SITE_URL}${integrationPath(integration.slug, locale)}`,
       },
     ],
   };
 }
 
-export function integrationsMarkdown(): string {
+export function integrationsMarkdown(locale: IntegrationsLocale = "zh"): string {
+  const copy = getIntegrationsCopy(locale);
   const lines = INTEGRATIONS.map(
     (integration) =>
-      `- [${integration.name}](${SITE_URL}${integrationPath(integration.slug)}): ${CATEGORY_LABELS[categoryOf(integration)]}, ${integration.actions.length} actions`,
+      `- [${integration.name}](${SITE_URL}${integrationPath(integration.slug, locale)}): ${copy.markdown.categoryLine(copy.categories[categoryOf(integration)], integration.actions.length)}`,
   );
-  return `# Doitx integrations
+  const intro =
+    INTEGRATIONS.length > 0
+      ? copy.markdown.integrationsIntro(INTEGRATIONS.length)
+      : copy.descriptionEmpty;
+  return `# ${copy.markdown.integrationsTitle}
 
-Doitx bots can connect to ${INTEGRATIONS.length} apps. Ask a bot to connect one and approve the sign-in it sends.
+${intro}
 
 ${lines.join("\n")}
 `;
 }
 
-export function integrationMarkdown(integration: Integration): string {
+export function integrationMarkdown(
+  integration: Integration,
+  locale: IntegrationsLocale = "zh",
+): string {
+  const copy = getIntegrationsCopy(locale);
   const actions = integration.actions.map(
     (action) =>
-      `- **${action.name}**${action.readOnly ? " (read-only)" : ""}${action.description ? `: ${action.description}` : ""}`,
+      `- **${action.name}**${action.readOnly ? ` (${copy.markdown.readOnly})` : ""}${action.description ? `: ${action.description}` : ""}`,
   );
   return `# ${integration.name}
 
 ${integration.description}
 
-Category: ${CATEGORY_LABELS[categoryOf(integration)]}. Connect from any Doitx bot at ${SITE_URL}${integrationPath(integration.slug)}.
+${copy.markdown.detailCategory(copy.categories[categoryOf(integration)], `${SITE_URL}${integrationPath(integration.slug, locale)}`)}
 
-## Actions
+## ${copy.markdown.actionsTitle}
 
 ${actions.join("\n")}
 `;

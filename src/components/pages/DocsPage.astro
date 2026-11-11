@@ -1,0 +1,143 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import Footer from "../Footer.astro";
+import Header from "../Header.astro";
+import {
+  DOCS_NAV,
+  DOCS_SLUGS,
+  docsMarkdownPath,
+  docsPath,
+  type DocsLocale,
+} from "../../docs";
+import { integrationsHomePath } from "../../i18n/integrations";
+import { githubStarsLabel } from "../../github";
+import { getDocsCopy } from "../../i18n/docs";
+import { LOCALE_HREFLANG, LOCALE_HTML_LANG, LOCALE_LABELS } from "../../i18n/locales";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { GITHUB_URL, SITE_URL } from "../../site";
+
+interface Props {
+  entry: CollectionEntry<"docs">;
+  locale: DocsLocale;
+  slug: string;
+}
+
+const { entry, locale, slug } = Astro.props;
+const { Content, headings } = await render(entry);
+const copy = getDocsCopy(locale);
+const title = headings[0]?.text ?? slug;
+const toc = headings.filter((heading) => heading.depth === 2);
+const index = (DOCS_SLUGS as readonly string[]).indexOf(slug);
+const previous = index > 0 ? DOCS_SLUGS[index - 1] : undefined;
+const next = index >= 0 && index < DOCS_SLUGS.length - 1 ? DOCS_SLUGS[index + 1] : undefined;
+const starsLabel = await githubStarsLabel();
+const currentPath = docsPath(locale, slug);
+const otherLocale: DocsLocale = locale === "zh" ? "en" : "zh";
+const otherPath = docsPath(otherLocale, slug);
+const alternates = [
+  { hreflang: LOCALE_HREFLANG[locale], href: new URL(currentPath, SITE_URL).toString() },
+  { hreflang: LOCALE_HREFLANG[otherLocale], href: new URL(otherPath, SITE_URL).toString() },
+  { hreflang: "x-default", href: new URL(docsPath("zh", slug), SITE_URL).toString() },
+];
+const sourcePath = locale === "zh" ? `docs/zh/${slug}.md` : `docs/${slug}.md`;
+---
+
+<BaseLayout
+  title={`${title} | ${copy.titleSuffix}`}
+  description={copy.description(title)}
+  locale={locale}
+  localeAlternates={false}
+  alternateLanguages={alternates}
+  markdownAlternate={docsMarkdownPath(locale, slug)}
+>
+  <div class="container">
+    <Header starsLabel={starsLabel} locale={locale} />
+  </div>
+  <div class="container docs">
+    <nav class="docs-nav" aria-label={copy.navLabel}>
+      {
+        DOCS_NAV.map((section) => (
+          <div class="docs-nav__section">
+            <p>{copy.sections[section.id]}</p>
+            <ul>
+              {section.pages.map((page) => (
+                <li>
+                  <a
+                    href={docsPath(locale, page)}
+                    aria-current={docsPath(locale, page) === currentPath ? "page" : undefined}
+                  >
+                    {copy.pages[page]}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+      <div class="docs-nav__section">
+        <p>{copy.reference}</p>
+        <ul>
+          <li><a href={integrationsHomePath(locale)}>{copy.integrations}</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main" class="docs-main">
+      <article class="docs-prose">
+        <Content />
+      </article>
+      <footer class="docs-pager">
+        {
+          previous ? (
+            <a href={docsPath(locale, previous)}>
+              <span>{copy.previous}</span>
+              {copy.pages[previous]}
+            </a>
+          ) : (
+            <span />
+          )
+        }
+        {
+          next && (
+            <a class="docs-pager__next" href={docsPath(locale, next)}>
+              <span>{copy.next}</span>
+              {copy.pages[next]}
+            </a>
+          )
+        }
+      </footer>
+    </main>
+
+    <aside class="docs-toc" aria-label={copy.onThisPage}>
+      <a
+        class="docs-edit"
+        href={otherPath}
+        hreflang={LOCALE_HREFLANG[otherLocale]}
+        lang={LOCALE_HTML_LANG[otherLocale]}
+      >
+        {LOCALE_LABELS[otherLocale]}
+      </a>
+      {
+        toc.length > 1 && (
+          <>
+            <p>{copy.onThisPage}</p>
+            <ul>
+              {toc.map((heading) => (
+                <li>
+                  <a href={`#${heading.slug}`}>{heading.text}</a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+      <a class="docs-edit" href={`${GITHUB_URL}/edit/main/${sourcePath}`} target="_blank" rel="noopener">
+        {copy.editOnGitHub}
+      </a>
+    </aside>
+  </div>
+  <div class="container">
+    <Footer />
+  </div>
+</BaseLayout>

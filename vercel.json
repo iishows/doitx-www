@@ -16,6 +16,26 @@
       "source": "/sitemap.xml",
       "destination": "/sitemap-index.xml",
       "statusCode": 301
+    },
+    {
+      "source": "/blog/openclaw-vs-hermes-vs-rakazo",
+      "destination": "/blog/openclaw-vs-hermes-vs-doitx/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/openclaw-vs-hermes-vs-rakazo/",
+      "destination": "/blog/openclaw-vs-hermes-vs-doitx/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/blog/openclaw-vs-hermes-vs-rakazo",
+      "destination": "/en/blog/openclaw-vs-hermes-vs-doitx/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/blog/openclaw-vs-hermes-vs-rakazo/",
+      "destination": "/en/blog/openclaw-vs-hermes-vs-doitx/",
+      "statusCode": 301
     }
   ],
   "headers": [

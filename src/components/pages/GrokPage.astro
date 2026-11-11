@@ -5,13 +5,14 @@ import Footer from "../Footer.astro";
 import Header from "../Header.astro";
 import Prose from "../Prose.astro";
 import VsCard from "../VsCard.astro";
+import { docsHomePath } from "../../docs";
 import { INSTALL_COMMAND, grokAlternativeStructuredData } from "../../grok-alternative";
 import { githubStarsLabel } from "../../github";
 import { getGrokPageCopy } from "../../i18n/grok-page";
 import type { Locale } from "../../i18n/locales";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { ogPublicPath } from "../../og-pages";
-import { DOCS_URL, GITHUB_URL } from "../../site";
+import { GITHUB_URL } from "../../site";
 import { vsCard } from "../../vs-points";
 
 interface Props {
@@ -126,7 +127,7 @@ const sectionFigures: Record<number, keyof typeof figures> = { 1: "routine", 2: 
       <pre><code>{INSTALL_COMMAND}</code></pre>
       {copy.selfHost.after.map((paragraph) => <p>{paragraph}</p>)}
       <div class="cta-actions">
-        <Button href={DOCS_URL} external>{copy.selfHost.docs}</Button>
+        <Button href={docsHomePath(locale)}>{copy.selfHost.docs}</Button>
         <Button href={GITHUB_URL} variant="secondary" external>{copy.selfHost.github}</Button>
       </div>
 

@@ -1,0 +1,20 @@
+---
+import type { Integration } from "../../../integrations";
+import { INTEGRATIONS, integrationUrlSlug } from "../../../integrations";
+import IntegrationDetailPage from "../../../components/pages/IntegrationDetailPage.astro";
+
+interface Props {
+  integration: Integration;
+}
+
+export function getStaticPaths() {
+  return INTEGRATIONS.map((integration) => ({
+    params: { slug: integrationUrlSlug(integration.slug) },
+    props: { integration },
+  }));
+}
+
+const { integration } = Astro.props;
+---
+
+<IntegrationDetailPage integration={integration} locale="en" />

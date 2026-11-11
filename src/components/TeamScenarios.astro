@@ -1,0 +1,61 @@
+---
+import { TEAM_STAT_ORDER, TEAM_STATS, type TeamCopy } from "../i18n/teams";
+
+interface Props {
+  copy: TeamCopy;
+}
+
+const { copy } = Astro.props;
+---
+
+<section id="teams" class="section team-scenarios" aria-labelledby="teams-heading">
+  <div class="section-intro">
+    <div class="eyebrow">{copy.eyebrow}</div>
+    <h2 id="teams-heading" class="section-heading">{copy.heading}</h2>
+    <p class="section-copy">{copy.copy}</p>
+  </div>
+  <div class="team-grid">
+    {
+      copy.cards.map((card) => (
+        <article class="team-card">
+          <span class="team-card__tag">{card.tag}</span>
+          <h3>{card.title}</h3>
+          <p class="team-card__summary">{card.summary}</p>
+          <p class="team-card__lead">{card.lead}</p>
+          <ul class="team-card__roles">
+            {card.roles.map((role) => (
+              <li>{role}</li>
+            ))}
+          </ul>
+          <dl class="team-card__facts">
+            <div>
+              <dt>{copy.labels.rhythm}</dt>
+              <dd>{card.rhythm}</dd>
+            </div>
+            <div>
+              <dt>{copy.labels.output}</dt>
+              <dd>{card.output}</dd>
+            </div>
+            <div>
+              <dt>{copy.labels.handoff}</dt>
+              <dd>{card.handoff}</dd>
+            </div>
+          </dl>
+        </article>
+      ))
+    }
+  </div>
+  <div class="team-evidence">
+    <div class="team-evidence__stats">
+      {
+        TEAM_STAT_ORDER.map((key) => (
+          <div class="team-evidence__stat">
+            <strong>{TEAM_STATS[key]}</strong>
+            <span>{copy.stats[key]}</span>
+          </div>
+        ))
+      }
+    </div>
+    <p class="team-evidence__note">{copy.note}</p>
+  </div>
+</section>

@@ -172,7 +172,7 @@ export const GROK_SECTIONS = [
 ] as const;
 
 export const GROK_OTHER_LEAD =
-  "Hosted assistants and open source agents are both on the [alternatives roundup](/alternatives/). [OpenClaw vs Hermes Agent vs Doitx](/blog/openclaw-vs-hermes-vs-rakazo/) compares the three you run yourself, and [best open source AI agents in 2026](/blog/best-open-source-ai-agents-2026/) includes libraries as well as apps.";
+  "Hosted assistants and open source agents are both on the [alternatives roundup](/alternatives/). [OpenClaw vs Hermes Agent vs Doitx](/blog/openclaw-vs-hermes-vs-doitx/) compares the three you run yourself, and [best open source AI agents in 2026](/blog/best-open-source-ai-agents-2026/) includes libraries as well as apps.";
 
 function altShot(file: string, alt: string) {
   return {

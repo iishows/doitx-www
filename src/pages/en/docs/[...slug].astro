@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import DocsPage from "../../../components/pages/DocsPage.astro";
+import { DOCS_SLUGS, docsSlugFromEntryId } from "../../../docs";
+
+interface Props {
+  entry: CollectionEntry<"docs">;
+  slug: string;
+}
+
+export async function getStaticPaths() {
+  const entries = await getCollection("docs");
+  return entries
+    .filter((entry) => entry.id.startsWith("en/"))
+    .map((entry) => {
+      const slug = docsSlugFromEntryId(entry.id);
+      return {
+        params: { slug: slug === DOCS_SLUGS[0] ? undefined : slug },
+        props: { entry, slug },
+      };
+    });
+}
+
+const { entry, slug } = Astro.props;
+---
+
+<DocsPage entry={entry} locale="en" slug={slug} />

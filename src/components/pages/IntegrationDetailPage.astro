@@ -1,0 +1,138 @@
+---
+import IntegrationLogo from "../IntegrationLogo.astro";
+import SiteFrame from "../SiteFrame.astro";
+import { getIntegrationsCopy, type IntegrationsLocale } from "../../i18n/integrations";
+import { LOCALE_HREFLANG } from "../../i18n/locales";
+import type { Integration } from "../../integrations";
+import {
+  categoryOf,
+  integrationBreadcrumbs,
+  integrationMarkdownPath,
+  integrationPath,
+  integrationsPath,
+  relatedIntegrations,
+} from "../../integrations";
+import { APP_URL, SITE_URL } from "../../site";
+
+interface Props {
+  integration: Integration;
+  locale: IntegrationsLocale;
+}
+
+const { integration, locale } = Astro.props;
+const copy = getIntegrationsCopy(locale);
+const { name, actions } = integration;
+const category = categoryOf(integration);
+const related = relatedIntegrations(integration);
+const otherLocale: IntegrationsLocale = locale === "zh" ? "en" : "zh";
+const alternateLanguages = [
+  {
+    hreflang: LOCALE_HREFLANG[locale],
+    href: new URL(integrationPath(integration.slug, locale), SITE_URL).toString(),
+  },
+  {
+    hreflang: LOCALE_HREFLANG[otherLocale],
+    href: new URL(integrationPath(integration.slug, otherLocale), SITE_URL).toString(),
+  },
+  {
+    hreflang: "x-default",
+    href: new URL(integrationPath(integration.slug, "zh"), SITE_URL).toString(),
+  },
+];
+const AUTH_LABEL = {
+  oauth: copy.auth.oauth(name),
+  key: copy.auth.key,
+  none: copy.auth.none,
+};
+const VISIBLE_ACTIONS = 10;
+const groups = [
+  { title: copy.looksUp, actions: actions.filter((action) => action.readOnly) },
+  { title: copy.takesAction, actions: actions.filter((action) => !action.readOnly) },
+].filter((group) => group.actions.length > 0);
+---
+
+<SiteFrame
+  title={copy.detailTitle(name)}
+  description={copy.detailDescription(name, actions.length)}
+  structuredData={integrationBreadcrumbs(integration, locale)}
+  markdownAlternate={integrationMarkdownPath(integration.slug, locale)}
+  locale={locale}
+  alternateLanguages={alternateLanguages}
+  wide
+>
+  <nav class="ix-crumb" aria-label={copy.breadcrumb}>
+    <a href={integrationsPath(locale)}>{copy.breadcrumb}</a>
+    <span aria-hidden="true">/</span>
+    <span>{copy.categories[category]}</span>
+  </nav>
+
+  <header class="ix-detail">
+    <IntegrationLogo integration={integration} size="xl" />
+    <div class="ix-detail__copy">
+      <h1>{name}</h1>
+      {integration.description && <p>{integration.description}</p>}
+      <p class="ix-facts">
+        <span>{copy.actions(actions.length)}</span>
+        <span>{AUTH_LABEL[integration.auth]}</span>
+      </p>
+    </div>
+    <a class="button button--primary ix-detail__cta" href={APP_URL}>{copy.connect(name)}</a>
+  </header>
+
+  <section class="ix-section">
+    <h2>{copy.capabilities(name)}</h2>
+    <div class="ix-actions">
+      {
+        groups.map((group) => (
+          <div class="ix-actions__group">
+            <h3>{group.title}</h3>
+            <ul>
+              {group.actions.slice(0, VISIBLE_ACTIONS).map((action) => (
+                <li>
+                  <span class="ix-action__name">{action.name}</span>
+                  {action.description && (
+                    <span class="ix-action__description">{action.description}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+            {group.actions.length > VISIBLE_ACTIONS && (
+              <details class="ix-actions__more">
+                <summary>{copy.showMore(group.actions.length - VISIBLE_ACTIONS)}</summary>
+                <ul>
+                  {group.actions.slice(VISIBLE_ACTIONS).map((action) => (
+                    <li>
+                      <span class="ix-action__name">{action.name}</span>
+                      {action.description && (
+                        <span class="ix-action__description">{action.description}</span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    related.length > 0 && (
+      <section class="ix-section">
+        <h2>{copy.moreApps(copy.categories[category])}</h2>
+        <ul class="ix-featured ix-featured--compact">
+          {related.map((app) => (
+            <li>
+              <a class="ix-feature" href={integrationPath(app.slug, locale)}>
+                <IntegrationLogo integration={app} size="lg" />
+                <span class="ix-feature__name">{app.name}</span>
+                <span class="ix-feature__meta">{copy.actions(app.actions.length)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</SiteFrame>

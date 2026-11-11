@@ -1,8 +1,9 @@
 ---
 import type { Alternative } from "../alternatives";
 import { GET_STARTED, OPEN_SOURCE_REASONS } from "../alternatives";
+import { docsHomePath } from "../docs";
 import { ogPublicPath } from "../og-pages";
-import { DOCS_URL, GITHUB_URL } from "../site";
+import { GITHUB_URL } from "../site";
 import { vsCard } from "../vs-points";
 import { localeAltPath } from "../i18n/locales";
 import { getAlternativesHubCopy } from "../i18n/alternatives-hub";
@@ -82,7 +83,7 @@ const altLabel = hubCopy.hubLabel;
   <h2>{GET_STARTED.heading}</h2>
   <p>{GET_STARTED.copy}</p>
   <div class="alt-actions">
-    <Button href={DOCS_URL} external>{GET_STARTED.docsLabel}</Button>
+    <Button href={docsHomePath(locale)}>{GET_STARTED.docsLabel}</Button>
     <Button href={GITHUB_URL} variant="secondary" external>{GET_STARTED.githubLabel}</Button>
   </div>
 

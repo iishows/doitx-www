@@ -25,7 +25,7 @@ sources:
   - label: "Dify 许可证"
     href: "https://github.com/langgenius/dify/blob/main/LICENSE"
 related:
-  - href: "/blog/openclaw-vs-hermes-vs-rakazo/"
+  - href: "/blog/openclaw-vs-hermes-vs-doitx/"
     title: "OpenClaw 对比 Hermes Agent 对比 Doitx"
     description: "这三者中哪个最容易运行。"
   - href: "/alternatives/"
@@ -128,7 +128,7 @@ OpenClaw 是一个自托管网关，把聊天应用连接到你自己机器上�
 
 本页阅读的安装文档称推荐 Node 26，支持 Node 24.16+ 或 Node 26.1+。安装程序可以自行准备 Node。工具执行的沙箱默认关闭。启用后，记录的后端包括 Docker、Podman、SSH、OpenShell 和 Crabbox。Gateway 进程留在主机上。
 
-当助手应出现在你已在使用的聊天应用里、且你想要一个运行在自己硬件上的网关时，OpenClaw 合适。它与队友式界面是不同的产品。[三方对比笔记](/blog/openclaw-vs-hermes-vs-rakazo/)把这种形态与 Doitx 和 Hermes 做了比较，但没有把它变成一场竞赛。
+当助手应出现在你已在使用的聊天应用里、且你想要一个运行在自己硬件上的网关时，OpenClaw 合适。它与队友式界面是不同的产品。[三方对比笔记](/blog/openclaw-vs-hermes-vs-doitx/)把这种形态与 Doitx 和 Hermes 做了比较，但没有把它变成一场竞赛。
 
 ## Hermes Agent
 

@@ -1,11 +1,15 @@
-import { DOCS_SLUGS, docsPath } from "./docs";
+import { DOCS_SLUGS, docsPath, type DocsLocale } from "./docs";
 import { GITHUB_URL } from "./site";
 
 const REPO = new URL("https://repo.invalid/");
 const MARKDOWN_LINK = /(\]\()([^)\s]+)(\))/g;
 
 /** Resolves a repo doc's relative links: published docs become site pages, any other file opens on GitHub. */
-export function rewriteDocsLinks(markdown: string, slug: string): string {
+export function rewriteDocsLinks(
+  markdown: string,
+  slug: string,
+  locale: DocsLocale = "zh",
+): string {
   const source = new URL(`docs/${slug}.md`, REPO);
   return markdown.replace(MARKDOWN_LINK, (match, open: string, href: string, close: string) => {
     if (/^(?:[a-z][a-z0-9+.-]*:|#|\/)/i.test(href)) return match;
@@ -13,8 +17,8 @@ export function rewriteDocsLinks(markdown: string, slug: string): string {
     if (target.origin !== REPO.origin) return match;
     const doc = /^\/docs\/([\w-]+)\.md$/.exec(target.pathname)?.[1];
     const resolved =
-      doc && DOCS_SLUGS.includes(doc)
-        ? `${docsPath(doc)}${target.hash}`
+      doc && (DOCS_SLUGS as readonly string[]).includes(doc)
+        ? `${docsPath(locale, doc)}${target.hash}`
         : `${GITHUB_URL}/blob/main${target.pathname}${target.hash}`;
     return `${open}${resolved}${close}`;
   });

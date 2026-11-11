@@ -1,0 +1,164 @@
+---
+import { PLUGIN_CATEGORIES } from "@rakazo/core";
+import IntegrationLogo from "../IntegrationLogo.astro";
+import SiteFrame from "../SiteFrame.astro";
+import { getIntegrationsCopy, type IntegrationsLocale } from "../../i18n/integrations";
+import { LOCALE_HREFLANG } from "../../i18n/locales";
+import {
+  INTEGRATIONS,
+  POPULAR_INTEGRATIONS,
+  categoryOf,
+  integrationCountLabel,
+  integrationPath,
+  integrationsPath,
+} from "../../integrations";
+import { SITE_URL } from "../../site";
+
+interface Props {
+  locale: IntegrationsLocale;
+}
+
+const { locale } = Astro.props;
+const copy = getIntegrationsCopy(locale);
+const count = integrationCountLabel(locale);
+const hasIntegrations = INTEGRATIONS.length > 0;
+const title = hasIntegrations ? copy.title(count) : copy.titleEmpty;
+const description = hasIntegrations ? copy.description(count) : copy.descriptionEmpty;
+const heading = hasIntegrations ? copy.heading(count) : copy.headingEmpty;
+const otherLocale: IntegrationsLocale = locale === "zh" ? "en" : "zh";
+const alternateLanguages = [
+  {
+    hreflang: LOCALE_HREFLANG[locale],
+    href: new URL(integrationsPath(locale), SITE_URL).toString(),
+  },
+  {
+    hreflang: LOCALE_HREFLANG[otherLocale],
+    href: new URL(integrationsPath(otherLocale), SITE_URL).toString(),
+  },
+  {
+    hreflang: "x-default",
+    href: new URL(integrationsPath("zh"), SITE_URL).toString(),
+  },
+];
+---
+
+<SiteFrame
+  title={title}
+  description={description}
+  markdownAlternate={locale === "zh" ? "/integrations.md" : "/en/integrations.md"}
+  locale={locale}
+  alternateLanguages={alternateLanguages}
+  wide
+>
+  <section class="ix-hero">
+    <h1>{heading}</h1>
+    <label class="ix-search">
+      <span class="sr-only">{copy.searchLabel}</span>
+      <svg viewBox="0 0 20 20" aria-hidden="true">
+        <circle cx="9" cy="9" r="5.5"></circle>
+        <path d="m13.5 13.5 3 3"></path>
+      </svg>
+      <input
+        type="search"
+        placeholder={copy.searchPlaceholder}
+        autocomplete="off"
+        spellcheck="false"
+        data-ix-search
+      />
+      <kbd aria-hidden="true">/</kbd>
+    </label>
+  </section>
+
+  {
+    hasIntegrations ? (
+      <>
+        <div class="ix-filters" role="radiogroup" aria-label={copy.categoryLabel}>
+          <button type="button" role="radio" aria-checked="true" data-ix-category="">
+            {copy.all}
+          </button>
+          {PLUGIN_CATEGORIES.map((category) => (
+            <button type="button" role="radio" aria-checked="false" data-ix-category={category}>
+              {copy.categories[category]}
+            </button>
+          ))}
+        </div>
+
+        <section class="ix-section" data-ix-popular>
+          <h2>{copy.popular}</h2>
+          <ul class="ix-featured">
+            {POPULAR_INTEGRATIONS.map((integration) => (
+              <li>
+                <a class="ix-feature" href={integrationPath(integration.slug, locale)}>
+                  <IntegrationLogo integration={integration} size="lg" />
+                  <span class="ix-feature__name">{integration.name}</span>
+                  <span class="ix-feature__meta">{copy.categories[categoryOf(integration)]}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="ix-section">
+          <h2 data-ix-all-heading>{copy.allApps}</h2>
+          <ul class="ix-grid" data-ix-grid>
+            {INTEGRATIONS.map((integration) => (
+              <li data-name={integration.name.toLowerCase()} data-category={categoryOf(integration)}>
+                <a class="ix-item" href={integrationPath(integration.slug, locale)}>
+                  <IntegrationLogo integration={integration} />
+                  <span>{integration.name}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p class="ix-empty" data-ix-empty hidden>
+            {copy.empty}
+          </p>
+        </section>
+      </>
+    ) : (
+      <p class="ix-empty">{copy.catalogUnavailable}</p>
+    )
+  }
+
+  <p class="ix-submit"><a href="https://app.doitx.ai/plugins/submit/">{copy.submitPlugin}</a></p>
+</SiteFrame>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>("[data-ix-search]");
+  const popular = document.querySelector<HTMLElement>("[data-ix-popular]");
+  const heading = document.querySelector<HTMLElement>("[data-ix-all-heading]");
+  const empty = document.querySelector<HTMLElement>("[data-ix-empty]");
+  const items = [...document.querySelectorAll<HTMLLIElement>("[data-ix-grid] > li")];
+  const chips = [...document.querySelectorAll<HTMLButtonElement>("[data-ix-category]")];
+  let category = "";
+
+  function apply() {
+    const query = search?.value.trim().toLowerCase() ?? "";
+    let shown = 0;
+    for (const item of items) {
+      const match =
+        (!query || item.dataset.name?.includes(query)) &&
+        (!category || item.dataset.category === category);
+      item.hidden = !match;
+      if (match) shown += 1;
+    }
+    const filtered = Boolean(query || category);
+    if (popular) popular.hidden = filtered;
+    if (heading) heading.hidden = filtered;
+    if (empty) empty.hidden = shown > 0;
+  }
+
+  search?.addEventListener("input", apply);
+  for (const chip of chips) {
+    chip.addEventListener("click", () => {
+      category = chip.dataset.ixCategory ?? "";
+      for (const other of chips) other.setAttribute("aria-checked", String(other === chip));
+      apply();
+    });
+  }
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "/" || event.target instanceof HTMLInputElement) return;
+    event.preventDefault();
+    search?.focus();
+  });
+</script>

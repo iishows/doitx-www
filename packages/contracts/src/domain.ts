@@ -1024,7 +1024,7 @@ export const PluginMarketplaceCatalogSchema = z.object({
 export type PluginMarketplaceCatalog = z.infer<typeof PluginMarketplaceCatalogSchema>;
 
 export const PLUGIN_SUBMISSIONS_PATH = "/api/v1/plugin-submissions";
-export const SUBMIT_PLUGIN_URL = "https://doitx.ai/plugins/submit/";
+export const SUBMIT_PLUGIN_URL = "https://app.doitx.ai/plugins/submit/";
 
 const HttpsUrlSchema = z
   .string()

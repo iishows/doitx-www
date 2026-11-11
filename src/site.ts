@@ -10,12 +10,13 @@ export const CATALOG_URL =
 export const SUPPORT_EMAIL = "support@doitx.ai";
 export const GITHUB_URL = "https://github.com/iishows/doitx";
 export const GITHUB_API_REPO = "https://api.github.com/repos/iishows/doitx";
-export const DOCS_URL = "https://doitx.ai/docs";
+/** English docs root. Chinese docs live at https://doitx.ai/docs. */
+export const DOCS_URL = "https://doitx.ai/en/docs";
 export const SELF_HOST_SECRETS_URL =
-  "https://doitx.ai/docs";
+  "https://doitx.ai/en/docs/self-host-secrets";
 export const SELF_HOST_RESTRICTED_URL =
-  "https://doitx.ai/docs";
-export const SETUP_PROMPT_URL = "https://doitx.ai/docs";
+  "https://doitx.ai/en/docs/self-host-restricted-network";
+export const SETUP_PROMPT_URL = "https://doitx.ai/en/docs";
 export const SELF_HOST_GUIDE_PATH = "/self-hosted-ai-agent/";
 export const OPENCLAW_ALTERNATIVE_PATH = "/openclaw-alternative/";
 export const CHANGELOG_URL = "https://github.com/iishows/doitx/releases";

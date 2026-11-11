@@ -10,4 +10,4 @@ export const getStaticPaths = (() =>
   }))) satisfies GetStaticPaths;
 
 export const GET: APIRoute<{ integration: Integration }> = ({ props, request }) =>
-  markdownResponse(integrationMarkdown(props.integration), request.method);
+  markdownResponse(integrationMarkdown(props.integration, "zh"), request.method);
