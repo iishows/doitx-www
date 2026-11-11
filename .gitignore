@@ -8,3 +8,4 @@ blob-report
 test-results
 .vercel
 playwright-report-www
+docs/contracts/_*.png
