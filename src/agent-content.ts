@@ -7,13 +7,17 @@ import {
   HOME_MODEL_PROVIDERS,
   getHomeCopy,
 } from "./i18n/home";
+import { getInstallCopy } from "./i18n/install";
+import { TEAM_STATS, getTeamCopy } from "./i18n/teams";
 import { roundupMarkdown } from "./roundup";
-import { APP_URL, PLUGIN_SUBMISSIONS_URL } from "./site";
+import { APP_URL } from "./site";
 
 export const AGENT_DISCOVERY_LINKS =
   '</llms.txt>; rel="describedby"; type="text/plain", </.well-known/ai-catalog.json>; rel="ai-catalog"; type="application/ai-catalog+json"';
 
 const home = getHomeCopy("en");
+const install = getInstallCopy("en");
+const teams = getTeamCopy("en");
 
 export const HOME_MARKDOWN = `# Doitx
 
@@ -26,6 +30,21 @@ ${home.hero.lead}
 ${home.roster.copy}
 
 ${home.roster.bots.map((bot) => `- **${bot.name}:** ${bot.desc}`).join("\n")}
+
+## ${teams.eyebrow}
+
+${teams.heading}
+
+${teams.copy}
+
+${teams.cards
+  .map(
+    (card) =>
+      `### ${card.tag}: ${card.title}\n\n${card.summary}\n\n- ${teams.labels.rhythm}: ${card.rhythm}\n- ${teams.labels.output}: ${card.output}\n- ${teams.labels.handoff}: ${card.handoff}\n- Lead: ${card.lead}\n- Roles: ${card.roles.join(", ")}`,
+  )
+  .join("\n\n")}
+
+${TEAM_STATS.runs} ${teams.stats.runs}, ${TEAM_STATS.completed} ${teams.stats.completed}, ${TEAM_STATS.routines} ${teams.stats.routines}, ${TEAM_STATS.bots} ${teams.stats.bots}. ${teams.note}
 
 ## ${home.channels.heading}
 
@@ -49,6 +68,22 @@ ${home.selfHost.features.map((feature) => `- **${feature.title}:** ${feature.bod
 
 ${home.selfHost.worksWith}: ${HOME_MODEL_PROVIDERS.join(", ")}.
 
+## ${install.heading}
+
+${install.copy}
+
+${install.windows}:
+
+\`\`\`powershell
+irm https://doitx.ai/install.ps1 | iex
+\`\`\`
+
+${install.linux}:
+
+\`\`\`bash
+curl -fsSL https://doitx.ai/install.sh | bash
+\`\`\`
+
 ## ${home.openSource.heading}
 
 ${home.openSource.copy}
@@ -65,9 +100,9 @@ ${getHomeCopy("en")
 
 ${home.cta.copy}
 
-- [Agent setup prompt](https://doitx.ai/docs)
+- [Agent setup prompt](https://doitx.ai/en/docs)
 - [Self-hosting guide](https://doitx.ai/self-hosted-ai-agent/)
-- [Full self-hosting reference](https://doitx.ai/docs)
+- [Full self-hosting reference](https://doitx.ai/en/docs/self-host/)
 - [OpenClaw comparison](https://doitx.ai/openclaw-alternative/)
 - [Source code](https://github.com/iishows/doitx)
 
@@ -77,8 +112,8 @@ ${home.cta.copy}
 - [Self-hosted AI agent](https://doitx.ai/self-hosted-ai-agent/)
 - [OpenClaw comparison](https://doitx.ai/openclaw-alternative/)
 - [Alternatives](https://doitx.ai/alternatives/)
-- [Docs](https://doitx.ai/docs/)
-- [Integrations](https://doitx.ai/integrations/)
+- [Docs](https://doitx.ai/en/docs/)
+- [Integrations](https://doitx.ai/en/integrations/)
 - [Blog](https://doitx.ai/blog/)
 - [Open source Grok Bot alternative](https://doitx.ai/grok-bot-alternative/)
 - [About](https://doitx.ai/about/)
@@ -98,7 +133,7 @@ Doitx targets the web, macOS, Windows, Linux, iOS, and Android. The source is av
 
 - [Source code](https://github.com/iishows/doitx)
 - [Self-hosting guide](https://doitx.ai/self-hosted-ai-agent/)
-- [Full self-hosting reference](https://doitx.ai/docs)
+- [Full self-hosting reference](https://doitx.ai/en/docs/self-host/)
 - [Support](https://doitx.ai/support/)
 `;
 
@@ -106,7 +141,7 @@ export const SUPPORT_MARKDOWN = `# Doitx support
 
 For help with the Doitx mobile app or a hosted Doitx account, email [hello@doitx.ai](mailto:hello@doitx.ai). Include the email address on the account, what you expected to happen, and any error message you saw. Never send passwords, API keys, access tokens, or other secrets.
 
-For self-hosted Doitx, start with the [self-hosting guide](https://doitx.ai/self-hosted-ai-agent/). The [full reference](https://doitx.ai/docs) is on GitHub. Open reproducible bugs and feature requests in the [public GitHub repository](https://github.com/iishows/doitx/issues). Report vulnerabilities only to [security@doitx.ai](mailto:security@doitx.ai).
+For self-hosted Doitx, start with the [self-hosting guide](https://doitx.ai/self-hosted-ai-agent/). The [full reference](https://doitx.ai/en/docs/self-host/) is on GitHub. Open reproducible bugs and feature requests in the [public GitHub repository](https://github.com/iishows/doitx/issues). Report vulnerabilities only to [security@doitx.ai](mailto:security@doitx.ai).
 
 Hosted users can permanently delete their account and associated personal Space data from the Account screen in the Doitx app, or on the web at [app.doitx.ai](https://app.doitx.ai) under Settings → Account. Without access to the app, email [hello@doitx.ai](mailto:hello@doitx.ai) from the account's email address to ask us to delete it. Sign-in security records are kept for up to 90 days.
 `;
@@ -159,8 +194,8 @@ Doitx Cloud at https://app.doitx.ai is in beta. Self-hosting is also available. 
 
 ## How an agent should use Doitx
 
-1. Read the [setup prompt](https://doitx.ai/docs) before changing the user's machine.
-2. Use the [self-hosting guide](https://doitx.ai/self-hosted-ai-agent/) for setup. The [GitHub guide](https://doitx.ai/docs) is the full reference for backups, upgrades, and production layout.
+1. Read the [setup prompt](https://doitx.ai/en/docs) before changing the user's machine.
+2. Use the [self-hosting guide](https://doitx.ai/self-hosted-ai-agent/) for setup. The [GitHub guide](https://doitx.ai/en/docs/self-host/) is the full reference for backups, upgrades, and production layout.
 3. Confirm deployment choices and any host-level commands with the user, and keep secrets in local environment configuration rather than tracked files.
 4. Use the [public issue tracker](https://github.com/iishows/doitx/issues) for reproducible bugs. Send vulnerabilities only to [security@doitx.ai](mailto:security@doitx.ai).
 
@@ -175,11 +210,11 @@ Doitx Cloud at https://app.doitx.ai is in beta. Self-hosting is also available. 
 - [Source](https://github.com/iishows/doitx)
 - [Self-hosting guide](https://doitx.ai/self-hosted-ai-agent/): requirements, Docker install, source setup, and desktop and mobile connections.
 - [Self-hosting Markdown](https://doitx.ai/self-hosted-ai-agent.md): the setup guide with language-tagged code examples.
-- [Full self-hosting reference](https://doitx.ai/docs)
+- [Full self-hosting reference](https://doitx.ai/en/docs/self-host/)
 - [OpenClaw comparison](https://doitx.ai/openclaw-alternative/)
-- [Docs](https://doitx.ai/docs/): getting started, using Doitx, and self-hosting. Each page has a Markdown version.
-- [Integrations](https://doitx.ai/integrations/): every app a bot can connect to. [Markdown list](https://doitx.ai/integrations.md); each app page has a Markdown version with its actions.
-- [Submit a plugin](https://doitx.ai/plugins/submit/): list a plugin in the Doitx marketplace. [Markdown with the API](https://doitx.ai/plugins/submit.md).
+- [Docs](https://doitx.ai/en/docs/): getting started, using Doitx, and self-hosting. Each page has a Markdown version. Chinese docs are at https://doitx.ai/docs/.
+- [Integrations](https://doitx.ai/en/integrations/): every app a bot can connect to. [Markdown list](https://doitx.ai/en/integrations.md); each app page has a Markdown version with its actions. Chinese pages are under https://doitx.ai/integrations/.
+- [Submit a plugin](https://app.doitx.ai/plugins/submit/): list a plugin in the Doitx marketplace. [Markdown with the API](/plugins/submit.md).
 - [Blog](https://doitx.ai/blog/)
 - [Releases](https://github.com/iishows/doitx/releases)
 - [Support](https://doitx.ai/support/)
@@ -196,7 +231,7 @@ The plugin must be a public GitHub repository with a plugin manifest (\`plugin.j
 
 ## Submit with the API
 
-\`POST ${PLUGIN_SUBMISSIONS_URL}\` with a JSON body. No account or key is needed.
+\`POST https://app.doitx.ai/api/v1/plugin-submissions\` with a JSON body. No account or key is needed.
 
 | Field | Required | Notes |
 | --- | --- | --- |
@@ -210,12 +245,14 @@ The plugin must be a public GitHub repository with a plugin manifest (\`plugin.j
 | \`tested\` | Yes | \`true\`: you tested the plugin in Doitx |
 
 \`\`\`sh
-curl -X POST ${PLUGIN_SUBMISSIONS_URL} \\
+curl -X POST https://app.doitx.ai/api/v1/plugin-submissions \\
   -H 'content-type: application/json' \\
-  -d '{"email":"you@example.com","name":"Acme","logo":"https://example.com/logo.svg","source":"https://github.com/acme/rakazo-plugin","description":"Search Acme tickets.","testing":"Install it and ask a bot to find ticket 42.","tested":true}'
+  -d '{"email":"you@example.com","name":"Acme","logo":"https://example.com/logo.svg","source":"https://github.com/acme/doitx-plugin","description":"Search Acme tickets.","testing":"Install it and ask a bot to find ticket 42.","tested":true}'
 \`\`\`
 
 A new submission returns \`201\` with \`{"id","status":"pending"}\`. Resubmitting the same repository while it waits updates it and returns \`200\`. Invalid input returns \`400\` with an \`issues\` list naming each field.
+
+\`GET https://app.doitx.ai/api/v1/plugins\` lists the current marketplace; \`/api/v1/plugins/{name}\` returns one plugin.
 `;
 
 export const NOT_FOUND_MARKDOWN = `# Page not found
@@ -236,7 +273,7 @@ const MARKDOWN_DOCUMENTS = new Map<string, string>([
   ["/privacy", PRIVACY_MARKDOWN],
   ["/self-hosted-ai-agent", SELF_HOST_MARKDOWN],
   ["/support", SUPPORT_MARKDOWN],
-  ["/plugins/submit", PLUGIN_SUBMIT_MARKDOWN],
+  ["/plugins/submit.md", PLUGIN_SUBMIT_MARKDOWN],
   ["/alternatives", roundupMarkdown()],
   ...ALTERNATIVES.map((page) => [`/${page.slug}`, alternativeMarkdown(page)] as const),
   ["/terms", TERMS_MARKDOWN],
