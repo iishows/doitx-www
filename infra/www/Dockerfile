@@ -9,13 +9,16 @@ COPY pnpm-workspace.yaml ./
 COPY packages/ ./packages/
 # scripts/ may be referenced by package.json build
 COPY scripts/ ./scripts/
+COPY package.json ./
 
-RUN apk add --no-cache git && npm install -g pnpm@9 && pnpm install --frozen-lockfile
+RUN apk add --no-cache git && npm install -g pnpm@10.30.1 && pnpm install --frozen-lockfile
 
 COPY astro.config.mjs tsconfig.json middleware.ts vercel.json ./
+COPY www-port.mjs ./
 COPY src/ ./src/
 COPY public/ ./public/
 COPY api/ ./api/
+COPY docs/ ./docs/
 COPY infra/www/redirects.json ./redirects.json
 
 RUN pnpm run build
