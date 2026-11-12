@@ -1,0 +1,25 @@
+# 宝塔部署：从本地构建镜像并推送到 GHCR，云端 docker compose pull 更新。
+#
+# 本地构建并推送（需登录 GHCR）：
+#   cd infra/www
+#   docker build -t ghcr.io/iishows/doitx-www:latest -f Dockerfile ../..
+#   docker push ghcr.io/iishows/doitx-www:latest
+#
+# 云端更新（宝塔 /www/wwwroot/mkt.doitx.ai）：
+#   docker compose pull
+#   docker compose up -d
+#   curl -I http://127.0.0.1:8080
+
+services:
+  doitx-www:
+    image: ghcr.io/iishows/doitx-www:latest
+    container_name: doitx-www
+    restart: unless-stopped
+    ports:
+      # 宿主机端口通过 WWW_PORT 指定（默认 8080；.env 里写 WWW_PORT=xxxx 即可覆盖）
+      - "${WWW_PORT:-8080}:80"
+    environment:
+      # 下载兜底链接（离线时 /api/download 使用）
+      - DOWNLOADS_WINDOWS=${DOWNLOADS_WINDOWS:-}
+      - DOWNLOADS_MAC=${DOWNLOADS_MAC:-}
+      - DOWNLOADS_LINUX=${DOWNLOADS_LINUX:-}
