@@ -1,6 +1,5 @@
 import {
   DOCS_URL,
-  GITHUB_URL,
   OPENCLAW_ALTERNATIVE_PATH,
   SELF_HOST_GUIDE_PATH,
   SELF_HOST_RESTRICTED_URL,
@@ -13,18 +12,16 @@ export const OPENCLAW_DOCS_URL = "https://docs.openclaw.ai/";
 export const OPENCLAW_GETTING_STARTED_URL = "https://docs.openclaw.ai/start/getting-started";
 export const OPENCLAW_FEATURES_URL = "https://docs.openclaw.ai/concepts/features";
 export const OPENCLAW_SANDBOX_URL = "https://docs.openclaw.ai/gateway/sandboxing";
-export const OPENCLAW_GITHUB_URL = "https://github.com/openclaw/openclaw";
 
 export const PUBLISHED_IMAGES_INSTALL = `mkdir -p doitx && cd doitx &&
-curl -fsSLO https://raw.githubusercontent.com/iishows/doitx/main/infra/compose/install-images.sh &&
+# Place install-images.sh in the doitx directory, then:
 bash install-images.sh`;
 
 export const PUBLISHED_IMAGES_SERVER = `bash install-images.sh --prepare-only
 # Edit .env, then:
 bash install-images.sh`;
 
-export const SOURCE_CHECKOUT = `git clone https://github.com/iishows/doitx.git
-cd doitx
+export const SOURCE_CHECKOUT = `cd doitx
 cp .env.example .env`;
 
 export const SOURCE_DEV = `docker compose --env-file .env \\
@@ -55,15 +52,15 @@ export type ComparisonRow = {
   openclaw: string;
 };
 
-export const SELF_HOST_TITLE = "Self-Hosted AI Agent (Open Source) – Doitx";
+export const SELF_HOST_TITLE = "Self-Hosted AI Agent – Doitx";
 export const SELF_HOST_DESCRIPTION =
-  "Run Doitx yourself: an open source AI agent with your data, your model, and your costs. Requirements and the setup steps for Docker or a source checkout.";
+  "Run Doitx yourself: a self-hosted AI agent with your data, your model, and your costs. Requirements and the setup steps for Docker or a source checkout.";
 
-export const OPENCLAW_H1 = "Open source OpenClaw alternative";
-export const OPENCLAW_TITLE = "Open Source OpenClaw Alternative – Doitx";
+export const OPENCLAW_H1 = "OpenClaw alternative you can self-host";
+export const OPENCLAW_TITLE = "OpenClaw Alternative You Can Self-Host – Doitx";
 export const OPENCLAW_UPDATED = "October 7, 2026";
 export const OPENCLAW_DESCRIPTION =
-  "Doitx and OpenClaw are both open source, self-hosted AI agents. Doitx keeps setup and daily use in chat. OpenClaw's docs add a gateway, a config file, and a background service you can install.";
+  "Doitx and OpenClaw are both self-hosted AI agents. Doitx keeps setup and daily use in chat. OpenClaw's docs add a gateway, a config file, and a background service you can install.";
 
 export const SELF_HOST_FAQS: readonly FaqItem[] = [
   {
@@ -79,7 +76,7 @@ export const SELF_HOST_FAQS: readonly FaqItem[] = [
   {
     question: "How do model choice and cost work?",
     answer:
-      "Each person connects their own key for one of the deployment's two model providers: the Doitx router or a local endpoint the operator runs. You can pick a different model per bot. The open source software has no seat fee. You pay the model and computer providers you use. Local Docker computers are the default and do not need a hosted sandbox account.",
+      "Each person connects their own key for one of the deployment's two model providers: the Doitx router or a local endpoint the operator runs. You can pick a different model per bot. The software has no seat fee. You pay the model and computer providers you use. Local Docker computers are the default and do not need a hosted sandbox account.",
   },
   {
     question: "Is hosted Doitx available?",
@@ -89,7 +86,7 @@ export const SELF_HOST_FAQS: readonly FaqItem[] = [
   {
     question: "How does this compare with OpenClaw?",
     answer:
-      "Both are open source and run on hardware you control. After a Docker or desktop install, Doitx is a chat for persistent teammates. OpenClaw's getting-started guide adds a wizard, a Gateway you run in the terminal or install as a background service, and a separate step to connect a chat app.",
+      "Both are self-hosted and run on hardware you control. After a Docker or desktop install, Doitx is a chat for persistent teammates. OpenClaw's getting-started guide adds a wizard, a Gateway you run in the terminal or install as a background service, and a separate step to connect a chat app.",
   },
 ];
 
@@ -127,7 +124,7 @@ export const OPENCLAW_FAQS: readonly FaqItem[] = [
   {
     question: "Is Doitx a drop-in replacement for OpenClaw?",
     answer:
-      "No. Doitx does not import OpenClaw configuration, skills, or channel sessions. It is a separate open source agent you self-host.",
+      "No. Doitx does not import OpenClaw configuration, skills, or channel sessions. It is a separate agent you self-host.",
   },
   {
     question: "How do the licenses differ?",
@@ -169,7 +166,7 @@ export const COMPARISON_ROWS: readonly ComparisonRow[] = [
   {
     aspect: "What it is",
     rakazo:
-      "An open source platform for persistent AI teammates. Bots keep conversations, memory, routines, and history, and can use a browser, shell, and desktop.",
+      "A self-hosted platform for persistent AI teammates. Bots keep conversations, memory, routines, and history, and can use a browser, shell, and desktop.",
     openclaw:
       "A self-hosted gateway that connects chat apps to an AI assistant on your machine. The project describes one Gateway for the channels you already use.",
   },
@@ -226,7 +223,7 @@ export const COMPARISON_ROWS: readonly ComparisonRow[] = [
   },
   {
     aspect: "Software cost",
-    rakazo: "No seat fee for the open source software. You pay the models and infrastructure you use.",
+    rakazo: "No seat fee for the software. You pay the models and infrastructure you use.",
     openclaw: "The docs say there is no paid tier. You pay the models and the machine you run.",
   },
 ];
@@ -260,11 +257,11 @@ function comparisonMarkdown(): string {
 
 export const SELF_HOST_MARKDOWN = `# Self-hosted AI agent
 
-> Open source AI agent you run on a machine you control. Your keys, your model, your data.
+> Self-hosted AI agent you run on a machine you control. Your keys, your model, your data.
 
-Doitx is an open source AI agent for persistent teammates. Each bot can use a browser and a shell, keep routines as Markdown, and pause for approval when work crosses a boundary you set. Self-hosting means that stack runs on infrastructure you operate.
+Doitx is a self-hosted AI agent for persistent teammates. Each bot can use a browser and a shell, keep routines as Markdown, and pause for approval when work crosses a boundary you set. Self-hosting means that stack runs on infrastructure you operate.
 
-The software is [Apache-2.0](${GITHUB_URL}/blob/main/LICENSE). Hosted Doitx Cloud is in beta. This page is the essential setup. The [full self-hosting guide](${DOCS_URL}) on GitHub covers backups, upgrades, secrets, restricted networks, and production Compose.
+The software is Apache-2.0 licensed. Hosted Doitx Cloud is in beta. This page is the essential setup. The [full self-hosting guide](${DOCS_URL}) covers backups, upgrades, secrets, restricted networks, and production Compose.
 
 ## What self-hosting gives you
 
@@ -278,7 +275,7 @@ Connect the Doitx router, or a local model server the operator runs. Each person
 
 ### Cost control
 
-There is no seat fee for the open source software. You pay the model provider you connect and any remote computer provider you choose. Local Docker computers are the default, so a single machine does not need an E2B, Daytona, CreateOS, or Boat account.
+There is no seat fee for the software. You pay the model provider you connect and any remote computer provider you choose. Local Docker computers are the default, so a single machine does not need an E2B, Daytona, CreateOS, or Boat account.
 
 ## Self-host only, for now
 
@@ -359,7 +356,6 @@ In the mobile app, tap **Use a custom server** on the sign-in screen and enter t
 - [Secrets checklist](${SELF_HOST_SECRETS_URL})
 - [Restricted networks](${SELF_HOST_RESTRICTED_URL})
 - [Setup prompt](${SETUP_PROMPT_URL})
-- [Source](${GITHUB_URL})
 
 ## FAQ
 
@@ -382,13 +378,13 @@ export const OPENCLAW_RELATED = [
   { href: "/alternatives/", label: "All comparisons" },
 ] as const;
 
-export const OPENCLAW_MARKDOWN = `# Open source OpenClaw alternative
+export const OPENCLAW_MARKDOWN = `# OpenClaw alternative you can self-host
 
 Updated ${OPENCLAW_UPDATED}.
 
-> A fair comparison of Doitx and OpenClaw, two open source ways to run an AI agent you control.
+> A fair comparison of Doitx and OpenClaw, two ways to run a self-hosted AI agent you control.
 
-The main difference is simplicity. Like Grok Bot, Doitx is just chat: you set up the bot and manage it from that chat. OpenClaw is also open source and self-hosted. Its [getting-started guide](${OPENCLAW_GETTING_STARTED_URL}) is a longer path: a CLI installer, an onboarding wizard, a Gateway you run in the terminal or install as a background service, and a config file.
+The main difference is simplicity. Like Grok Bot, Doitx is just chat: you set up the bot and manage it from that chat. OpenClaw is also self-hosted. Its [getting-started guide](${OPENCLAW_GETTING_STARTED_URL}) is a longer path: a CLI installer, an onboarding wizard, a Gateway you run in the terminal or install as a background service, and a config file.
 
 They are not the same product, and Doitx does not import an OpenClaw setup. This comparison follows [OpenClaw's documentation](${OPENCLAW_DOCS_URL}) and this repository. Details change. Those docs are the full source for OpenClaw.
 
@@ -426,9 +422,7 @@ Choose OpenClaw when the assistant should live in chat apps you already use, wit
 - [OpenClaw getting started](${OPENCLAW_GETTING_STARTED_URL})
 - [OpenClaw features](${OPENCLAW_FEATURES_URL})
 - [OpenClaw sandboxing](${OPENCLAW_SANDBOX_URL})
-- [OpenClaw source](${OPENCLAW_GITHUB_URL})
 - [Doitx self-host guide](${SITE_URL}${SELF_HOST_GUIDE_PATH})
-- [Doitx source](${GITHUB_URL})
 
 ## FAQ
 

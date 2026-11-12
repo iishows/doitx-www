@@ -14,7 +14,6 @@ import { getHomeCopy } from "../i18n/home";
 import type { HomeCopy } from "../i18n/home";
 import {
   CHANGELOG_URL,
-  GITHUB_URL,
   INBOX_ZERO_URL,
   SELF_HOST_GUIDE_PATH,
 } from "../site";
@@ -56,7 +55,6 @@ const columns: Array<{ heading: string; links: FooterLink[] }> = [
     links: [
       { href: SELF_HOST_GUIDE_PATH, label: linkLabels.docs },
       { href: CHANGELOG_URL, label: linkLabels.changelog, external: true },
-      { href: GITHUB_URL, label: "GitHub", external: true },
     ],
   },
   {

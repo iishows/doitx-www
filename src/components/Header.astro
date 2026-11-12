@@ -12,17 +12,15 @@ import {
   localeHomePath,
 } from "../i18n/locales";
 import type { Locale } from "../i18n/locales";
-import { APP_URL, GITHUB_URL } from "../site";
+import { APP_URL } from "../site";
 import Logo from "./Logo.astro";
 
 type Props = {
-  starsLabel: string;
   locale?: Locale;
   copy?: HomeCopy["nav"];
   homeHref?: string;
 };
 
-const { starsLabel } = Astro.props;
 const locale = Astro.props.locale ?? DEFAULT_LOCALE;
 const copy = Astro.props.copy ?? getHomeCopy(locale).nav;
 const homeHref = Astro.props.homeHref ?? localeHomePath(locale);
@@ -99,17 +97,6 @@ function isCurrent(href: string): boolean {
     </nav>
   </div>
   <div class="site-header__right">
-    <a
-      class="star-pill"
-      href={GITHUB_URL}
-      target="_blank"
-      rel="noopener"
-      aria-label={copy.github}
-      data-attr="header-github"
-    >
-      <span aria-hidden="true">★</span>
-      <span>{starsLabel}</span>
-    </a>
     <details class="language-menu header-language" data-language-menu>
       <summary aria-label={languagesLabel}>
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
@@ -158,7 +145,6 @@ function isCurrent(href: string): boolean {
             </a>
           ))
         }
-        <a href={GITHUB_URL} target="_blank" rel="noopener" data-attr="menu-github">{copy.github}</a>
       </nav>
     </details>
   </div>

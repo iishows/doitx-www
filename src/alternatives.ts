@@ -1,6 +1,6 @@
 import { OPENCLAW_H1 } from "./guide";
 import { GROK_ALTERNATIVE_H1, GROK_ALTERNATIVE_PATH } from "./grok-alternative";
-import { DOCS_URL, GITHUB_URL, OPENCLAW_ALTERNATIVE_PATH } from "./site";
+import { DOCS_URL, OPENCLAW_ALTERNATIVE_PATH } from "./site";
 
 export const ROUNDUP_UPDATED = "October 24, 2026";
 
@@ -8,11 +8,10 @@ export const GET_STARTED = {
   heading: "Get started",
   copy: "Start on Doitx Cloud, in beta, or self-host.",
   docsLabel: "Self-hosting guide",
-  githubLabel: "View on GitHub",
 } as const;
 
 export const OPEN_SOURCE_REASONS = [
-  "The source is Apache-2.0 and public on GitHub.",
+  "The source is Apache-2.0 licensed and public.",
   "You can run the published Docker images, or a source checkout, on a machine you control. The desktop app can start that stack locally or connect to a server you already run.",
   "You bring the model credentials. Connector credentials are encrypted on the server and are not returned by the API.",
   "Routines are readable Markdown. A bot can pause for approval at a boundary you set, and actions are recorded in an audit log.",
@@ -63,10 +62,10 @@ export type Alternative = {
 
 export const ALTERNATIVES_HUB = {
   title:
-    "Best Personal AI Agents in 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro & Open Source Alternatives",
+    "Best Personal AI Agents in 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro & Self-Hosted Alternatives",
   description:
     "A dated comparison of Grok Bot, Meta Muse, OpenAI Dots, Instinct, Claude Duet, Hark Pro, OpenClaw, Hermes Agent, and Doitx. Licenses, self-hosting, model choice, price, setup, and whether you manage the agent from chat.",
-  h1: "Best Personal AI Agents in 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro & Open Source Alternatives",
+  h1: "Best Personal AI Agents in 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro & Self-Hosted Alternatives",
   intro:
     "These are different products that all take on work beyond a single reply. This page compares their public descriptions, read between October 7 and October 24, 2026. It is not a score, a benchmark, or a claim that one of them is best at every task.",
 } as const;
@@ -176,20 +175,20 @@ export const ALTERNATIVES: readonly Alternative[] = [
     slug: "muse-alternative",
     name: "Muse",
     summary: "Meta's personal AI agent, and what is different when you host Doitx yourself.",
-    title: "Open Source Meta Muse Alternative – Doitx",
+    title: "Self-Hosted Meta Muse Alternative – Doitx",
     description:
-      "Doitx is an open source, self-hostable platform for persistent AI teammates. Compare it with Meta's Muse personal agent.",
-    h1: "Open source Meta Muse alternative",
+      "Doitx is a self-hostable platform for persistent AI teammates. Compare it with Meta's Muse personal agent.",
+    h1: "Self-hosted Meta Muse alternative",
     comparedOn: "October 7, 2026",
     otherName: "Muse",
     intro: [
       "Muse is Meta's personal AI agent, introduced on September 8, 2026. It runs on a virtual machine Meta operates, and you talk to it in the Muse app or WhatsApp. Meta says it can keep working after you close the app.",
-      "Doitx is open source software for persistent AI teammates. You choose the model and the computer, and you can run the stack yourself. This is a comparison of public descriptions, not a measured benchmark.",
+      "Doitx is software you run yourself for persistent AI teammates. You choose the model and the computer, and you can run the stack yourself. This is a comparison of public descriptions, not a measured benchmark.",
     ],
     rows: [
       {
         topic: "Product",
-        rakazo: "Open source platform for persistent AI teammates. Doitx is in beta.",
+        rakazo: "Self-hosted platform for persistent AI teammates. Doitx is in beta.",
         other:
           "Meta's personal AI agent. Meta says it takes on tasks and longer-term goals, rather than only answering questions.",
       },
@@ -202,7 +201,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       },
       {
         topic: "Source",
-        rakazo: "Apache-2.0 source on GitHub.",
+        rakazo: "Apache-2.0 source, published.",
         other: "Hosted service from Meta.",
       },
       {
@@ -251,7 +250,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         question: "Is Doitx a replacement for Muse?",
         answer:
-          "No. Muse is Meta's hosted personal agent, with the Muse app, WhatsApp, and a virtual machine Meta operates. Doitx is open source software for persistent AI teammates on infrastructure you control. Both can keep working beyond a single chat. They differ on hosting, model choice, and which products are built in.",
+          "No. Muse is Meta's hosted personal agent, with the Muse app, WhatsApp, and a virtual machine Meta operates. Doitx is software for persistent AI teammates on infrastructure you control. Both can keep working beyond a single chat. They differ on hosting, model choice, and which products are built in.",
       },
       {
         question: "Can I self-host Doitx?",
@@ -275,20 +274,20 @@ export const ALTERNATIVES: readonly Alternative[] = [
     slug: "dots-alternative",
     name: "Dots",
     summary: "OpenAI's always-on agents, in a shorter comparison.",
-    title: "Open Source OpenAI Dots Alternative – Doitx",
+    title: "Self-Hosted OpenAI Dots Alternative – Doitx",
     description:
-      "Doitx is an open source, self-hostable platform for persistent AI teammates. Compare it with OpenAI's Dots agents.",
-    h1: "Open source OpenAI Dots alternative",
+      "Doitx is a self-hostable platform for persistent AI teammates. Compare it with OpenAI's Dots agents.",
+    h1: "Self-hosted OpenAI Dots alternative",
     comparedOn: "October 7, 2026",
     otherName: "Dots",
     intro: [
       "Dots are OpenAI's always-on agents, announced on September 29, 2026. OpenAI says they use GPT-6 Astra, have their own cloud computer, and are rolling out on eligible Pro, Business Premium, and Enterprise plans.",
-      "Doitx is separate software: open source AI teammates you can host yourself, with model credentials you bring.",
+      "Doitx is separate software: AI teammates you can host yourself, with model credentials you bring.",
     ],
     rows: [
       {
         topic: "Product",
-        rakazo: "Open source platform for persistent AI teammates. Doitx is in beta.",
+        rakazo: "Self-hosted platform for persistent AI teammates. Doitx is in beta.",
         other:
           "Always-on agents from OpenAI. OpenAI says a dot learns from feedback and can work toward your goals continuously.",
       },
@@ -300,7 +299,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       },
       {
         topic: "Source",
-        rakazo: "Apache-2.0 source on GitHub.",
+        rakazo: "Apache-2.0 source, published.",
         other: "Hosted product from OpenAI.",
       },
       {
@@ -335,7 +334,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         question: "Is Doitx a replacement for a dot?",
         answer:
-          "No. A dot is an OpenAI agent on an eligible ChatGPT plan. Doitx is open source software you run yourself, with your own model credentials.",
+          "No. A dot is an OpenAI agent on an eligible ChatGPT plan. Doitx is software you run yourself, with your own model credentials.",
       },
       {
         question: "Do I need an OpenAI account to use Doitx?",
@@ -354,20 +353,20 @@ export const ALTERNATIVES: readonly Alternative[] = [
     slug: "instinct-alternative",
     name: "Instinct",
     summary: "A hosted personal assistant you text or call, and what is different when you host Doitx yourself.",
-    title: "Open Source Instinct AI Alternative – Doitx",
+    title: "Self-Hosted Instinct AI Alternative – Doitx",
     description:
-      "Doitx is an open source, self-hostable platform for persistent AI teammates. Compare it with Instinct, the personal assistant you text or call.",
-    h1: "Open source Instinct AI alternative",
+      "Doitx is a self-hostable platform for persistent AI teammates. Compare it with Instinct, the personal assistant you text or call.",
+    h1: "Self-hosted Instinct AI alternative",
     comparedOn: "October 7, 2026",
     otherName: "Instinct",
     intro: [
       "Instinct is a personal assistant operated by Spear Street Technology, Inc. The homepage says there are no new interfaces: you text or call it, and it can use a phone and a computer the way a person does. Examples on that page include disputing a bill, sending gifts, ordering groceries, scheduling a doctor's appointment, and planning a trip.",
-      "Doitx is open source software for persistent AI teammates. You choose the model and the computer, and you can run the stack yourself. This is a comparison of public descriptions, not a measured benchmark.",
+      "Doitx is software you run yourself for persistent AI teammates. You choose the model and the computer, and you can run the stack yourself. This is a comparison of public descriptions, not a measured benchmark.",
     ],
     rows: [
       {
         topic: "Product",
-        rakazo: "Open source platform for persistent AI teammates. Doitx is in beta.",
+        rakazo: "Self-hosted platform for persistent AI teammates. Doitx is in beta.",
         other:
           "A personal assistant. The privacy policy, revised August 26, 2026, calls it an autonomous assistant that thinks, plans, and acts on everyday tasks.",
       },
@@ -380,7 +379,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       },
       {
         topic: "Source",
-        rakazo: "Apache-2.0 source on GitHub.",
+        rakazo: "Apache-2.0 source, published.",
         other: "Hosted service. The terms say the company owns the service and the technology that produces its actions.",
       },
       {
@@ -430,7 +429,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         question: "Is Doitx a replacement for Instinct?",
         answer:
-          "No. Instinct is a hosted personal assistant you text or call, operated by Spear Street Technology, Inc. Doitx is open source software for persistent AI teammates on infrastructure you control. Both can take on tasks beyond a single reply. They differ on hosting, model choice, and who operates the computer.",
+          "No. Instinct is a hosted personal assistant you text or call, operated by Spear Street Technology, Inc. Doitx is software for persistent AI teammates on infrastructure you control. Both can take on tasks beyond a single reply. They differ on hosting, model choice, and who operates the computer.",
       },
       {
         question: "Can I self-host Doitx?",
@@ -453,17 +452,17 @@ export const ALTERNATIVES: readonly Alternative[] = [
   {
     slug: "hermes-alternative",
     name: "Hermes",
-    summary: "Nous Research's open source agent. Doitx keeps setup and daily use in chat.",
-    title: "Open Source Hermes Agent Alternative – Doitx",
+    summary: "Nous Research's self-hosted agent. Doitx keeps setup and daily use in chat.",
+    title: "Self-Hosted Hermes Agent Alternative – Doitx",
     description:
-      "Doitx is an open source, self-hosted AI agent with a chat interface. Compare its setup with Hermes Agent, the MIT-licensed agent from Nous Research.",
-    h1: "Open source Hermes Agent alternative",
+      "Doitx is a self-hosted AI agent with a chat interface. Compare its setup with Hermes Agent, the MIT-licensed agent from Nous Research.",
+    h1: "Self-hosted Hermes Agent alternative",
     comparedOn: "October 7, 2026",
     otherName: "Hermes Agent",
     intro: [
-      "Hermes Agent is Nous Research's open source AI agent, released under the MIT license. You can run it on your own machine. The project site also offers optional Nous Portal credits and cloud hosting.",
+      "Hermes Agent is Nous Research's AI agent, released under the MIT license. You can run it on your own machine. The project site also offers optional Nous Portal credits and cloud hosting.",
       "The main difference is simplicity. Like Grok Bot, Doitx is just chat: you set up the bot and manage it from that chat. Hermes documents a desktop app and a command-line quickstart. Desktop onboarding can reach a first message without the CLI. The quickstart is an installer, a setup wizard, a model command, and config files. Messaging platforms are a separate gateway.",
-      "Both are open source and can run on hardware you control. This comparison uses each project's public docs. It is not a measured benchmark.",
+      "Both can run on hardware you control. This comparison uses each project's public docs. It is not a measured benchmark.",
     ],
     sections: [
       {
@@ -499,14 +498,14 @@ export const ALTERNATIVES: readonly Alternative[] = [
       },
       {
         topic: "Product",
-        rakazo: "Open source platform for persistent AI teammates. Doitx is in beta.",
+        rakazo: "Self-hosted platform for persistent AI teammates. Doitx is in beta.",
         other:
           "Nous Research describes a self-improving agent: it creates skills from experience, keeps memory across sessions, and can run scheduled jobs. The README also documents a terminal UI and a messaging gateway.",
       },
       {
         topic: "Source",
-        rakazo: "Apache-2.0 source on GitHub.",
-        other: "MIT source on GitHub, built by Nous Research.",
+        rakazo: "Apache-2.0 source, published.",
+        other: "MIT source, built by Nous Research.",
       },
       {
         topic: "Model",
@@ -560,7 +559,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         question: "Is Doitx a drop-in replacement for Hermes Agent?",
         answer:
-          "No. Doitx does not import Hermes config, skills, or gateway sessions. Both are open source agents you can run yourself. They differ in license, interface, and how much of the setup lives in a chat versus Hermes's CLI and desktop settings.",
+          "No. Doitx does not import Hermes config, skills, or gateway sessions. Both are agents you can run yourself. They differ in license, interface, and how much of the setup lives in a chat versus Hermes's CLI and desktop settings.",
       },
       {
         question: "Do both keep the software on my machine?",
@@ -579,20 +578,20 @@ export const ALTERNATIVES: readonly Alternative[] = [
     slug: "claude-duet-alternative",
     name: "Claude Duet",
     summary: "Anthropic's proactive personal agent, and what is different when you host Doitx yourself.",
-    title: "Open Source Claude Duet Alternative – Doitx",
+    title: "Self-Hosted Claude Duet Alternative – Doitx",
     description:
-      "Doitx is an open source, self-hostable platform for persistent AI teammates. Compare it with Claude Duet, Anthropic's personal agent.",
-    h1: "Open source Claude Duet alternative",
+      "Doitx is a self-hostable platform for persistent AI teammates. Compare it with Claude Duet, Anthropic's personal agent.",
+    h1: "Self-hosted Claude Duet alternative",
     comparedOn: "October 24, 2026",
     otherName: "Claude Duet",
     intro: [
       "Claude Duet is Anthropic's proactive personal agent, released as a research preview on October 21, 2026. You message it like a person. It sends a morning brief, checks your connected accounts, and works on a cloud computer Anthropic runs.",
-      "Doitx is open source software for persistent AI teammates. You run it, you choose the model, and you can have more than one bot. Models come from the Doitx router or a local endpoint the operator runs.",
+      "Doitx is software for persistent AI teammates. You run it, you choose the model, and you can have more than one bot. Models come from the Doitx router or a local endpoint the operator runs.",
     ],
     rows: [
       {
         topic: "Product",
-        rakazo: "Open source platform for persistent AI teammates. Doitx is in beta.",
+        rakazo: "Self-hosted platform for persistent AI teammates. Doitx is in beta.",
         other:
           "A standalone Anthropic app with one ongoing thread, by text or voice. Anthropic says it is for professionals and small business owners.",
       },
@@ -605,7 +604,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       },
       {
         topic: "Source",
-        rakazo: "Apache-2.0 source on GitHub.",
+        rakazo: "Apache-2.0 source, published.",
         other: "Hosted service from Anthropic. Its pages do not describe self-hosting.",
       },
       {
@@ -643,7 +642,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
           "The deployment offers two providers: the Doitx router at router.doitx.ai and a local OpenAI-compatible server the operator runs. Each person connects their own key, and each bot can use a different model.",
       },
       {
-        question: "Is Claude Duet open source or self-hosted?",
+        question: "Is Claude Duet self-hosted?",
         answer:
           "Anthropic's Duet pages do not describe source you can run or a self-hosted install. Duet runs on a cloud computer Anthropic operates. Doitx is Apache-2.0, and you can run it yourself.",
       },
@@ -659,10 +658,10 @@ export const ALTERNATIVES: readonly Alternative[] = [
     slug: "hark-alternative",
     name: "Hark",
     summary: "A hosted personal agent. After install, Doitx stays in chat on a stack you run.",
-    title: "Open Source Hark Pro Alternative – Doitx",
+    title: "Self-Hosted Hark Pro Alternative – Doitx",
     description:
-      "Doitx is an open source, self-hosted AI agent with a chat interface. Compare it with Hark Pro, the hosted personal agent at hark.com.",
-    h1: "Open source Hark Pro alternative",
+      "Doitx is a self-hosted AI agent with a chat interface. Compare it with Hark Pro, the hosted personal agent at hark.com.",
+    h1: "Self-hosted Hark Pro alternative",
     comparedOn: "October 7, 2026",
     otherName: "Hark Pro",
     intro: [
@@ -673,7 +672,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
     rows: [
       {
         topic: "Product",
-        rakazo: "Open source platform for persistent AI teammates. Doitx is in beta.",
+        rakazo: "Self-hosted platform for persistent AI teammates. Doitx is in beta.",
         other:
           "Hark Pro, a hosted personal agent launched October 6, 2026, on the web, iOS, and Android. Hark says it remembers what you tell it and can act on the web.",
       },
@@ -687,7 +686,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         topic: "Price",
         rakazo:
-          "No seat fee for the open source software. You pay the model and computer providers you use.",
+          "No seat fee. You pay the model and computer providers you use.",
         other:
           "Free, including the features named in the launch article. $20 a month is twice the usage. $100 a month is ten times the usage.",
       },
@@ -745,7 +744,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         question: "Is Doitx a replacement for Hark Pro?",
         answer:
-          "No. Hark Pro is a hosted personal agent at hark.com, operated by Hark Labs, Inc. Doitx is open source software for persistent AI teammates on infrastructure you control. Both can take on tasks from a conversation. They differ on hosting, model choice, and who operates the computer.",
+          "No. Hark Pro is a hosted personal agent at hark.com, operated by Hark Labs, Inc. Doitx is software for persistent AI teammates on infrastructure you control. Both can take on tasks from a conversation. They differ on hosting, model choice, and who operates the computer.",
       },
       {
         question: "Can I self-host Doitx?",
@@ -795,7 +794,7 @@ const OPENCLAW_HUB_CARD: HubCard = {
   href: OPENCLAW_ALTERNATIVE_PATH,
   name: "OpenClaw",
   h1: OPENCLAW_H1,
-  summary: "An open source agent you run yourself. Doitx stays in chat; OpenClaw's docs add a gateway and a config file.",
+  summary: "An agent you run yourself. Doitx stays in chat; OpenClaw's docs add a gateway and a config file.",
 };
 
 export const HUB_CARDS: readonly HubCard[] = [
@@ -848,7 +847,7 @@ export function alternativeMarkdown(alternative: Alternative): string {
       (row) => `| ${cell(row.topic)} | ${cell(row.rakazo)} | ${cell(row.other)} |`,
     ),
     "",
-    "## Why open source and self-hosted",
+    "## Why self-hosted",
     "",
     ...OPEN_SOURCE_REASONS.map((reason) => `- ${reason}`),
     "",
@@ -857,7 +856,6 @@ export function alternativeMarkdown(alternative: Alternative): string {
     GET_STARTED.copy,
     "",
     `- [${GET_STARTED.docsLabel}](${DOCS_URL})`,
-    `- [${GET_STARTED.githubLabel}](${GITHUB_URL})`,
     "",
     "## FAQ",
     "",

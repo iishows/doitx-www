@@ -12,9 +12,9 @@ export const ROUNDUP_DESCRIPTION = ALTERNATIVES_HUB.description;
 
 export const ROUNDUP_TLDR = [
   ALTERNATIVES_HUB.intro,
-  "Doitx is the open source option you run yourself. Like Grok Bot, it is just chat once it is running: you set up a bot and manage it from that chat. You bring the model key. The license is Apache-2.0, and there is no seat fee.",
+  "Doitx is the self-hosted option you run yourself. Like Grok Bot, it is just chat once it is running: you set up a bot and manage it from that chat. You bring the model key. The license is Apache-2.0, and there is no seat fee.",
   "Grok Bot, Meta Muse, OpenAI Dots, Instinct, Claude Duet, and Hark Pro are hosted. You do not install their service. Grok Bot comes with paid Cursor plans and SuperGrok. Muse runs on a virtual machine Meta operates. Dots sit on eligible ChatGPT plans. Instinct is the assistant you text or call. Hark Pro has a free tier, with $20 and $100 monthly tiers for more usage.",
-  "OpenClaw and Hermes Agent are also open source and self-hosted. Their docs describe installers, config files, and a gateway. Hermes Desktop can reach a first chat without the command line. OpenClaw can chat while its Gateway runs in the terminal.",
+  "OpenClaw and Hermes Agent are also self-hosted. Their docs describe installers, config files, and a gateway. Hermes Desktop can reach a first chat without the command line. OpenClaw can chat while its Gateway runs in the terminal.",
 ] as const;
 
 export const ROUNDUP_COLUMNS = [
@@ -162,9 +162,9 @@ const DEDICATED_CARDS: readonly RoundupCard[] = [
   {
     name: "Doitx",
     href: SELF_HOST_GUIDE_PATH,
-    heading: "Open source AI agent you run yourself",
+    heading: "Self-hosted AI agent you run yourself",
     paragraphs: [
-      "Doitx is an open source AI agent for persistent teammates. It is in beta. The clients are the web app, the Electron desktop app, and the Expo mobile app. You bring a model key, including a local server, and each bot can use a different model. The default computer is local Docker. Optional computers include E2B, Daytona, CreateOS, Boat, and a trusted local computer. Like Grok Bot, Doitx is just chat once it is running: a new bot interviews you, and you manage schedules, memory, and approvals from that chat. Routines are readable Markdown. There is no seat fee. Hosted Doitx Cloud is in beta.",
+      "Doitx is a self-hosted AI agent for persistent teammates. It is in beta. The clients are the web app, the Electron desktop app, and the Expo mobile app. You bring a model key, including a local server, and each bot can use a different model. The default computer is local Docker. Optional computers include E2B, Daytona, CreateOS, Boat, and a trusted local computer. Like Grok Bot, Doitx is just chat once it is running: a new bot interviews you, and you manage schedules, memory, and approvals from that chat. Routines are readable Markdown. There is no seat fee. Hosted Doitx Cloud is in beta.",
     ],
   },
   {
@@ -172,7 +172,7 @@ const DEDICATED_CARDS: readonly RoundupCard[] = [
     href: GROK_ALTERNATIVE_PATH,
     heading: GROK_ALTERNATIVE_H1,
     paragraphs: [
-      "Grok Bot is xAI's hosted product for named bots that can use a computer, keep routines, and pause for approval. The docs describe a cloud computer on your account, shared by the bots on that account. They do not describe installing the service yourself or connecting your own model provider. Grok Build and the older Grok-1 weights are separate open source releases, not this service. Grok Bot is included with paid Cursor plans and SuperGrok, listed at $30 a month. The free plan on the pricing page does not list it. Doitx is this shape you host, with a model key you bring.",
+      "Grok Bot is xAI's hosted product for named bots that can use a computer, keep routines, and pause for approval. The docs describe a cloud computer on your account, shared by the bots on that account. They do not describe installing the service yourself or connecting your own model provider. Grok Build and the older Grok-1 weights are separate releases, not this service. Grok Bot is included with paid Cursor plans and SuperGrok, listed at $30 a month. The free plan on the pricing page does not list it. Doitx is this shape you host, with a model key you bring.",
     ],
   },
 ];
@@ -255,7 +255,7 @@ export const ROUNDUP_TIMELINE = [
   },
   {
     when: "October 7, 2026",
-    what: "The first version of this roundup. OpenClaw and Hermes Agent are ongoing open source projects. Their docs do not give a single launch day, so they are not pinned to one.",
+    what: "The first version of this roundup. OpenClaw and Hermes Agent are ongoing projects. Their docs do not give a single launch day, so they are not pinned to one.",
   },
   {
     when: "October 21, 2026",

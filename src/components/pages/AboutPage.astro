@@ -1,12 +1,11 @@
 ---
 import Footer from "../Footer.astro";
 import Header from "../Header.astro";
-import { githubStarsLabel } from "../../github";
 import { getAboutCopy } from "../../i18n/guide";
 import { getHomeCopy } from "../../i18n/home";
 import type { Locale } from "../../i18n/locales";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { GITHUB_URL, SELF_HOST_GUIDE_PATH } from "../../site";
+import { SELF_HOST_GUIDE_PATH } from "../../site";
 
 interface Props {
   locale: Locale;
@@ -15,12 +14,11 @@ interface Props {
 const { locale } = Astro.props;
 const about = getAboutCopy(locale);
 const nav = getHomeCopy(locale).nav;
-const starsLabel = await githubStarsLabel();
 ---
 
 <BaseLayout title={about.title} description={about.description}>
   <div class="container">
-    <Header starsLabel={starsLabel} locale={locale} />
+    <Header locale={locale} />
     <main id="main" class="privacy-copy">
       <h1>{about.h1}</h1>
       <p>{about.intro}</p>
@@ -29,8 +27,6 @@ const starsLabel = await githubStarsLabel();
       <h2>{about.openHeading}</h2>
       <p>{about.openBody}</p>
       <p>
-        <a href={GITHUB_URL}>{nav.github}</a>
-        <br />
         <a href={SELF_HOST_GUIDE_PATH}>{nav.docs}</a>
         <br />
         <a href="mailto:hello@doitx.ai">hello@doitx.ai</a>

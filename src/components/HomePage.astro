@@ -37,14 +37,11 @@ import {
   availableDesktopPlatforms,
   desktopDownloadHref,
   fetchDesktopDownloads,
-  fetchRecentChanges,
-  githubStarsLabel,
 } from "../github";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { homeStructuredData } from "../structured-data";
 import {
   APP_URL,
-  GITHUB_URL,
   SELF_HOST_GUIDE_PATH,
   SETUP_PROMPT_URL,
   SITE_URL,
@@ -63,11 +60,7 @@ const availableLanguages = LOCALES.map((supportedLocale) =>
   getHomeCopy(supportedLocale).availableLanguage
 );
 const homeHref = localeHomePath(locale);
-const [starsLabel, desktopDownloads, recentChanges] = await Promise.all([
-  githubStarsLabel(),
-  fetchDesktopDownloads(),
-  fetchRecentChanges(5),
-]);
+const desktopDownloads = await fetchDesktopDownloads();
 const setupAgentPrompt = `Set up Doitx for me. Follow the setup prompt at ${SETUP_PROMPT_URL}`;
 const desktopPlatforms = availableDesktopPlatforms(desktopDownloads);
 const PLATFORM_NAMES = { mac: "macOS", windows: "Windows", linux: "Linux" } as const;
@@ -102,7 +95,7 @@ const structuredData = homeStructuredData({
   ogImageAlt={copy.ogImageAlt}
 >
   <div class="container">
-    <Header locale={locale} copy={copy.nav} starsLabel={starsLabel} homeHref={homeHref} />
+    <Header locale={locale} copy={copy.nav} homeHref={homeHref} />
 
     <main id="main">
       <script is:inline>
@@ -141,7 +134,6 @@ const structuredData = homeStructuredData({
           class="hero__actions"
           copy={copy.hero}
           placement="hero"
-          githubLabel={copy.openSource.starOnGithub}
         />
         <div class="hero__agent-setup">
           <button
@@ -309,8 +301,7 @@ const structuredData = homeStructuredData({
             </p>
           </div>
           <div class="selfhost__actions">
-            <Button href={GITHUB_URL} external data-attr="selfhost-github">{copy.hero.viewOnGithub}</Button>
-            <Button href={docsPath(docsLocale(locale), "self-host")} variant="secondary">{copy.openSource.readTheDocs}</Button>
+            <Button href={docsPath(docsLocale(locale), "self-host")}>{copy.openSource.readTheDocs}</Button>
           </div>
         </div>
         <div class="card-grid-3">
@@ -368,23 +359,19 @@ const structuredData = homeStructuredData({
 
       <InstallCommands copy={installCopy} />
 
-      <section id="open-source" class:list={["section", recentChanges.length > 0 && "open-source"]}>
+      <section id="open-source" class="section">
         <div>
           <h2 class="section-heading">{copy.openSource.heading}</h2>
           <p class="section-copy">
             {copy.openSource.copy}
           </p>
           <div class="source-links">
-            <Button href={GITHUB_URL} external data-attr="open-source-github">
-              {copy.openSource.starOnGithub}
+            <Button href={docsPath(docsLocale(locale), "self-host")}>
+              {copy.openSource.readTheDocs}
             </Button>
           </div>
         </div>
-        {
-          recentChanges.length > 0 && (
-            <RepoCard locale={locale} starsLabel={starsLabel} changes={recentChanges} />
-          )
-        }
+        <RepoCard locale={locale} />
       </section>
 
       <section id="faq" class="section" aria-labelledby="faq-heading">
@@ -419,13 +406,11 @@ const structuredData = homeStructuredData({
             copy.cta.stats.map((stat) => (
               <div>
                 <div class="stat-value">
-                  {stat.value === "stars"
-                    ? starsLabel
-                    : stat.value === "license"
-                      ? "Apache-2.0"
-                      : stat.value === "openSource"
-                        ? copy.cta.openSourceValue
-                        : copy.cta.selfHostValue}
+                  {stat.value === "license"
+                    ? "Apache-2.0"
+                    : stat.value === "openSource"
+                      ? copy.cta.openSourceValue
+                      : copy.cta.selfHostValue}
                 </div>
                 <div class="stat-label">{stat.label}</div>
               </div>

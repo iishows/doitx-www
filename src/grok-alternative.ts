@@ -1,15 +1,15 @@
-import { DOCS_URL, GITHUB_URL, SITE_URL } from "./site";
+import { DOCS_URL, SITE_URL } from "./site";
 import { CLAUDE_CHATGPT_SUBSCRIPTION_FAQ } from "./subscription-faq";
 
 export const GROK_ALTERNATIVE_PATH = "/grok-bot-alternative/";
 
 export const GROK_ALTERNATIVE_TITLE =
-  "Open Source Grok Bot Alternative (Self-Hosted) – Doitx";
+  "Grok Bot Alternative (Self-Hosted) – Doitx";
 
 export const GROK_ALTERNATIVE_DESCRIPTION =
-  "Doitx is an open source, self-hosted Grok Bot alternative. Run persistent AI teammates on your machine, with your model keys, under the Apache-2.0 license.";
+  "Doitx is a self-hosted Grok Bot alternative. Run persistent AI teammates on your machine, with your model keys, under the Apache-2.0 license.";
 
-export const GROK_ALTERNATIVE_H1 = "Open source, self-hosted Grok Bot alternative";
+export const GROK_ALTERNATIVE_H1 = "Self-hosted Grok Bot alternative";
 
 export const GROK_INTRO = [
   "Doitx is just chat. You create a bot and manage it from that conversation. Routines, memory, and approval boundaries stay with the bot.",
@@ -19,8 +19,8 @@ export const GROK_INTRO = [
 export const COMPARE_ROWS = [
   {
     topic: "Source",
-    rakazo: "Apache-2.0. The application source is on GitHub.",
-    grok: "The Grok Bot app does not publish source you can run. Grok Build and the Grok-1 weights are separate open-source releases.",
+    rakazo: "Apache-2.0.",
+    grok: "The Grok Bot app does not publish source you can run. Grok Build and the Grok-1 weights are separate releases.",
   },
   {
     topic: "Self-hosting",
@@ -154,7 +154,7 @@ export const GROK_SECTIONS = [
   {
     heading: "What Doitx keeps from that shape",
     paragraphs: [
-      "Doitx is an open source AI agent for persistent teammates, and a self-hosted AI assistant. It is in beta. Each bot keeps conversations, memory, routines, and history. It can use a browser, a terminal, files, and a graphical desktop, and it can hand work to another bot or a short-lived subagent. The clients are the web app, the Electron desktop app, and the Expo mobile app.",
+      "Doitx is a self-hosted AI agent for persistent teammates, and a self-hosted AI assistant. It is in beta. Each bot keeps conversations, memory, routines, and history. It can use a browser, a terminal, files, and a graphical desktop, and it can hand work to another bot or a short-lived subagent. The clients are the web app, the Electron desktop app, and the Expo mobile app.",
       "Like Grok Bot, Doitx is just chat once it is running. You set up the bot and manage it from that chat. A new bot interviews you about the work. Routines are readable Markdown and can run on a schedule. A bot can pause for approval when a task crosses a boundary you set, and actions are recorded in an audit log. Optional connectors can attach Slack, WhatsApp, Telegram, iMessage via Sendblue, and Feishu/Lark. They are not required.",
       "The parts that are not Grok Bot are the ones you operate. The license is Apache-2.0. You self-host with published Docker images or from source. Hosted Doitx Cloud is in beta. Connect the Doitx router or a local OpenAI-compatible endpoint the operator runs, with your own key. Doitx does not pay the model bill. Each bot can use a different model. Connector credentials are encrypted on your server and are not returned by the API.",
       "Computers are separate from the chat product. Local Docker is the default. E2B, Daytona, CreateOS, and Boat are optional remote computers. An explicit desktop provider can run on the host, and it is not the default. Team computers are shared. Private computers are isolated. That split is the opposite of Grok Bot's shared cloud computer for every bot on the account.",
@@ -172,7 +172,7 @@ export const GROK_SECTIONS = [
 ] as const;
 
 export const GROK_OTHER_LEAD =
-  "Hosted assistants and open source agents are both on the [alternatives roundup](/alternatives/). [OpenClaw vs Hermes Agent vs Doitx](/blog/openclaw-vs-hermes-vs-doitx/) compares the three you run yourself, and [best open source AI agents in 2026](/blog/best-open-source-ai-agents-2026/) includes libraries as well as apps.";
+  "Hosted assistants and self-hosted agents are both on the [alternatives roundup](/alternatives/). [OpenClaw vs Hermes Agent vs Doitx](/blog/openclaw-vs-hermes-vs-doitx/) compares the three you run yourself, and the [roundup of AI agents you can run](/blog/best-open-source-ai-agents-2026/) includes libraries as well as apps.";
 
 function altShot(file: string, alt: string) {
   return {
@@ -248,9 +248,9 @@ export const GROK_OTHER_ALTERNATIVES = [
 
 export const GROK_ALTERNATIVE_FAQ = [
   {
-    question: "Is Grok Bot open source?",
+    question: "Is Grok Bot self-hosted?",
     answer:
-      "Grok Bot, the hosted teammate app, does not publish its source for you to run. xAI has open-sourced other software: Grok Build, the coding-agent CLI, is Apache-2.0, and the older Grok-1 model weights were released under Apache-2.0. Those projects are not the Grok Bot service. Doitx is Apache-2.0, and the application source is public on GitHub.",
+      "Grok Bot, the hosted teammate app, does not publish its source for you to run. xAI has open-sourced other software: Grok Build, the coding-agent CLI, is Apache-2.0, and the older Grok-1 model weights were released under Apache-2.0. Those projects are not the Grok Bot service. Doitx is Apache-2.0 licensed.",
   },
   {
     question: "Can I self-host Grok Bot?",
@@ -260,7 +260,7 @@ export const GROK_ALTERNATIVE_FAQ = [
   {
     question: "How is Doitx different from Grok Bot?",
     answer:
-      "Both are persistent bots that can use a computer, sign in to tools, keep context, and run routines. Grok Bot hosts that computer for you and comes with paid Cursor plans and SuperGrok subscriptions. Doitx is open source: you host it or use Doitx Cloud, in beta, you choose the model, and team computers and private computers stay separate.",
+      "Both are persistent bots that can use a computer, sign in to tools, keep context, and run routines. Grok Bot hosts that computer for you and comes with paid Cursor plans and SuperGrok subscriptions. Doitx is self-hosted: you host it or use Doitx Cloud, in beta, you choose the model, and team computers and private computers stay separate.",
   },
   {
     question: "Is Doitx just chat, like Grok Bot?",
@@ -271,7 +271,7 @@ export const GROK_ALTERNATIVE_FAQ = [
   {
     question: "What are the other alternatives?",
     answer:
-      "Meta Muse, OpenAI Dots, Instinct, Claude Duet, and Hark Pro are hosted assistants. OpenClaw and Hermes Agent are open source agents you can run yourself, with a gateway and a config file in their docs. OpenMausBot is an Apache-2.0 desktop app; its docs say bots can run a signed-in agent CLI, or Mistral from an API key with no CLI, and that application data stays on your machine. OpenMuse is CopilotKit's MIT-licensed personal agent, with a chat, a persistent browser, and an optional Linux terminal, and those surfaces run in the alpha. The comparisons page lists licenses, prices, and setup side by side. None of them imports a Grok Bot account.",
+      "Meta Muse, OpenAI Dots, Instinct, Claude Duet, and Hark Pro are hosted assistants. OpenClaw and Hermes Agent are self-hosted agents you can run yourself, with a gateway and a config file in their docs. OpenMausBot is an Apache-2.0 desktop app; its docs say bots can run a signed-in agent CLI, or Mistral from an API key with no CLI, and that application data stays on your machine. OpenMuse is CopilotKit's MIT-licensed personal agent, with a chat, a persistent browser, and an optional Linux terminal, and those surfaces run in the alpha. The comparisons page lists licenses, prices, and setup side by side. None of them imports a Grok Bot account.",
   },
 ] as const;
 
@@ -364,7 +364,6 @@ ${INSTALL_COMMAND}
 ${SELF_HOST_AFTER.join("\n\n")}
 
 - [Self-hosting guide](${DOCS_URL})
-- [Source code](${GITHUB_URL})
 
 ## Other alternatives
 

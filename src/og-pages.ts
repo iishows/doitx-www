@@ -17,7 +17,7 @@ const BLOG_OG: readonly OgPage[] = [
   {
     id: "blog-best-open-source-ai-agents-2026",
     kicker: "Roundup",
-    title: "Best open source AI agents in 2026",
+    title: "Best self-hosted AI agents in 2026",
   },
   {
     id: "blog-openclaw-vs-hermes-vs-doitx",

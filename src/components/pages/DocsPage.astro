@@ -11,11 +11,10 @@ import {
   type DocsLocale,
 } from "../../docs";
 import { integrationsHomePath } from "../../i18n/integrations";
-import { githubStarsLabel } from "../../github";
 import { getDocsCopy } from "../../i18n/docs";
 import { LOCALE_HREFLANG, LOCALE_HTML_LANG, LOCALE_LABELS } from "../../i18n/locales";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { GITHUB_URL, SITE_URL } from "../../site";
+import { SITE_URL } from "../../site";
 
 interface Props {
   entry: CollectionEntry<"docs">;
@@ -31,7 +30,6 @@ const toc = headings.filter((heading) => heading.depth === 2);
 const index = (DOCS_SLUGS as readonly string[]).indexOf(slug);
 const previous = index > 0 ? DOCS_SLUGS[index - 1] : undefined;
 const next = index >= 0 && index < DOCS_SLUGS.length - 1 ? DOCS_SLUGS[index + 1] : undefined;
-const starsLabel = await githubStarsLabel();
 const currentPath = docsPath(locale, slug);
 const otherLocale: DocsLocale = locale === "zh" ? "en" : "zh";
 const otherPath = docsPath(otherLocale, slug);
@@ -52,7 +50,7 @@ const sourcePath = locale === "zh" ? `docs/zh/${slug}.md` : `docs/${slug}.md`;
   markdownAlternate={docsMarkdownPath(locale, slug)}
 >
   <div class="container">
-    <Header starsLabel={starsLabel} locale={locale} />
+    <Header locale={locale} />
   </div>
   <div class="container docs">
     <nav class="docs-nav" aria-label={copy.navLabel}>
@@ -132,9 +130,6 @@ const sourcePath = locale === "zh" ? `docs/zh/${slug}.md` : `docs/${slug}.md`;
           </>
         )
       }
-      <a class="docs-edit" href={`${GITHUB_URL}/edit/main/${sourcePath}`} target="_blank" rel="noopener">
-        {copy.editOnGitHub}
-      </a>
     </aside>
   </div>
   <div class="container">

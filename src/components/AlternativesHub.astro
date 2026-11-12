@@ -4,7 +4,6 @@ import Button from "./Button.astro";
 import SiteFrame from "./SiteFrame.astro";
 import { ogPublicPath } from "../og-pages";
 import { docsHomePath } from "../docs";
-import { GITHUB_URL } from "../site";
 import { DEFAULT_LOCALE, isLocale } from "../i18n/locales";
 import type { Locale } from "../i18n/locales";
 import { getAlternativesHubPageCopy } from "../i18n/alternatives-hub-page";
@@ -118,6 +117,5 @@ const copy = getAlternativesHubPageCopy(locale);
   <p>{copy.getStarted.body}</p>
   <div class="alt-actions">
     <Button href={docsHomePath(locale)}>{copy.getStarted.docs}</Button>
-    <Button href={GITHUB_URL} variant="secondary" external>{copy.getStarted.github}</Button>
   </div>
 </SiteFrame>

@@ -7,12 +7,10 @@ import Prose from "../Prose.astro";
 import VsCard from "../VsCard.astro";
 import { docsHomePath } from "../../docs";
 import { INSTALL_COMMAND, grokAlternativeStructuredData } from "../../grok-alternative";
-import { githubStarsLabel } from "../../github";
 import { getGrokPageCopy } from "../../i18n/grok-page";
 import type { Locale } from "../../i18n/locales";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { ogPublicPath } from "../../og-pages";
-import { GITHUB_URL } from "../../site";
 import { vsCard } from "../../vs-points";
 
 interface Props {
@@ -22,7 +20,6 @@ interface Props {
 
 const { locale, pageUrl } = Astro.props;
 const copy = getGrokPageCopy(locale);
-const starsLabel = await githubStarsLabel();
 const structuredData = grokAlternativeStructuredData(pageUrl, copy.faq.items);
 const card = vsCard("grok-bot-alternative");
 
@@ -43,7 +40,7 @@ const sectionFigures: Record<number, keyof typeof figures> = { 1: "routine", 2: 
   ogImage={ogPublicPath("grok-bot-alternative")}
 >
   <div class="container">
-    <Header starsLabel={starsLabel} locale={locale} />
+    <Header locale={locale} />
     <main id="main" class="guide">
       <h1>{copy.h1}</h1>
       <p class="alt-note">{copy.updated}</p>
@@ -128,7 +125,6 @@ const sectionFigures: Record<number, keyof typeof figures> = { 1: "routine", 2: 
       {copy.selfHost.after.map((paragraph) => <p>{paragraph}</p>)}
       <div class="cta-actions">
         <Button href={docsHomePath(locale)}>{copy.selfHost.docs}</Button>
-        <Button href={GITHUB_URL} variant="secondary" external>{copy.selfHost.github}</Button>
       </div>
 
       <h2>{copy.other.heading}</h2>

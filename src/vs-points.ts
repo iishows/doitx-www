@@ -14,7 +14,7 @@ export const VS_CARDS: Record<string, VsPoints> = {
   },
   "dots-alternative": {
     rakazo: ["You host it", "Any supported model", "Apache-2.0"],
-    other: ["OpenAI hosts it", "Eligible ChatGPT plans", "Not open source"],
+    other: ["OpenAI hosts it", "Eligible ChatGPT plans", "Hosted only"],
   },
   "grok-bot-alternative": {
     rakazo: ["You host it", "You bring the model", "Apache-2.0"],

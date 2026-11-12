@@ -15,14 +15,12 @@ import {
   faqPageStructuredData,
 } from "../../guide";
 import { docsUrl } from "../../docs";
-import { githubStarsLabel } from "../../github";
 import type { Locale } from "../../i18n/locales";
 import { getSelfHostPageCopy } from "../../i18n/self-host-page";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { ogPublicPath } from "../../og-pages";
 import {
   APP_URL,
-  GITHUB_URL,
   OPENCLAW_ALTERNATIVE_PATH,
 } from "../../site";
 
@@ -32,7 +30,6 @@ interface Props {
 
 const { locale } = Astro.props;
 const copy = getSelfHostPageCopy(locale);
-const starsLabel = await githubStarsLabel();
 const structuredData = faqPageStructuredData(copy.faqs);
 ---
 
@@ -44,7 +41,7 @@ const structuredData = faqPageStructuredData(copy.faqs);
   ogImage={ogPublicPath("self-hosted-ai-agent")}
 >
   <div class="container">
-    <Header starsLabel={starsLabel} locale={locale} />
+    <Header locale={locale} />
     <main id="main" class="privacy-copy guide">
       <h1>{copy.h1}</h1>
       {copy.intro.map((paragraph) => <p><Prose text={paragraph} /></p>)}
@@ -134,9 +131,7 @@ const structuredData = faqPageStructuredData(copy.faqs);
         <li><a href={docsUrl(locale, "self-host-secrets")}>{copy.reference.secrets}</a></li>
         <li><a href={docsUrl(locale, "self-host-restricted-network")}>{copy.reference.restricted}</a></li>
         <li><a href={docsUrl(locale)}>{copy.reference.prompt}</a></li>
-        <li><a href={GITHUB_URL}>{copy.reference.source}</a></li>
       </ul>
-
       <FaqSection items={copy.faqs} />
 
       <h2>{copy.related.heading}</h2>
@@ -149,7 +144,6 @@ const structuredData = faqPageStructuredData(copy.faqs);
       <p>{copy.getStarted.body}</p>
       <div class="cta-actions">
         <Button href={APP_URL}>{copy.getStarted.cloud}</Button>
-        <Button href={GITHUB_URL} variant="secondary" external>{copy.getStarted.github}</Button>
       </div>
     </main>
     <Footer />
