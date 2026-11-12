@@ -8,10 +8,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 type Props = {
   locale: Locale;
   copy: LegalCopy;
-  starsLabel: string;
 };
 
-const { locale, copy, starsLabel } = Astro.props;
+const { locale, copy } = Astro.props;
 ---
 
 <BaseLayout
@@ -20,7 +19,7 @@ const { locale, copy, starsLabel } = Astro.props;
   locale={locale}
 >
   <div class="container">
-    <Header starsLabel={starsLabel} />
+    <Header />
     <main id="main" class="privacy-copy">
       <h1>{copy.h1}</h1>
       <p><strong>Last updated: {copy.lastUpdated}</strong></p>

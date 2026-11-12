@@ -1,7 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import { githubStarsLabel } from "../github";
 import { getSupportCopy } from "../i18n/support";
 import { DEFAULT_LOCALE, isLocale } from "../i18n/locales";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -11,12 +10,11 @@ const locale: import("../i18n/locales").Locale = isLocale(Astro.currentLocale)
   ? Astro.currentLocale
   : DEFAULT_LOCALE;
 const copy = getSupportCopy(locale);
-const starsLabel = await githubStarsLabel();
 ---
 
 <BaseLayout title="Support · Doitx" description={copy.description} index={false}>
   <div class="container">
-    <Header starsLabel={starsLabel} />
+    <Header />
     <main id="main" class="privacy-copy">
       <h1>{copy.h1}</h1>
       <p>{copy.description}</p>

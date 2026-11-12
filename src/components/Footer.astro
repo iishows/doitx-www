@@ -12,11 +12,7 @@ import {
 import { HUB_CARDS } from "../alternatives";
 import { getHomeCopy } from "../i18n/home";
 import type { HomeCopy } from "../i18n/home";
-import {
-  CHANGELOG_URL,
-  INBOX_ZERO_URL,
-  SELF_HOST_GUIDE_PATH,
-} from "../site";
+import { SELF_HOST_GUIDE_PATH } from "../site";
 import Logo from "./Logo.astro";
 
 type Props = {
@@ -54,7 +50,6 @@ const columns: Array<{ heading: string; links: FooterLink[] }> = [
     heading: linkLabels.product,
     links: [
       { href: SELF_HOST_GUIDE_PATH, label: linkLabels.docs },
-      { href: CHANGELOG_URL, label: linkLabels.changelog, external: true },
     ],
   },
   {
@@ -106,8 +101,8 @@ const columns: Array<{ heading: string; links: FooterLink[] }> = [
       </details>
     </nav>
     <span class="site-footer__legal">
-      <span>© 2026 <a href={INBOX_ZERO_URL} target="_blank" rel="noopener">Inbox Zero Inc.</a></span>
-      <span>Apache-2.0</span>
+      <span>© 2026 <a href="https://doitx.ai" target="_blank" rel="noopener">Doitx Inc.</a></span>
+      <span><a href="https://doitx.ai" target="_blank" rel="noopener">doitx.ai</a></span>
     </span>
   </div>
   <nav class="site-footer__columns" aria-label={navLabel}>

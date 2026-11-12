@@ -21,5 +21,4 @@ export const SELF_HOST_GUIDE_PATH = "/self-hosted-ai-agent/";
 export const OPENCLAW_ALTERNATIVE_PATH = "/openclaw-alternative/";
 export const CHANGELOG_URL = "";
 export const LATEST_RELEASE_URL = "";
-export const INBOX_ZERO_URL =
-  "https://www.getinboxzero.com/?utm_source=doitx&utm_medium=website&utm_campaign=footer";
+export const INBOX_ZERO_URL = "https://doitx.ai";

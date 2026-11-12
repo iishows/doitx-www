@@ -128,10 +128,10 @@ Doitx is a self-hosted Grok Bot alternative for persistent AI teammates: bots th
 
 The project started from a simple premise: useful agents should be understandable and controllable by the people who run them. Doitx keeps routines in readable Markdown, offers two model providers: the Doitx router and a local endpoint, records actions in an audit log, and lets operators keep model keys, browser sessions, and deployment infrastructure under their own control.
 
-Doitx targets the web, macOS, Windows, Linux, iOS, and Android. The source is available under the Apache-2.0 license. Inbox Zero Inc. maintains the project and offers support at hello@doitx.ai.
+Doitx targets the web, macOS, Windows, Linux, iOS, and Android. Doitx Inc. maintains the project and offers support at hello@doitx.ai.
 
-- [Self-hosting guide](https://doitx.ai/self-hosted-ai-agent/)
-- [Full self-hosting reference](https://doitx.ai/en/docs/self-host/)
+- [Deployment guide](https://doitx.ai/self-hosted-ai-agent/)
+- [Full deployment reference](https://doitx.ai/en/docs/self-host/)
 - [Support](https://doitx.ai/support/)
 `;
 
@@ -167,7 +167,7 @@ export const TERMS_MARKDOWN = `# Doitx terms
 
 Last updated: October 27, 2026
 
-These terms are an agreement between you and Inbox Zero Inc. for the Doitx service we host, the Doitx apps, and doitx.ai. The Doitx source code is governed by the Apache License 2.0, which does not grant rights to the Doitx name or logo, and self-hosted deployments are the operator's responsibility.
+These terms are an agreement between you and Doitx Inc. for the Doitx service we host, the Doitx apps, and doitx.ai. The Doitx source code is governed by the Doitx license, which does not grant rights to the Doitx name or logo, and self-hosted deployments are the operator's responsibility.
 
 You are responsible for your account and for actions your bots take on your behalf, including in scheduled routines; give bots only the access they need and require approval for actions that are hard to undo. AI output can be wrong, so review it before relying on it, and do not use the Service where an error could cause serious harm. Do not use the Service to break the law, send spam or malware, access systems without authorization, abuse its computers, or violate the terms of connected providers. You keep ownership of your content and bot output, and you pay any fees charged by third-party services, including usage on your own API keys.
 

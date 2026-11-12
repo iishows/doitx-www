@@ -11,7 +11,7 @@ export const GET_STARTED = {
 } as const;
 
 export const OPEN_SOURCE_REASONS = [
-  "The source is Apache-2.0 licensed and public.",
+  "Licensed and distributed by Doitx Inc.",
   "You can run the published Docker images, or a source checkout, on a machine you control. The desktop app can start that stack locally or connect to a server you already run.",
   "You bring the model credentials. Connector credentials are encrypted on the server and are not returned by the API.",
   "Routines are readable Markdown. A bot can pause for approval at a boundary you set, and actions are recorded in an audit log.",
@@ -201,7 +201,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       },
       {
         topic: "Source",
-        rakazo: "Apache-2.0 source, published.",
+        rakazo: "Doitx-distributed source, published.",
         other: "Hosted service from Meta.",
       },
       {
@@ -299,7 +299,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       },
       {
         topic: "Source",
-        rakazo: "Apache-2.0 source, published.",
+        rakazo: "Doitx-distributed source, published.",
         other: "Hosted product from OpenAI.",
       },
       {
@@ -379,7 +379,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       },
       {
         topic: "Source",
-        rakazo: "Apache-2.0 source, published.",
+        rakazo: "Doitx-distributed source, published.",
         other: "Hosted service. The terms say the company owns the service and the technology that produces its actions.",
       },
       {
@@ -504,7 +504,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       },
       {
         topic: "Source",
-        rakazo: "Apache-2.0 source, published.",
+        rakazo: "Doitx-distributed source, published.",
         other: "MIT source, built by Nous Research.",
       },
       {
@@ -604,7 +604,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       },
       {
         topic: "Source",
-        rakazo: "Apache-2.0 source, published.",
+        rakazo: "Doitx-distributed source, published.",
         other: "Hosted service from Anthropic. Its pages do not describe self-hosting.",
       },
       {
@@ -644,7 +644,7 @@ export const ALTERNATIVES: readonly Alternative[] = [
       {
         question: "Is Claude Duet self-hosted?",
         answer:
-          "Anthropic's Duet pages do not describe source you can run or a self-hosted install. Duet runs on a cloud computer Anthropic operates. Doitx is Apache-2.0, and you can run it yourself.",
+          "Anthropic's Duet pages do not describe source you can run or a self-hosted install. Duet runs on a cloud computer Anthropic operates. Doitx is distributed by Doitx Inc., and you can deploy it yourself.",
       },
       {
         question: "Where do the Claude Duet details come from?",
