@@ -3,7 +3,12 @@
 # Usage: irm https://doitx.ai/install.ps1 | iex
 
 $ErrorActionPreference = "Stop"
-$releaseApi = "https://api.github.com/repos/iishows/doitx/releases/latest"
+# DOWNLOAD_BASE_URL can be overridden via the environment.
+$DownloadBase = $env:DOWNLOAD_BASE_URL
+if ([string]::IsNullOrWhiteSpace($DownloadBase)) {
+  $DownloadBase = "https://doitx.ai/releases"
+}
+$releaseApi = "$DownloadBase/latest"
 $installer = Join-Path $env:TEMP "Doitx-Setup.exe"
 
 function Get-DockerCli {

@@ -4,7 +4,8 @@
 
 set -euo pipefail
 
-API="https://api.github.com/repos/iishows/doitx/releases/latest"
+DOWNLOAD_BASE_URL="${DOWNLOAD_BASE_URL:-https://doitx.ai/releases}"
+API="$DOWNLOAD_BASE_URL/latest"
 ICON_URL="https://doitx.ai/icon-512.png"
 DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 BIN_DIR="${XDG_BIN_HOME:-$HOME/.local/bin}"

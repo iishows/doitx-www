@@ -25,7 +25,7 @@ async function fetchGithubStars(fetchImpl: typeof fetch = fetch): Promise<number
   return typeof payload?.stargazers_count === "number" ? payload.stargazers_count : null;
 }
 
-// Last known count, shown when the build cannot reach GitHub.
+// Last known count, shown when the API is unreachable.
 const GITHUB_STARS_FALLBACK = 6_000;
 let githubStars: Promise<number> | undefined;
 
@@ -67,7 +67,7 @@ export async function fetchDesktopDownloads(
   return downloads;
 }
 
-/** The newest product changes on main, newest first; empty when GitHub is unavailable. */
+/** The newest product changes on main, newest first; empty when the API is unavailable. */
 export async function fetchRecentChanges(
   limit: number,
   fetchImpl: typeof fetch = fetch,
@@ -109,7 +109,7 @@ async function fetchGithubJson<T>(
     const response = await withAbort(
       fetchImpl(url, {
         headers: {
-          Accept: "application/vnd.github+json",
+          Accept: "application/json",
           "User-Agent": "rakazo-www",
           // Optional: anonymous requests share a 60/hour limit per IP.
           ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),

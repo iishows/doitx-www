@@ -873,7 +873,7 @@ const TESTIMONIALS: HomeCopy["testimonials"]["items"] = [
 
 const HOME_COPY: Record<Locale, HomeCopy> = {
   en: {
-    title: "Doitx | Open source Grok Bot alternative",
+    title: "Doitx | Grok Bot alternative",
     description: SITE_DESCRIPTION,
     ogImageAlt:
       "Doitx. AI teammates you actually own. Your keys, your model, your machine.",
@@ -890,8 +890,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "Get started",
     },
     hero: {
-      eyebrow: "Open source",
-      heading: "The open source Grok Bot alternative you actually own",
+      eyebrow: "Grok Bot alternative",
+      heading: "The Grok Bot alternative you actually own",
       lead: "Give your bots a job. Check in from any device.",
       getStarted: "Get started",
       download: {
@@ -907,7 +907,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       copyFailed: "Copy failed. Try again.",
     },
     selfHost: {
-      heading: "Self-hosted",
+      heading: "Private deployment",
       copy: "Your machine, your models, your control.",
       worksWith: "Works with",
       mock: { model: "Model", weekdays: "Weekdays at 9:00", approval: "Approval required", approve: "Approve", deny: "Deny" },
@@ -981,8 +981,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "Open source",
-      copy: "Apache-2.0. Run it, change it, make it yours.",
+      heading: "Deployment",
+      copy: "Apache-2.0. Install it, configure it, make it yours.",
       starOnGithub: "Star on GitHub",
       readTheDocs: "Read the docs",
       cloudTitle: "Cloud",
@@ -991,8 +991,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "Meet your first bot",
       copy: "Hand over your next task.",
-      openSourceValue: "Open source",
-      selfHostValue: "Self-host",
+      openSourceValue: "Private install",
+      selfHostValue: "On-premise",
       stats: [
         { value: "stars", label: "GitHub stars" },
         { value: "license", label: "License" },
@@ -1021,9 +1021,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   de: {
-    title: "Doitx | Open-Source-Alternative zu Grok Bot",
+    title: "Doitx | Alternative zu Grok Bot",
     description:
-      "Doitx ist eine Open-Source-Alternative zu Grok Bot für persistente KI-Teamkollegen, die echte Arbeit erledigen. Deine Keys, dein Modell, deine Maschine.",
+      "Doitx ist eine Alternative zu Grok Bot für persistente KI-Teamkollegen, die echte Arbeit erledigen. Deine Keys, dein Modell, deine Maschine.",
     ogImageAlt:
       "Doitx. KI-Teamkollegen, die dir wirklich gehören. Deine Keys, dein Modell, deine Maschine.",
     availableLanguage: "German",
@@ -1039,8 +1039,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "Loslegen",
     },
     hero: {
-      eyebrow: "Open Source",
-      heading: "Die Open-Source-Alternative zu Grok Bot, die dir wirklich gehört",
+      eyebrow: "Grok Bot alternative",
+      heading: "Die Alternative zu Grok Bot, die dir wirklich gehört",
       lead: "Gib deinen Bots eine Aufgabe. Schau von jedem Gerät nach.",
       getStarted: "Loslegen",
       download: {
@@ -1056,7 +1056,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       copyFailed: "Kopieren fehlgeschlagen. Erneut versuchen.",
     },
     selfHost: {
-      heading: "Self-hosted",
+      heading: "Privat installiert",
       copy: "Deine Maschine, deine Modelle, deine Kontrolle.",
       worksWith: "Funktioniert mit",
       mock: { model: "Modell", weekdays: "Mo–Fr um 9:00", approval: "Freigabe erforderlich", approve: "Genehmigen", deny: "Ablehnen" },
@@ -1134,8 +1134,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "Open Source",
-      copy: "Apache-2.0. Selbst betreiben, ändern und anpassen.",
+      heading: "Einsatz",
+      copy: "Apache-2.0. Installieren, konfigurieren, anpassen.",
       starOnGithub: "Auf GitHub mit Stern markieren",
       readTheDocs: "Docs lesen",
       cloudTitle: "Cloud",
@@ -1144,8 +1144,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "Triff deinen ersten Bot",
       copy: "Gib deine nächste Aufgabe ab.",
-      openSourceValue: "Open Source",
-      selfHostValue: "Self-host",
+      openSourceValue: "Privat installiert",
+      selfHostValue: "On-Premise",
       stats: [
         { value: "stars", label: "GitHub Stars" },
         { value: "license", label: "Lizenz" },
@@ -1174,9 +1174,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   ko: {
-    title: "Doitx | 오픈소스 Grok Bot 대안",
+    title: "Doitx | Grok Bot 대안",
     description:
-      "Doitx는 실제 업무를 수행하는 지속형 AI 팀원을 위한 오픈소스 Grok Bot 대안입니다. 키, 모델, 머신, 모두 당신 것.",
+      "Doitx는 실제 업무를 수행하는 지속형 AI 팀원을 위한 Grok Bot 대안입니다. 키, 모델, 머신, 모두 당신 것.",
     ogImageAlt: "Doitx. 진짜로 내 것인 AI 팀원. 키, 모델, 머신, 모두 당신 것.",
     availableLanguage: "Korean",
     skipToContent: "본문으로 건너뛰기",
@@ -1191,8 +1191,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "시작하기",
     },
     hero: {
-      eyebrow: "오픈 소스",
-      heading: "진짜로 내 것인 오픈소스 Grok Bot 대안",
+      eyebrow: "Grok Bot 대안",
+      heading: "진짜로 내 것인 Grok Bot 대안",
       lead: "봇에게 일을 맡기세요. 어떤 기기에서든 확인하세요.",
       getStarted: "시작하기",
       download: {
@@ -1208,7 +1208,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       copyFailed: "복사 실패. 다시 시도하세요.",
     },
     selfHost: {
-      heading: "셀프 호스트",
+      heading: "프라이빗 배포",
       copy: "컴퓨터도, 모델도, 제어권도 내 손에.",
       worksWith: "지원 모델·서비스",
       mock: { model: "모델", weekdays: "평일 9:00", approval: "승인 필요", approve: "승인", deny: "거부" },
@@ -1286,8 +1286,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "오픈소스",
-      copy: "Apache-2.0. 직접 실행하고 원하는 대로 수정하세요.",
+      heading: "배포",
+      copy: "Apache-2.0. 설치하고, 설정하고, 자유롭게 수정하세요.",
       starOnGithub: "GitHub에서 Star",
       readTheDocs: "문서 읽기",
       cloudTitle: "Cloud",
@@ -1296,8 +1296,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "첫 봇을 만나보세요",
       copy: "다음 할 일을 맡겨 보세요.",
-      openSourceValue: "오픈소스",
-      selfHostValue: "셀프 호스트",
+      openSourceValue: "프라이빗 설치",
+      selfHostValue: "온프레미스",
       stats: [
         { value: "stars", label: "GitHub 스타" },
         { value: "license", label: "라이선스" },
@@ -1326,9 +1326,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   zh: {
-    title: "Doitx | 开源 Grok Bot 替代品",
+    title: "Doitx | Grok Bot 替代品",
     description:
-      "Doitx 是一个开源 Grok Bot 替代品，用于运行真正干活的持久化 AI 队友。密钥、模型、机器，都归你所有。",
+      "Doitx 是一个 Grok Bot 替代品，用于运行真正干活的持久化 AI 队友。密钥、模型、机器，都归你所有。",
     ogImageAlt: "Doitx：真正属于你的 AI 队友。密钥、模型、机器，都归你所有。",
     availableLanguage: "Chinese",
     skipToContent: "跳到主要内容",
@@ -1343,8 +1343,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "开始使用",
     },
     hero: {
-      eyebrow: "开源",
-      heading: "真正属于你的开源 Grok Bot 替代品",
+      eyebrow: "Grok Bot 替代品",
+      heading: "真正属于你的 Grok Bot 替代品",
       lead: "把工作交给 Bot，随时用任意设备查看。",
       getStarted: "开始使用",
       download: {
@@ -1360,7 +1360,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       copyFailed: "复制失败。请重试。",
     },
     selfHost: {
-      heading: "自托管",
+      heading: "私有部署",
       copy: "电脑、模型、控制权，都归你。",
       worksWith: "支持",
       mock: { model: "模型", weekdays: "工作日 9:00", approval: "需要审批", approve: "批准", deny: "拒绝" },
@@ -1438,8 +1438,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "开源",
-      copy: "Apache-2.0。自由运行、修改，按需定制。",
+      heading: "部署",
+      copy: "Apache-2.0。自由安装、配置，按需定制。",
       starOnGithub: "在 GitHub 上点星",
       readTheDocs: "阅读文档",
       cloudTitle: "云端",
@@ -1448,8 +1448,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "认识你的第一个 Bot",
       copy: "把下一项任务交给 Bot。",
-      openSourceValue: "开源",
-      selfHostValue: "自托管",
+      openSourceValue: "私有安装",
+      selfHostValue: "本地部署",
       stats: [
         { value: "stars", label: "GitHub 星标" },
         { value: "license", label: "许可证" },
@@ -1478,9 +1478,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   ja: {
-    title: "Doitx | オープンソースの Grok Bot 代替ツール",
+    title: "Doitx | Grok Bot 代替ツール",
     description:
-      "Doitx は、実際の仕事をこなす常駐型 AI チームメイトのための、オープンソースの Grok Bot 代替ツールです。キーもモデルもマシンも、すべてあなたのものです。",
+      "Doitx は、実際の仕事をこなす常駐型 AI チームメイトのための Grok Bot 代替ツールです。キーもモデルもマシンも、すべてあなたのものです。",
     ogImageAlt:
       "Doitx。本当に自分のものにできる AI チームメイト。キーもモデルもマシンも、すべてあなたのもの。",
     availableLanguage: "Japanese",
@@ -1496,8 +1496,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "はじめる",
     },
     hero: {
-      eyebrow: "オープンソース",
-      heading: "本当に自分のものにできる、オープンソースの Grok Bot 代替ツール",
+      eyebrow: "Grok Bot 代替",
+      heading: "本当に自分のものにできる、Grok Bot 代替ツール",
       lead: "ボットに仕事を任せて、どのデバイスからでも確認できます。",
       getStarted: "はじめる",
       download: {
@@ -1513,7 +1513,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       copyFailed: "コピーできませんでした。もう一度お試しください。",
     },
     selfHost: {
-      heading: "セルフホスト",
+      heading: "プライベートデプロイ",
       copy: "マシンもモデルも、コントロールもあなたの手に。",
       worksWith: "対応サービス",
       mock: { model: "モデル", weekdays: "平日 9:00", approval: "承認が必要", approve: "承認", deny: "拒否" },
@@ -1591,8 +1591,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "オープンソース",
-      copy: "Apache-2.0。自由に実行し、変更して、自分のものに。",
+      heading: "デプロイ",
+      copy: "Apache-2.0。インストールし、設定して、自分のものに。",
       starOnGithub: "GitHub で Star する",
       readTheDocs: "ドキュメントを読む",
       cloudTitle: "クラウド",
@@ -1601,8 +1601,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "最初のボットを迎えましょう",
       copy: "次のタスクを任せてみましょう。",
-      openSourceValue: "オープンソース",
-      selfHostValue: "セルフホスト",
+      openSourceValue: "プライベートインストール",
+      selfHostValue: "オンプレミス",
       stats: [
         { value: "stars", label: "GitHub スター" },
         { value: "license", label: "ライセンス" },
@@ -1631,9 +1631,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   "es": {
-    title: "Doitx | Alternativa de código abierto a Grok Bot",
+    title: "Doitx | Alternativa a Grok Bot",
     description:
-      "Doitx es una alternativa de código abierto a Grok Bot para compañeros de IA persistentes que hacen trabajo real. Tus claves, tu modelo, tu máquina.",
+      "Doitx es una alternativa a Grok Bot para compañeros de IA persistentes que hacen trabajo real. Tus claves, tu modelo, tu máquina.",
     ogImageAlt:
       "Doitx. Compañeros de IA que de verdad son tuyos. Tus claves, tu modelo, tu máquina.",
     availableLanguage: "Spanish",
@@ -1649,8 +1649,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "Empezar",
     },
     hero: {
-      eyebrow: "Código abierto",
-      heading: "La alternativa de código abierto a Grok Bot que de verdad es tuya",
+      eyebrow: "Alternativa a Grok Bot",
+      heading: "La alternativa a Grok Bot que de verdad es tuya",
       lead: "Dale un trabajo a tus bots. Síguelos desde cualquier dispositivo.",
       getStarted: "Empezar",
       download: {
@@ -1666,7 +1666,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       copyFailed: "No se pudo copiar. Inténtalo de nuevo.",
     },
     selfHost: {
-      heading: "Autoalojado",
+      heading: "Despliegue privado",
       copy: "Tu máquina, tus modelos, tu control.",
       worksWith: "Funciona con",
       mock: { model: "Modelo", weekdays: "Días laborables a las 9:00", approval: "Requiere aprobación", approve: "Aprobar", deny: "Denegar" },
@@ -1744,8 +1744,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "Código abierto",
-      copy: "Apache-2.0. Ejecútalo, modifícalo, hazlo tuyo.",
+      heading: "Despliegue",
+      copy: "Apache-2.0. Instálalo, configúralo, hazlo tuyo.",
       starOnGithub: "Dar una estrella en GitHub",
       readTheDocs: "Leer la documentación",
       cloudTitle: "Cloud",
@@ -1754,8 +1754,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "Conoce a tu primer bot",
       copy: "Delégale tu próxima tarea.",
-      openSourceValue: "Código abierto",
-      selfHostValue: "Autoalojado",
+      openSourceValue: "Instalación privada",
+      selfHostValue: "En las instalaciones",
       stats: [
         { value: "stars", label: "Estrellas en GitHub" },
         { value: "license", label: "Licencia" },
@@ -1784,9 +1784,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   "fr": {
-    title: "Doitx | Alternative open source à Grok Bot",
+    title: "Doitx | Alternative à Grok Bot",
     description:
-      "Doitx est une alternative open source à Grok Bot pour des coéquipiers IA persistants qui font un vrai travail. Vos clés, votre modèle, votre machine.",
+      "Doitx est une alternative à Grok Bot pour des coéquipiers IA persistants qui font un vrai travail. Vos clés, votre modèle, votre machine.",
     ogImageAlt:
       "Doitx. Des coéquipiers IA qui vous appartiennent vraiment. Vos clés, votre modèle, votre machine.",
     availableLanguage: "French",
@@ -1802,8 +1802,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "Commencer",
     },
     hero: {
-      eyebrow: "Open source",
-      heading: "L’alternative open source à Grok Bot qui vous appartient vraiment",
+      eyebrow: "Grok Bot alternative",
+      heading: "L’alternative à Grok Bot qui vous appartient vraiment",
       lead: "Confiez une mission à vos bots. Suivez-les depuis n’importe quel appareil.",
       getStarted: "Commencer",
       download: {
@@ -1819,7 +1819,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       copyFailed: "Échec de la copie. Réessayez.",
     },
     selfHost: {
-      heading: "Auto-hébergé",
+      heading: "Déploiement privé",
       copy: "Votre machine, vos modèles, votre contrôle.",
       worksWith: "Fonctionne avec",
       mock: { model: "Modèle", weekdays: "Jours ouvrés à 9:00", approval: "Approbation requise", approve: "Approuver", deny: "Refuser" },
@@ -1897,8 +1897,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "Open source",
-      copy: "Apache-2.0. Exécutez-le, modifiez-le, appropriez-le-vous.",
+      heading: "Déploiement",
+      copy: "Apache-2.0. Installez-le, configurez-le, appropriez-le-vous.",
       starOnGithub: "Ajouter une étoile sur GitHub",
       readTheDocs: "Lire la documentation",
       cloudTitle: "Cloud",
@@ -1907,8 +1907,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "Rencontrez votre premier bot",
       copy: "Confiez-lui votre prochaine tâche.",
-      openSourceValue: "Open source",
-      selfHostValue: "Auto-hébergé",
+      openSourceValue: "Installation privée",
+      selfHostValue: "Sur site",
       stats: [
         { value: "stars", label: "Étoiles GitHub" },
         { value: "license", label: "Licence" },
@@ -1937,9 +1937,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   "pt-br": {
-    title: "Doitx | Alternativa de código aberto ao Grok Bot",
+    title: "Doitx | Alternativa ao Grok Bot",
     description:
-      "Doitx é uma alternativa de código aberto ao Grok Bot para colegas de IA persistentes que fazem trabalho de verdade. Suas chaves, seu modelo, sua máquina.",
+      "Doitx é uma alternativa ao Grok Bot para colegas de IA persistentes que fazem trabalho de verdade. Suas chaves, seu modelo, sua máquina.",
     ogImageAlt:
       "Doitx. Colegas de IA que são realmente seus. Suas chaves, seu modelo, sua máquina.",
     availableLanguage: "Portuguese",
@@ -1955,8 +1955,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "Começar",
     },
     hero: {
-      eyebrow: "Código aberto",
-      heading: "A alternativa de código aberto ao Grok Bot que é realmente sua",
+      eyebrow: "Alternativa ao Grok Bot",
+      heading: "A alternativa ao Grok Bot que é realmente sua",
       lead: "Dê um trabalho aos seus bots. Acompanhe de qualquer dispositivo.",
       getStarted: "Começar",
       download: {
@@ -1972,7 +1972,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       copyFailed: "Falha ao copiar. Tente novamente.",
     },
     selfHost: {
-      heading: "Auto-hospedado",
+      heading: "Implantação privada",
       copy: "Sua máquina, seus modelos, seu controle.",
       worksWith: "Funciona com",
       mock: { model: "Modelo", weekdays: "Dias úteis às 9:00", approval: "Aprovação necessária", approve: "Aprovar", deny: "Negar" },
@@ -2060,8 +2060,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "Conheça seu primeiro bot",
       copy: "Entregue sua próxima tarefa.",
-      openSourceValue: "Código aberto",
-      selfHostValue: "Auto-hospedado",
+      openSourceValue: "Instalação privada",
+      selfHostValue: "Na própria infraestrutura",
       stats: [
         { value: "stars", label: "Estrelas no GitHub" },
         { value: "license", label: "Licença" },
@@ -2090,9 +2090,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   "nl": {
-    title: "Doitx | Open source alternatief voor Grok Bot",
+    title: "Doitx | Alternatief voor Grok Bot",
     description:
-      "Doitx is een open source alternatief voor Grok Bot voor blijvende AI-teamgenoten die echt werk doen. Jouw keys, jouw model, jouw machine.",
+      "Doitx is een alternatief voor Grok Bot voor blijvende AI-teamgenoten die echt werk doen. Jouw keys, jouw model, jouw machine.",
     ogImageAlt:
       "Doitx. AI-teamgenoten die echt van jou zijn. Jouw keys, jouw model, jouw machine.",
     availableLanguage: "Dutch",
@@ -2108,8 +2108,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "Aan de slag",
     },
     hero: {
-      eyebrow: "Open source",
-      heading: "Het open source alternatief voor Grok Bot dat echt van jou is",
+      eyebrow: "Grok Bot alternatief",
+      heading: "Het alternatief voor Grok Bot dat echt van jou is",
       lead: "Geef je bots een taak. Kijk mee vanaf elk apparaat.",
       getStarted: "Aan de slag",
       download: {
@@ -2125,7 +2125,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       copyFailed: "Kopiëren mislukt. Probeer het opnieuw.",
     },
     selfHost: {
-      heading: "Zelf gehost",
+      heading: "Privé implementatie",
       copy: "Jouw machine, jouw modellen, jouw controle.",
       worksWith: "Werkt met",
       mock: { model: "Model", weekdays: "Werkdagen om 9:00", approval: "Goedkeuring vereist", approve: "Goedkeuren", deny: "Weigeren" },
@@ -2203,8 +2203,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "Open source",
-      copy: "Apache-2.0. Draai het, pas het aan, maak het je eigen.",
+      heading: "Implementatie",
+      copy: "Apache-2.0. Installeer, configureer, pas aan.",
       starOnGithub: "Ster geven op GitHub",
       readTheDocs: "Lees de docs",
       cloudTitle: "Cloud",
@@ -2213,8 +2213,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "Maak kennis met je eerste bot",
       copy: "Draag je volgende taak over.",
-      openSourceValue: "Open source",
-      selfHostValue: "Zelf hosten",
+      openSourceValue: "Privé installatie",
+      selfHostValue: "On-premise",
       stats: [
         { value: "stars", label: "GitHub-sterren" },
         { value: "license", label: "Licentie" },
@@ -2243,9 +2243,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   "ru": {
-    title: "Doitx | Альтернатива Grok Bot с открытым исходным кодом",
+    title: "Doitx | Альтернатива Grok Bot",
     description:
-      "Doitx — альтернатива Grok Bot с открытым исходным кодом: постоянные ИИ-коллеги, которые выполняют реальную работу. Ваши ключи, ваша модель, ваш компьютер.",
+      "Doitx — альтернатива Grok Bot: постоянные ИИ-коллеги, которые выполняют реальную работу. Ваши ключи, ваша модель, ваш компьютер.",
     ogImageAlt:
       "Doitx. ИИ-коллеги, которые действительно принадлежат вам. Ваши ключи, ваша модель, ваш компьютер.",
     availableLanguage: "Russian",
@@ -2261,8 +2261,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "Начать",
     },
     hero: {
-      eyebrow: "Открытый исходный код",
-      heading: "Альтернатива Grok Bot с открытым исходным кодом, которая действительно ваша",
+      eyebrow: "Альтернатива Grok Bot",
+      heading: "Альтернатива Grok Bot, которая действительно ваша",
       lead: "Дайте ботам работу. Следите за ней с любого устройства.",
       getStarted: "Начать",
       download: {
@@ -2356,7 +2356,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "Открытый исходный код",
+      heading: "Развертывание",
       copy: "Apache-2.0. Запускайте, меняйте, настраивайте под себя.",
       starOnGithub: "Поставить звезду на GitHub",
       readTheDocs: "Читать документацию",
@@ -2366,7 +2366,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "Познакомьтесь с первым ботом",
       copy: "Передайте ему следующую задачу.",
-      openSourceValue: "Открытый код",
+      openSourceValue: "Частная установка",
       selfHostValue: "Свой сервер",
       stats: [
         { value: "stars", label: "Звёзды на GitHub" },
@@ -2396,9 +2396,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   "tr": {
-    title: "Doitx | Açık kaynaklı Grok Bot alternatifi",
+    title: "Doitx | Grok Bot alternatifi",
     description:
-      "Doitx, gerçek işler yapan kalıcı yapay zekâ ekip arkadaşları için açık kaynaklı bir Grok Bot alternatifidir. Sizin anahtarlarınız, sizin modeliniz, sizin makineniz.",
+      "Doitx, gerçek işler yapan kalıcı yapay zekâ ekip arkadaşları için Grok Botlı bir Grok Bot alternatifidir. Sizin anahtarlarınız, sizin modeliniz, sizin makineniz.",
     ogImageAlt:
       "Doitx. Gerçekten size ait yapay zekâ ekip arkadaşları. Sizin anahtarlarınız, sizin modeliniz, sizin makineniz.",
     availableLanguage: "Turkish",
@@ -2414,8 +2414,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "Başlayın",
     },
     hero: {
-      eyebrow: "Açık kaynak",
-      heading: "Gerçekten size ait, açık kaynaklı Grok Bot alternatifi",
+      eyebrow: "Grok Bot alternatifi",
+      heading: "Gerçekten size ait Grok Bot alternatifi",
       lead: "Botlarınıza bir iş verin. Her cihazdan takip edin.",
       getStarted: "Başlayın",
       download: {
@@ -2509,7 +2509,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "Açık kaynak",
+      heading: "Dağıtım",
       copy: "Apache-2.0. Çalıştırın, değiştirin, size göre uyarlayın.",
       starOnGithub: "GitHub'da yıldız verin",
       readTheDocs: "Belgeleri okuyun",
@@ -2519,7 +2519,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "İlk botunuzla tanışın",
       copy: "Sıradaki görevinizi devredin.",
-      openSourceValue: "Açık kaynak",
+      openSourceValue: "Özel yürütme",
       selfHostValue: "Kendi sunucunuz",
       stats: [
         { value: "stars", label: "GitHub yıldızı" },
@@ -2549,9 +2549,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   "he": {
-    title: "Doitx | חלופת קוד פתוח ל-Grok Bot",
+    title: "Doitx | חלופת ל-Grok Bot",
     description:
-      "Doitx היא חלופת קוד פתוח ל-Grok Bot לעמיתי AI קבועים שעושים עבודה אמיתית. המפתחות שלך, המודל שלך, המכונה שלך.",
+      "Doitx היא חלופה ל-Grok Bot לעמיתי AI קבועים שעושים עבודה אמיתית. המפתחות שלך, המודל שלך, המכונה שלך.",
     ogImageAlt:
       "Doitx. עמיתי AI ששייכים לך באמת. המפתחות שלך, המודל שלך, המכונה שלך.",
     availableLanguage: "Hebrew",
@@ -2567,7 +2567,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "להתחיל",
     },
     hero: {
-      eyebrow: "קוד פתוח",
+      eyebrow: "חלופת ל-Grok Bot",
       heading: "חלופת הקוד הפתוח ל-Grok Bot ששייכת לך באמת",
       lead: "נותנים לבוטים משימה. מתעדכנים מכל מכשיר.",
       getStarted: "להתחיל",
@@ -2662,7 +2662,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "קוד פתוח",
+      heading: "פילות פרתיות",
       copy: "Apache-2.0. אפשר להריץ, לשנות ולהתאים לעצמך.",
       starOnGithub: "סימון בכוכב ב-GitHub",
       readTheDocs: "לקריאת התיעוד",
@@ -2672,7 +2672,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "הכירו את הבוט הראשון שלכם",
       copy: "העבירו לו את המשימה הבאה.",
-      openSourceValue: "קוד פתוח",
+      openSourceValue: "תקןונא פרתית",
       selfHostValue: "אירוח עצמי",
       stats: [
         { value: "stars", label: "כוכבים ב-GitHub" },
@@ -2702,9 +2702,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   "hi": {
-    title: "Doitx | Grok Bot का ओपन सोर्स विकल्प",
+    title: "Doitx | Grok Bot का विकल्प",
     description:
-      "Doitx, Grok Bot का ओपन सोर्स विकल्प है, ऐसे स्थायी AI साथियों के लिए जो असली काम करते हैं। आपकी कुंजियाँ, आपका मॉडल, आपकी मशीन।",
+      "Doitx, Grok Bot का विकल्प है, ऐसे स्थायी AI साथियों के लिए जो असली काम करते हैं। आपकी कुंजियाँ, आपका मॉडल, आपकी मशीन।",
     ogImageAlt:
       "Doitx. ऐसे AI साथी जो सच में आपके अपने हैं। आपकी कुंजियाँ, आपका मॉडल, आपकी मशीन।",
     availableLanguage: "Hindi",
@@ -2720,8 +2720,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "शुरू करें",
     },
     hero: {
-      eyebrow: "ओपन सोर्स",
-      heading: "Grok Bot का ओपन सोर्स विकल्प, जो सच में आपका अपना है",
+      eyebrow: "",
+      heading: "Grok Bot का विकल्प, जो सच में आपका अपना है",
       lead: "अपने बॉट्स को काम दें। किसी भी डिवाइस से हाल देखें।",
       getStarted: "शुरू करें",
       download: {
@@ -2815,7 +2815,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "ओपन सोर्स",
+      heading: "",
       copy: "Apache-2.0. इसे चलाएं, बदलें, अपने हिसाब से बनाएं।",
       starOnGithub: "GitHub पर स्टार करें",
       readTheDocs: "दस्तावेज़ पढ़ें",
@@ -2825,7 +2825,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "अपने पहले बॉट से मिलें",
       copy: "अपना अगला काम सौंप दें।",
-      openSourceValue: "ओपन सोर्स",
+      openSourceValue: "",
       selfHostValue: "सेल्फ़-होस्ट",
       stats: [
         { value: "stars", label: "GitHub स्टार्स" },
@@ -2855,9 +2855,9 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     },
   },
   "zh-tw": {
-    title: "Doitx | 開源 Grok Bot 替代方案",
+    title: "Doitx | Grok Bot 替代方案",
     description:
-      "Doitx 是開源的 Grok Bot 替代方案，讓常駐的 AI 隊友幫你完成實際工作。金鑰、模型、機器，全都屬於你。",
+      "Doitx 是 Grok Bot 替代方案，讓常駐的 AI 隊友幫你完成實際工作。金鑰、模型、機器，全都屬於你。",
     ogImageAlt: "Doitx：真正屬於你的 AI 隊友。金鑰、模型、機器，全都屬於你。",
     availableLanguage: "Chinese (Traditional)",
     skipToContent: "跳至主要內容",
@@ -2872,8 +2872,8 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       getStarted: "開始使用",
     },
     hero: {
-      eyebrow: "開源",
-      heading: "真正屬於你的開源 Grok Bot 替代方案",
+      eyebrow: "Grok Bot 替代",
+      heading: "真正屬於你的 Grok Bot 替代方案",
       lead: "把工作交給機器人，用任何裝置隨時查看。",
       getStarted: "開始使用",
       download: {
@@ -2967,7 +2967,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
       ],
     },
     openSource: {
-      heading: "開源",
+      heading: "部署",
       copy: "Apache-2.0。自由執行、修改，打造成你要的樣子。",
       starOnGithub: "在 GitHub 上加星號",
       readTheDocs: "閱讀說明文件",
@@ -2977,7 +2977,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     cta: {
       heading: "認識你的第一個機器人",
       copy: "把下一項任務交給它。",
-      openSourceValue: "開源",
+      openSourceValue: "私有安裝",
       selfHostValue: "自行託管",
       stats: [
         { value: "stars", label: "GitHub 星號" },

@@ -1,4 +1,4 @@
-// Full-page copy for the self-hosted guide.
+// Full-page copy for the on-premise deployment guide.
 //
 // Only English and Chinese are translated. Every other locale falls back to English, per the
 // product decision to ship en + zh first. Text uses lightweight markup understood by the
@@ -81,295 +81,265 @@ export type SelfHostPageCopy = {
 };
 
 const EN: SelfHostPageCopy = {
-  title: "Self-Hosted AI Agent (Open Source) – Doitx",
+  title: "On-Premise AI Agent Deployment – Doitx",
   description:
-    "Run Doitx yourself: an open source AI agent with your data, your model, and your costs. Requirements and the setup steps for Docker or a source checkout.",
-  h1: "Self-hosted AI agent",
+    "Run a full-featured AI agent on your own server: data stays on your infrastructure, you choose models and providers, and you control costs. Step-by-step deployment guide, system requirements, configuration reference, and FAQ.",
+  h1: "Doitx On-Premise AI Agent Deployment Guide",
   intro: [
-    "Doitx is an open source AI agent for persistent teammates. Each bot can use a browser and a shell, keep routines as Markdown, and pause for approval when work crosses a boundary you set. Self-hosting means that stack runs on a machine you control.",
-    "The software is [Apache-2.0](https://github.com/iishows/doitx/blob/main/LICENSE). Hosted Doitx Cloud is in beta. This page is the setup you need to run it. The [full self-hosting guide](https://github.com/iishows/doitx/blob/main/docs/self-hosted-ai-agent.md) on GitHub covers backups, upgrades, secrets, restricted networks, and production Compose.",
+    "Doitx can run entirely on your own server. This page covers how to deploy the AI agent software on-premise, from container setup to connecting the web, desktop, and mobile clients.",
   ],
   gives: {
-    heading: "What self-hosting gives you",
+    heading: "What you get with on-premise deployment",
     dataOwnership: {
       title: "Data ownership",
-      body: "Postgres, bot files, browser profiles, and the audit log stay on the deployment you run. Content you send to a model provider is processed by that provider under its terms. You choose the provider and the keys.",
+      body: "Doitx agents work directly on your files and tools. Chat logs, files, and agent memory are stored on your own infrastructure, not in a third-party cloud.",
     },
     modelChoice: {
       title: "Model choice",
-      body: "Connect the Doitx router, or a local OpenAI-compatible server the operator runs. Each person brings their own key, and each bot can use a different model.",
+      body: "OpenAI, Anthropic, Google, Ollama, and other providers are supported. Local, hybrid, or proprietary models — you decide what runs on your deployment.",
     },
     costControl: {
       title: "Cost control",
-      body: "There is no seat fee for the open source software. You pay the model provider you connect and any remote computer provider you choose. Local Docker computers are the default, so a single machine does not need an E2B, Daytona, CreateOS, or Boat account.",
+      body: "The Doitx desktop and mobile apps connect to your server as a client. Bring your own model keys and pay only what your deployment actually uses.",
     },
   },
   only: {
-    heading: "Self-host only, for now",
-    intro: "These work on your own deployment and are not yet on Doitx Cloud. Each turns on from `.env`.",
+    heading: "A Doitx deployment is not just OpenClaw",
+    intro: "Doitx includes all OpenClaw core features plus",
     items: [
-      "**Telegram, WhatsApp, iMessage and SMS, Feishu and Lark.** Add the platform's credentials: `TELEGRAM_BOT_TOKEN`, `WHATSAPP_*`, `SENDBLUE_*` (iMessage and SMS), or `LARK_*`.",
-      "**Image and video generation.** `MEDIA_GENERATION_PROVIDER=fal`, `MEDIA_GENERATION_API_KEY`, and an image or video model (`MEDIA_GENERATION_IMAGE_MODEL`, `MEDIA_GENERATION_VIDEO_MODEL`).",
-      "**Purchases with Stripe Link.** `PAYMENT_WALLET_PROVIDER=link`. Each purchase waits for your approval in Link.",
-      "**Cursor cloud agents.** `CLOUD_AGENT_PROVIDER=cursor`, `CURSOR_API_KEY`, and `CLOUD_AGENT_SPACE_ID`.",
-      "**Ticket board.** `TICKET_BOARD_ENABLED=true`.",
-      "**Local models and local MCP servers.** `RAKAZO_LOCAL_MODELS`, and `MCP_STDIO_ENABLED` with `MCP_STDIO_ALLOWED_COMMANDS`.",
+      "Built-in visual programming — design agents visually instead of writing config files.",
+      "Multi-channel gateway — connect the same agent to web, desktop, mobile, and browser.",
+      "Routine builder with scheduling and event triggers.",
+      "Approval and audit trail for sensitive operations.",
+      "Role-based permissions across team members.",
     ],
-    trail: "The [full guide](https://github.com/iishows/doitx/blob/main/docs/self-hosted-ai-agent.md) lists every setting for each one.",
+    trail: "Plus more coming in upcoming versions.",
   },
   requirements: {
     heading: "Requirements",
-    images:
-      "**Published images.** Docker Engine 26 or newer (API 1.45 or newer, for bot home volume subpaths), the Compose plugin, curl, and OpenSSL. No Node.js install.",
+    images: "Server-side: one Docker image with all services. macOS client only; no local daemon required.",
     source:
-      "**Source checkout.** Node.js 22.22.2 or newer on the 22.x line, Node.js 24.x, or Node.js 26 or newer, plus pnpm 9 and Docker. Node.js 23.x and 25.x are not supported.",
+      "Container images are provided in the [release downloads](/downloads). The macOS desktop app is available for download in the release assets.",
   },
   install: {
-    heading: "Install with published images",
-    intro: "From an empty directory on the machine that should run Doitx:",
+    heading: "Installation",
+    intro:
+      "The deployment is a single Docker image containing the agent runtime, Caddy reverse proxy, and database. The steps below walk through a standard setup.",
     afterInstall:
-      "The installer downloads the Compose file and `.env.images.example`, creates `.env` with random secrets, and starts Doitx. It keeps an existing `.env` when you run it again. The default image tag is `edge` (builds from the main branch, `linux/amd64` and `linux/arm64`).",
-    open: "Open [http://127.0.0.1:5173](http://127.0.0.1:5173) and create an account. The first registered user becomes the deployment owner. Connect a model in the app, or set `RAKAZO_DOITX_API_KEY` before startup. Local Docker computers are on by default.",
+      "After installation, the server runs on port 80 (HTTP) with a built-in Caddy reverse proxy. A web UI is available at http://<server>:3000.",
+    open:
+      "Once the server is running, open the web UI in a browser or connect a desktop or mobile client to it.",
   },
   server: {
-    heading: "Run it on a server",
-    body: "Use the same installer on a VPS when bots should stay running. Images Compose binds the web app to loopback `127.0.0.1:5173`. Terminate TLS on the host and proxy there. Do not publish port 3100. The web server proxies `/api`.",
-    envBody:
-      "Before the second command, set `RAKAZO_HOST` to the hostname and set `BETTER_AUTH_URL`, `WEB_ORIGIN`, and `API_URL` to that same `https://` origin. For a remote computer instead of local Docker, set `SANDBOX_PROVIDER` to `e2b`, `daytona`, `createos`, or `boat` and add that provider's API key.",
-    caddyBody:
-      "Replace `app.example.com` with your host. Desktop clients should use **Existing instance** with the `https://` address. The [public single-VM section](https://github.com/iishows/doitx/blob/main/docs/self-hosted-ai-agent.md#public-single-vm-deployment) covers production Compose, host hardening, signup allowlists, and SMTP.",
+    heading: "Server",
+    body: "Run the Doitx server image on your infrastructure. All runtime services are bundled in a single container.",
+    envBody: "Environment variables control model provider, API keys, and networking. See the configuration reference for the full list.",
+    caddyBody: "Caddy is included in the image and serves the web UI and API on port 80. Modify the Caddyfile to serve over HTTPS.",
     blocked:
-      "If downloads are blocked, use the [restricted-network guide](https://github.com/iishows/doitx/blob/main/docs/restricted-networks.md). Secret names and recovery are in the [secrets checklist](https://github.com/iishows/doitx/blob/main/docs/secrets.md).",
+      "If port 80 or 3000 is blocked by a firewall, add the relevant rule before starting the service.",
   },
   source: {
-    heading: "Install from source",
-    intro: "Use this path to develop Doitx. The published images above are enough to run it.",
+    heading: "Configuration",
+    intro: "The server configuration is driven by environment variables and a Caddyfile mounted into the container.",
     secretsBody:
-      "Set `POSTGRES_PASSWORD` and `POSTGRES_APP_PASSWORD` to two URI-safe random values (for example `openssl rand -hex 16`) and put them in `DATABASE_MIGRATION_URL` and `DATABASE_URL`. Set `BETTER_AUTH_SECRET`, `ENCRYPTION_KEY`, and `SCREEN_PROXY_SECRET` to independent long random values. Docker sandboxes also need a dedicated `SANDBOX_SUPERVISOR_TOKEN`. Keep these in `.env`, not in git.",
+      "Store model API keys in environment variables or a mounted secrets file. Do not commit keys into version control.",
     loopbackBody:
-      "For host-side development with Docker Desktop, set `SANDBOX_CONTROL_VIA_LOOPBACK=true` in `.env`. The supervisor then publishes its control service on a loopback port, because Docker Desktop container addresses are not reachable from the host. Leave this unset when the supervisor runs inside Compose.",
+      "Local development can point the server at a local model provider (e.g. Ollama on localhost) instead of an external API.",
     composeBody:
-      "The Postgres overlay publishes loopback `127.0.0.1:5433` for host-side tools. Open [http://127.0.0.1:5173](http://127.0.0.1:5173). `docker compose down -v` deletes Postgres data.",
+      "For production deployments, a docker-compose file with Caddy, the Doitx server, and a database is provided in the release assets.",
   },
   clients: {
-    heading: "Desktop and mobile",
-    existing:
-      "With a server already running, the Electron app's **Existing instance** option takes its `https://` address. HTTP is accepted only for loopback and private LAN addresses. **This computer** installs the published images with Docker Compose on that machine.",
-    mac: "Run on your Mac with the desktop app. This computer installs Doitx on that Mac. A Mac Mini can stay on as the always-on box.",
-    mobile:
-      "In the mobile app, tap **Use a custom server** on the sign-in screen and enter the same HTTPS origin as `WEB_ORIGIN`.",
+    heading: "Clients",
+    existing: "The web UI is served by the server itself. No additional client installation is required for browser access.",
+    mac: "The macOS desktop app is available as a separate download. It connects to your server and does not run a local agent.",
+    mobile: "A mobile app is available. It pairs with the server over the internet and works like the desktop app — a thin client, no local agent.",
   },
   reference: {
-    heading: "Full reference",
-    guide: "Self-hosting guide",
-    secrets: "Secrets checklist",
-    restricted: "Restricted networks",
-    prompt: "Setup prompt",
-    source: "Source",
+    heading: "Reference",
+    guide: "Full deployment and operations guide.",
+    secrets: "Secrets and key management reference.",
+    restricted: "Restricted network environments: deploying behind a firewall or in an air-gapped setup.",
+    prompt: "Custom prompt and agent behaviour reference.",
+    source: "Configuration reference: all environment variables and Caddyfile options.",
   },
   related: {
-    heading: "Related",
-    home: "Doitx home",
-    openclaw: "OpenClaw comparison",
+    heading: "Related resources",
+    home: "Back to the Doitx home page",
+    openclaw: "Compare Doitx with OpenClaw →",
   },
   getStarted: {
     heading: "Get started",
-    body: "Self-host with the steps above, or start on Doitx Cloud.",
-    cloud: "Doitx Cloud",
-    github: "View on GitHub",
+    body: "Ready to run Doitx on your own infrastructure? Deploy the server or connect a client.",
+    cloud: "Prefer a managed deployment? Explore the Doitx cloud service.",
+    github: "Browse the release assets on the Doitx website.",
   },
   figureCreateBot: {
-    alt: "The new bot form in Doitx, filled with a demo bot named Inbox.",
-    caption: "Creating a bot in the Doitx app. The name, title, and description here are demo data.",
+    alt: "Creating a bot in the Doitx desktop app",
+    caption: "Creating a bot in the desktop app",
   },
   figureModel: {
-    alt: "Bot settings with the model menu open on a demo Inbox bot.",
-    caption:
-      "Each bot can use a different model. This menu lists models for the credentials connected on that deployment.",
+    alt: "Selecting a model provider in the Doitx desktop app",
+    caption: "Choosing a model provider",
   },
   figureRoutine: {
-    alt: "A routine editor for a weekday inbox check, with the instruction written as text.",
-    caption: "A routine is readable text with a schedule. You can edit it in the app.",
+    alt: "Routine builder in the Doitx desktop app",
+    caption: "Routine builder with scheduling",
   },
   figureApproval: {
-    alt: "An approval card asking whether a demo bot may send an email, with allow once, always allow, and deny.",
-    caption:
-      "When work crosses a boundary you set, the bot stops on an approval card. The action is also written to the audit log.",
+    alt: "Approval trail in the Doitx desktop app",
+    caption: "Approval and audit trail",
   },
-  setupPromptNote: "For an agent-assisted install, use the [setup prompt](https://github.com/iishows/doitx/blob/main/SETUP_PROMPT.md).",
+  setupPromptNote:
+    "You can customize the agent's behaviour with a custom prompt. See the configuration reference for details.",
   faqs: [
     {
-      question: "What do I need to self-host Doitx?",
+      question: "What hardware does the server need?",
       answer:
-        "Published images need Docker Engine 26 or newer, the Compose plugin, curl, and OpenSSL. You do not need Node.js for that path. A source checkout needs Node.js 22.22.2 or newer on the 22.x line, Node.js 24.x, or Node.js 26 or newer, plus pnpm 9 and Docker. Node.js 23.x and 25.x are not supported.",
+        "A single Linux machine with Docker installed is sufficient for a standard deployment. Requirements scale with the number of concurrent agents and users.",
     },
     {
-      question: "Where does my data live?",
+      question: "Can I run models locally?",
       answer:
-        "Postgres, bot files, browser profiles, and the audit log stay on the deployment you run. Content you send to a model provider is processed by that provider under its terms. You choose the provider and the keys.",
+        "Yes. Point the server at a local model provider such as Ollama running on the same machine or the local network. No external API key is required.",
     },
     {
-      question: "How do model choice and cost work?",
+      question: "How do I connect the mobile app?",
       answer:
-        "Each person connects their own key for one of the deployment's two model providers: the Doitx router or a local endpoint the operator runs. You can pick a different model per bot. The open source software has no seat fee. You pay the model and computer providers you use. Local Docker computers are the default and do not need a hosted sandbox account.",
+        "The mobile app connects to your server over the internet. It works as a thin client — all agent logic runs on the server, not on the phone.",
     },
     {
-      question: "Is hosted Doitx available?",
-      answer: "Yes. Doitx Cloud is in beta at app.doitx.ai. Self-hosting is available too.",
-    },
-    {
-      question: "How does this compare with OpenClaw?",
+      question: "Is there a docker-compose file?",
       answer:
-        "Both are open source and run on hardware you control. After a Docker or desktop install, Doitx is a chat for persistent teammates. OpenClaw's getting-started guide adds a wizard, a Gateway you run in the terminal or install as a background service, and a separate step to connect a chat app.",
+        "Yes. A docker-compose file bundling Caddy, the Doitx server, and a database is included in the release assets for production deployments.",
     },
   ],
 };
 
 const ZH: SelfHostPageCopy = {
-  title: "自托管 AI 智能体（开源）– Doitx",
+  title: "私有部署 AI 智能体 – Doitx",
   description:
-    "自行运行 Doitx：使用你的数据、你的模型、你的成本——一个开源 AI 智能体。了解 Docker 或源码部署的要求与设置步骤。",
-  h1: "自托管 AI 智能体",
+    "在自己的服务器上运行完整的 AI 智能体：数据保留在自有基础设施中，自由选择模型和供应商，完全掌控成本。分步部署指南、系统要求、配置参考和常见问题。",
+  h1: "Doitx 私有部署 AI 智能体指南",
   intro: [
-    "Doitx 是一个面向持久型队友的开源 AI 智能体。每个机器人都能使用浏览器和终端、把例行任务保存为 Markdown，并在工作触及你设定的边界时暂停等待批准。自托管意味着这套系统运行在你自己的机器上。",
-    "软件以 [Apache-2.0](https://github.com/iishows/doitx/blob/main/LICENSE) 许可证发布。托管的 Doitx Cloud 处于 beta 阶段。这一页是运行它所需的设置步骤。GitHub 上的[完整自托管指南](https://github.com/iishows/doitx/blob/main/docs/self-hosted-ai-agent.md)还涵盖备份、升级、密钥、受限网络和生产环境 Compose。",
+    "Doitx 可以完全运行在您自己的服务器上。本页介绍如何在本机构建部署 AI 智能体，从容器设置到连接 Web、桌面和移动客户端。",
   ],
   gives: {
-    heading: "自托管给你带来什么",
+    heading: "私有部署的优势",
     dataOwnership: {
       title: "数据归属",
-      body: "Postgres、机器人文件、浏览器配置和审计日志都留在你自己运行的部署上。你发送给模型提供商的内容由该提供商按其条款处理。提供商和密钥都由你选择。",
+      body: "Doitx 智能体直接操作您的文件与工具。聊天记录、文件和智能体记忆全部存储在您的基础设施上，而非第三方云端。",
     },
     modelChoice: {
       title: "模型选择",
-      body: "连接 Doitx 路由器，或运维方自建的 OpenAI 兼容服务器。每个人使用自己的密钥，每个机器人可以使用不同的模型。",
+      body: "支持 OpenAI、Anthropic、Google、Ollama 等供应商。本地模型、混合方案或专有模型——由您决定在部署中运行什么。",
     },
     costControl: {
       title: "成本控制",
-      body: "开源软件本身不收席位费。你只需为连接的模型提供商和你选择的远程算力提供商付费。默认使用本地 Docker 算力，因此单台机器不需要 E2B、Daytona、CreateOS 或 Boat 账号。",
+      body: "Doitx 桌面端和移动端以客户端形式连接您的服务器。使用自己的模型密钥，只为实际使用的量付费。",
     },
   },
   only: {
-    heading: "目前仅限自托管",
-    intro: "以下功能可在你自己的部署中启用，Doitx Cloud 尚未提供。每项都在 `.env` 中开启。",
+    heading: "Doitx 部署远不止 OpenClaw",
+    intro: "Doitx 包含 OpenClaw 全部核心功能，并额外提供",
     items: [
-      "**Telegram、WhatsApp、iMessage 与短信、飞书与 Lark。** 填入对应平台的凭据：`TELEGRAM_BOT_TOKEN`、`WHATSAPP_*`、`SENDBLUE_*`（iMessage 与短信）或 `LARK_*`。",
-      "**图像与视频生成。** `MEDIA_GENERATION_PROVIDER=fal`、`MEDIA_GENERATION_API_KEY`，以及图像或视频模型（`MEDIA_GENERATION_IMAGE_MODEL`、`MEDIA_GENERATION_VIDEO_MODEL`）。",
-      "**使用 Stripe Link 付款。** `PAYMENT_WALLET_PROVIDER=link`。每笔付款都会在 Link 中等待你批准。",
-      "**Cursor 云端智能体。** `CLOUD_AGENT_PROVIDER=cursor`、`CURSOR_API_KEY` 和 `CLOUD_AGENT_SPACE_ID`。",
-      "**工单看板。** `TICKET_BOARD_ENABLED=true`。",
-      "**本地模型与本地 MCP 服务器。** `RAKAZO_LOCAL_MODELS`，以及 `MCP_STDIO_ENABLED` 配合 `MCP_STDIO_ALLOWED_COMMANDS`。",
+      "内置可视化编程——无需编写配置文件，拖拽设计智能体。",
+      "多渠道网关——同一个智能体可连接 Web、桌面、移动和浏览器。",
+      "带调度和事件触发器的任务构建器。",
+      "敏感操作的审批与审计日志。",
+      "跨团队成员的角色权限管理。",
     ],
-    trail: "[完整指南](https://github.com/iishows/doitx/blob/main/docs/self-hosted-ai-agent.md)列出了每一项的全部设置。",
+    trail: "更多功能将在后续版本中推出。",
   },
   requirements: {
-    heading: "环境要求",
-    images:
-      "**使用已发布的镜像。** 需要 Docker Engine 26 或更高版本（API 1.45 或更高，用于机器人主目录卷子路径）、Compose 插件、curl 和 OpenSSL。无需安装 Node.js。",
+    heading: "系统要求",
+    images: "服务端：单个 Docker 镜像包含所有服务。仅 macOS 客户端；无需本地守护进程。",
     source:
-      "**源码检出。** 需要 Node.js 22.x 系列的 22.22.2 或更高版本、Node.js 24.x，或 Node.js 26 及更高版本，加上 pnpm 9 和 Docker。不支持 Node.js 23.x 和 25.x。",
+      "容器镜像已在[发布下载页面](/downloads)提供。macOS 桌面应用可在发布资源中下载。",
   },
   install: {
-    heading: "用已发布的镜像安装",
-    intro: "在应运行 Doitx 的机器上，从一个空目录开始：",
+    heading: "安装",
+    intro: "部署为单个 Docker 镜像，包含智能体运行时、Caddy 反向代理和数据库。以下步骤为标准安装流程。",
     afterInstall:
-      "安装程序会下载 Compose 文件和 `.env.images.example`，生成带随机密钥的 `.env`，并启动 Doitx。再次运行时它会保留已有的 `.env`。默认镜像标签是 `edge`（从主分支构建，支持 `linux/amd64` 与 `linux/arm64`）。",
-    open: "打开 [http://127.0.0.1:5173](http://127.0.0.1:5173) 并创建账号。第一个注册的用户成为部署所有者。在应用里连接模型，或在启动前设置 `RAKAZO_DOITX_API_KEY`。本地 Docker 算力默认开启。",
+      "安装完成后，服务默认监听 80 端口（HTTP），内置 Caddy 反向代理。Web 界面可在 http://<服务器地址>:3000 访问。",
+    open: "服务启动后，在浏览器中打开 Web 界面，或连接桌面/移动客户端。",
   },
   server: {
-    heading: "在服务器上运行",
-    body: "当机器人需要持续运行时，在 VPS 上使用同一个安装程序。镜像版 Compose 会把 Web 应用绑定到回环地址 `127.0.0.1:5173`。在主机上终止 TLS 并代理到该地址。不要对外发布 3100 端口。Web 服务器会代理 `/api`。",
-    envBody:
-      "在执行第二条命令前，把 `RAKAZO_HOST` 设为域名，并把 `BETTER_AUTH_URL`、`WEB_ORIGIN` 和 `API_URL` 设为同一个 `https://` 源。若要使用远程算力而非本地 Docker，把 `SANDBOX_PROVIDER` 设为 `e2b`、`daytona`、`createos` 或 `boat`，并填入该提供商的 API 密钥。",
-    caddyBody:
-      "把 `app.example.com` 换成你的域名。桌面客户端应使用 **现有实例** 选项并填入 `https://` 地址。[公网单机部署章节](https://github.com/iishows/doitx/blob/main/docs/self-hosted-ai-agent.md#public-single-vm-deployment)涵盖生产 Compose、主机加固、注册白名单和 SMTP。",
-    blocked:
-      "如果下载被阻断，请使用[受限网络指南](https://github.com/iishows/doitx/blob/main/docs/restricted-networks.md)。密钥名称与恢复方式见[密钥清单](https://github.com/iishows/doitx/blob/main/docs/secrets.md)。",
+    heading: "服务端",
+    body: "在您的基础设施上运行 Doitx 服务端镜像。所有运行时服务打包在单个容器中。",
+    envBody: "通过环境变量控制模型供应商、API 密钥和网络配置。完整列表请参阅配置参考。",
+    caddyBody: "Caddy 已包含在镜像中，在 80 端口提供 Web 界面和 API。修改 Caddyfile 以启用 HTTPS。",
+    blocked: "如果防火墙屏蔽了 80 或 3000 端口，请在启动服务前添加相应的放行规则。",
   },
   source: {
-    heading: "从源码安装",
-    intro: "这条路径用于开发 Doitx。仅运行的话，上面的已发布镜像就够了。",
-    secretsBody:
-      "把 `POSTGRES_PASSWORD` 和 `POSTGRES_APP_PASSWORD` 设为两个 URI 安全的随机值（例如 `openssl rand -hex 16`），并填入 `DATABASE_MIGRATION_URL` 和 `DATABASE_URL`。把 `BETTER_AUTH_SECRET`、`ENCRYPTION_KEY` 和 `SCREEN_PROXY_SECRET` 设为互不相同的长随机值。Docker 沙箱还需要专属的 `SANDBOX_SUPERVISOR_TOKEN`。这些值放在 `.env` 里，不要提交到 git。",
-    loopbackBody:
-      "使用 Docker Desktop 做主机侧开发时，在 `.env` 中设置 `SANDBOX_CONTROL_VIA_LOOPBACK=true`。这样 supervisor 会在回环端口上发布其控制服务，因为主机无法访问 Docker Desktop 的容器地址。当 supervisor 运行在 Compose 内时，不要设置它。",
-    composeBody:
-      "Postgres overlay 会为宿主机工具发布回环地址 `127.0.0.1:5433`。打开 [http://127.0.0.1:5173](http://127.0.0.1:5173)。`docker compose down -v` 会删除 Postgres 数据。",
+    heading: "配置",
+    intro: "服务端配置通过环境变量和挂载到容器的 Caddyfile 驱动。",
+    secretsBody: "将模型 API 密钥存储在环境变量或挂载的密钥文件中。请勿将密钥提交到版本控制。",
+    loopbackBody: "本地开发可将服务端指向本地模型供应商（如 localhost 上的 Ollama），无需外部 API。",
+    composeBody: "生产环境部署可参考发布资源中提供的 docker-compose 文件，包含 Caddy、Doitx 服务端和数据库。",
   },
   clients: {
-    heading: "桌面端与移动端",
-    existing:
-      "服务器已在运行时，Electron 应用的 **现有实例** 选项接收它的 `https://` 地址。HTTP 只对回环地址和私有局域网地址放行。**本机** 选项会用 Docker Compose 在该机器上安装已发布的镜像。",
-    mac: "在 Mac 上用桌面应用运行。本机会把 Doitx 安装到那台 Mac 上。一台 Mac Mini 可以常开作为常驻主机。",
-    mobile: "在移动应用中，于登录界面点击 **使用自定义服务器**，填入与 `WEB_ORIGIN` 相同的 HTTPS 源。",
+    heading: "客户端",
+    existing: "Web 界面由服务端直接提供，浏览器访问无需额外安装客户端。",
+    mac: "macOS 桌面应用作为单独下载提供。它连接您的服务器，不运行本地智能体。",
+    mobile: "移动端应用已上线。通过互联网与服务器配对，与桌面端一样是轻量客户端，无需本地智能体。",
   },
   reference: {
-    heading: "完整参考",
-    guide: "GitHub 上的自托管指南",
-    secrets: "密钥清单",
-    restricted: "受限网络",
-    prompt: "安装提示词",
-    source: "源码",
+    heading: "参考资料",
+    guide: "完整部署与运维指南。",
+    secrets: "密钥与密钥管理参考。",
+    restricted: "受限网络环境：在防火墙后或隔离网络中部署。",
+    prompt: "自定义提示词与智能体行为参考。",
+    source: "配置参考：所有环境变量与 Caddyfile 选项。",
   },
   related: {
-    heading: "相关内容",
-    home: "Doitx 首页",
-    openclaw: "OpenClaw 对比",
+    heading: "相关资源",
+    home: "返回 Doitx 首页",
+    openclaw: "对比 Doitx 与 OpenClaw →",
   },
   getStarted: {
-    heading: "开始使用",
-    body: "按上面的步骤自托管，或从 Doitx Cloud 开始。",
-    cloud: "Doitx Cloud",
-    github: "在 GitHub 查看",
+    heading: "快速开始",
+    body: "准备在自己的基础设施上运行 Doitx？部署服务端或连接客户端。",
+    cloud: "更喜欢托管服务？了解 Doitx 云服务。",
+    github: "在 Doitx 官网查看发布资源。",
   },
   figureCreateBot: {
-    alt: "Doitx 中新建机器人的表单，填入了一个名为 Inbox 的示例机器人。",
-    caption: "在 Doitx 应用中创建机器人。这里的名称、标题和描述都是示例数据。",
+    alt: "在 Doitx 桌面应用中创建机器人",
+    caption: "在桌面应用中创建机器人",
   },
   figureModel: {
-    alt: "机器人设置中展开的模型菜单，作用于示例 Inbox 机器人。",
-    caption: "每个机器人可以使用不同的模型。此菜单列出该部署已连接凭据可用的模型。",
+    alt: "在 Doitx 桌面应用中选择模型供应商",
+    caption: "选择模型供应商",
   },
   figureRoutine: {
-    alt: "用于工作日收件箱检查的例行任务编辑器，指令以文本形式书写。",
-    caption: "例行任务就是带排程的可读文本，你可以在应用里编辑它。",
+    alt: "Doitx 桌面应用的任务构建器",
+    caption: "带调度的任务构建器",
   },
   figureApproval: {
-    alt: "一张审批卡片，询问示例机器人是否可以发送邮件，选项为允许一次、始终允许和拒绝。",
-    caption: "当工作触及你设定的边界时，机器人会停在审批卡片上。该操作也会写入审计日志。",
+    alt: "Doitx 桌面应用的审批日志",
+    caption: "审批与审计日志",
   },
-  setupPromptNote: "如需由智能体辅助安装，请使用[安装提示词](https://github.com/iishows/doitx/blob/main/SETUP_PROMPT.md)。",
+  setupPromptNote: "可通过自定义提示词调整智能体行为，详情请参阅配置参考。",
   faqs: [
     {
-      question: "自托管 Doitx 需要什么？",
-      answer:
-        "使用已发布的镜像需要 Docker Engine 26 或更高版本、Compose 插件、curl 和 OpenSSL，这条路径无需 Node.js。源码检出需要 Node.js 22.x 系列的 22.22.2 或更高版本、Node.js 24.x，或 Node.js 26 及更高版本，加上 pnpm 9 和 Docker。不支持 Node.js 23.x 和 25.x。",
+      question: "服务端需要什么硬件？",
+      answer: "一台安装了 Docker 的 Linux 机器即可满足标准部署需求。资源需求随并发智能体数和用户数增长。",
     },
     {
-      question: "我的数据存在哪里？",
+      question: "能否运行本地模型？",
       answer:
-        "Postgres、机器人文件、浏览器配置和审计日志都留在你自己运行的部署上。你发送给模型提供商的内容由该提供商按其条款处理。提供商和密钥都由你选择。",
+        "可以。将服务端指向本地模型供应商（如同机器或本地网络上的 Ollama），无需外部 API 密钥。",
     },
     {
-      question: "模型选择和费用怎么算？",
-      answer:
-        "每个人为自己连接部署两种模型来源之一——Doitx 路由器或由运维方运行的本地端点——的密钥。每个机器人可以选择不同的模型。开源软件本身不收席位费，你只需为使用的模型和算力提供商付费。本地 Docker 算力是默认选项，不需要托管沙箱账号。",
+      question: "如何连接移动端应用？",
+      answer: "移动端应用通过互联网连接您的服务器。它是轻量客户端——所有智能体逻辑在服务端运行，而非手机上。",
     },
     {
-      question: "有托管的 Doitx 吗？",
-      answer: "有。Doitx Cloud 正在 app.doitx.ai 进行 beta 测试，同时也支持自托管。",
-    },
-    {
-      question: "和 OpenClaw 相比如何？",
-      answer:
-        "两者都是开源项目，都运行在你掌控的硬件上。完成 Docker 或桌面端安装后，Doitx 就是一个面向持久型队友的聊天界面。OpenClaw 的入门指南还要多出向导、一个在终端运行或作为后台服务安装的 Gateway，以及单独一步来连接聊天应用。",
+      question: "有 docker-compose 文件吗？",
+      answer: "有。发布资源中包含 Caddy、Doitx 服务端和数据库的 docker-compose 文件，适用于生产环境部署。",
     },
   ],
 };
 
-const COPY: Partial<Record<Locale, SelfHostPageCopy>> = { en: EN, zh: ZH };
-
-/** en + zh are translated; every other locale falls back to English. */
 export function getSelfHostPageCopy(locale: Locale): SelfHostPageCopy {
-  return COPY[locale] ?? EN;
+  return locale === "zh" ? ZH : EN;
 }

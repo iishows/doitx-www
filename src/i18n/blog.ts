@@ -33,7 +33,7 @@ export function blogPathFor(locale: string, path: string): string {
 const EN: BlogUiCopy = {
   blogTitle: "Blog – Doitx",
   blogDescription:
-    "Notes on running an open source AI agent yourself, including setup and how Doitx compares with other projects.",
+    "Notes on running your own AI agent deployment, including setup and how Doitx compares with other projects.",
   indexHeading: "Blog",
   categoriesLabel: "Categories",
   categoryLabels: {
@@ -58,7 +58,7 @@ const EN: BlogUiCopy = {
 
 const ZH: BlogUiCopy = {
   blogTitle: "博客 – Doitx",
-  blogDescription: "关于自己运行开源 AI 智能体的笔记，包括安装步骤，以及 Doitx 与其他项目的对比。",
+  blogDescription: "关于运行自有 AI 智能体部署的笔记，包括安装步骤，以及 Doitx 与其他项目的对比。",
   indexHeading: "博客",
   categoriesLabel: "分类",
   categoryLabels: {

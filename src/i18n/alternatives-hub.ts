@@ -28,7 +28,7 @@ export type AlternativesHubCopy = {
   updatedLabel: string;
   /** Column header for the "Topic" column in the compare table. */
   topicLabel: string;
-  /** Heading for the open-source reasons section on the compare page. */
+  /** Heading for the reasons section on the compare page. */
   openSourceHeading: string;
   /** Heading for the sources list on the compare page. */
   sourcesHeading: string;
@@ -39,14 +39,14 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
     title: "Personal AI Agents 2026: Doitx vs OpenClaw, Hermes, Grok Bot & More",
     hubLabel: "Alternatives",
     metaDescription:
-      "Compare Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro, and Claude Duet in 2026, covering self-hosting, licenses, memory, and pricing.",
-    h1: "Best Personal AI Agents in 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro & Open Source Alternatives",
+      "Compare Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro, and Claude Duet in 2026, covering deployment options, licenses, memory, and pricing.",
+    h1: "Best Personal AI Agents in 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro & More",
     introLead:
-      "Doitx is a self-hosted AI agent platform for people and teams that want AI teammates on infrastructure they control. Pick the tool that matches how you will operate it:",
+      "Doitx is a private AI agent platform for people and teams that want AI teammates on infrastructure they control. Pick the tool that matches how you will operate it:",
     introTail:
-      "Doitx, OpenClaw, and Hermes Agent are open source; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro, and Claude Duet are hosted products.",
+      "Doitx, OpenClaw, and Hermes Agent run on your own infrastructure; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro, and Claude Duet are hosted products.",
     getStarted: {
-      intro: "The self-hosted start is one command and one key.",
+      intro: "Deployment starts with one command and one key.",
       stepHead: "Install and sign in",
       stepBody: "The installer pulls published images, starts the stack, and opens the browser.",
       startTitle: "Start Doitx",
@@ -87,7 +87,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "Nous Research's MIT-licensed agent. A desktop app plus an optional standalone gateway, and every skill is an editable file.",
+          "Nous Research's agent. A desktop app plus an optional standalone gateway, and every skill is an editable file.",
       },
       {
         slug: "claude-duet-alternative",
@@ -105,27 +105,27 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "A free MIT-licensed agent you run yourself, with a browser, skills, and a Gateway in its docs. OpenClaw is not affiliated with Doitx.",
+          "A free agent you run yourself, with a browser, skills, and a Gateway in its docs. OpenClaw is not affiliated with Doitx.",
       },
     ],
     roundupUpdated: "November 3, 2026",
     updatedLabel: "Updated",
     topicLabel: "Topic",
-    openSourceHeading: "Why open source and self-hosted",
+    openSourceHeading: "Why a private deployment",
     sourcesHeading: "Sources",
   },
   de: {
     title: "Persönliche KI-Agenten 2026: Doitx vs. OpenClaw, Hermes, Grok Bot & mehr",
     hubLabel: "Alternativen",
     metaDescription:
-      "Vergleiche 2026 Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro und Claude Duet — mit Fokus auf Self-Hosting, Lizenzen, Gedächtnis und Preise.",
-    h1: "Die besten persönlichen KI-Agenten 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro & Open-Source-Alternativen",
+      "Vergleiche 2026 Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro und Claude Duet — mit Fokus auf Deployment-Optionen, Lizenzen, Gedächtnis und Preise.",
+    h1: "Die besten persönlichen KI-Agenten 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro & mehr",
     introLead:
-      "Doitx ist eine Plattform für selbst gehostete KI-Agenten, für Menschen und Teams, die KI-Teams auf eigener Infrastruktur wollen. Wählen Sie das Werkzeug, das zu Ihrer Arbeitsweise passt:",
+      "Doitx ist eine Plattform für private KI-Agenten, für Menschen und Teams, die KI-Teams auf eigener Infrastruktur wollen. Wählen Sie das Werkzeug, das zu Ihrer Arbeitsweise passt:",
     introTail:
-      "Doitx, OpenClaw und Hermes Agent sind Open Source; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro und Claude Duet sind gehostete Produkte.",
+      "Doitx, OpenClaw und Hermes Agent laufen auf eigener Infrastruktur; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro und Claude Duet sind gehostete Produkte.",
     getStarted: {
-      intro: "Der selbst gehostete Start besteht aus einem Befehl und einem Schlüssel.",
+      intro: "Der Start mit privater Installation besteht aus einem Befehl und einem Schlüssel.",
       stepHead: "Installieren und anmelden",
       stepBody: "Der Installer zieht veröffentlichte Images, startet den Stack und öffnet den Browser.",
       startTitle: "Doitx starten",
@@ -166,7 +166,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "Der Agent von Nous Research mit MIT-Lizenz. Eine Desktop-App plus optionaler eigenständiger Gateway, und jede Fähigkeit ist eine editierbare Datei.",
+          "Der Agent von Nous Research. Eine Desktop-App plus optionaler eigenständiger Gateway, und jede Fähigkeit ist eine editierbare Datei.",
       },
       {
         slug: "claude-duet-alternative",
@@ -184,27 +184,27 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "Ein kostenloser Agent mit MIT-Lizenz, den Sie selbst betreiben, mit Browser, Fähigkeiten und einer Gateway in den Doku. OpenClaw ist nicht mit Doitx verbunden.",
+          "Ein kostenloser Agent, den Sie selbst betreiben, mit Browser, Fähigkeiten und einer Gateway in den Doku. OpenClaw ist nicht mit Doitx verbunden.",
       },
     ],
     roundupUpdated: "3. November 2026",
     updatedLabel: "Aktualisiert",
     topicLabel: "Thema",
-    openSourceHeading: "Warum Open Source und Self-Hosted",
+    openSourceHeading: "Warum eine private Implementierung",
     sourcesHeading: "Quellen",
   },
   ko: {
     title: "개인 AI 에이전트 2026: Doitx vs OpenClaw, Hermes, Grok Bot 외",
     hubLabel: "대안",
     metaDescription:
-      "2026년 Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro, Claude Duet를 비교합니다. 셀프 호스팅, 라이선스, 메모리, 가격을 다룹니다.",
-    h1: "2026년 최고의 개인 AI 에이전트: Grok Bot, Muse, Dots, Instinct, Hark Pro & 오픈소스 대안",
+      "2026년 Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro, Claude Duet를 비교합니다. 프라이빗 배포, 라이선스, 메모리, 가격을 다룹니다.",
+    h1: "2026년 최고의 개인 AI 에이전트: Grok Bot, Muse, Dots, Instinct, Hark Pro & 그 외",
     introLead:
-      "Doitx는 자신이 통제하는 인프라 위에서 AI 팀원을 쓰는 개인과 팀을 위한 셀프 호스팅 AI 에이전트 플랫폼입니다. 운영 방식에 맞는 도구를 고르세요:",
+      "Doitx는 자신이 통제하는 인프라 위에서 AI 팀원을 쓰는 개인과 팀을 위한 프라이빗 AI 에이전트 플랫폼입니다. 운영 방식에 맞는 도구를 고르세요:",
     introTail:
-      "Doitx, OpenClaw, Hermes Agent는 오픈소스입니다. Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro, Claude Duet는 호스팅된 제품입니다.",
+      "Doitx, OpenClaw, Hermes Agent는 자체 인프라에서 실행됩니다. Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro, Claude Duet는 호스팅된 제품입니다.",
     getStarted: {
-      intro: "셀프 호스팅 시작은 명령어 하나와 키 하나입니다.",
+      intro: "프라이빗 배포 시작은 명령어 하나와 키 하나입니다.",
       stepHead: "설치하고 로그인",
       stepBody: "인스톨러가 공개된 이미지를 가져오고 스택을 시작하며 브라우저가 열립니다.",
       startTitle: "Doitx 시작하기",
@@ -213,7 +213,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
       githubLabel: "GitHub에서 보기",
     },
     openSourceReasons: [
-      "모든 소스가 한 개의 공개 저장소에 담겨 있습니다.",
+      "모든 코드가 한 개의 공개 저장소에 담겨 있습니다.",
       "라이선스가 기업이 제품을 운영, 재판매, 임베딩할 수 있게 합니다.",
       "코드와 사이에서 회사나 모델 공급사가 끼지 않습니다.",
       "서버는 Docker에서 돌며 이미 내는 비용의 모델에 연결됩니다.",
@@ -245,7 +245,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "MIT 라이선스의 Nous Research 에이전트. 데스크톱 앱과 선택 가능한 독립 게이트웨이가 있고, 모든 스킬은 편집 가능한 파일입니다.",
+          "Nous Research 에이전트. 데스크톱 앱과 선택 가능한 독립 게이트웨이가 있고, 모든 스킬은 편집 가능한 파일입니다.",
       },
       {
         slug: "claude-duet-alternative",
@@ -263,26 +263,26 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "브라우저, 스킬, 문서 속 게이트웨이를 갖춘 무료 MIT 라이선스 에이전트로 직접 운영합니다. OpenClaw는 Doitx와 무관합니다.",
+          "브라우저, 스킬, 문서 속 게이트웨이를 갖춘 무료 에이전트로 직접 운영합니다. OpenClaw는 Doitx와 무관합니다.",
       },
     ],
     roundupUpdated: "2026년 11월 3일",
     updatedLabel: "갱신됨",
     topicLabel: "주제",
-    openSourceHeading: "오픈소스와 셀프호스팅을 고르는 이유",
+    openSourceHeading: "프라이빗 배포를 고르는 이유",
     sourcesHeading: "출처",
   },
   zh: {
     title: "2026 个人 AI 智能体：Doitx 对比 OpenClaw、Hermes、Grok Bot 等",
     hubLabel: "替代品",
     metaDescription:
-      "2026 年对比 Doitx、OpenClaw、Hermes Agent、Grok Bot、Meta Muse、OpenAI Dots、Instinct、Hark Pro 与 Claude Duet，涵盖自托管、许可证、记忆与定价。",
-    h1: "2026 年最佳个人 AI 智能体：Grok Bot、Muse、Dots、Instinct、Hark Pro 与开源替代品",
-    introLead: "Doitx 是面向希望在自己掌控的基础设施上运行 AI 队友的个人与团队的自托管 AI 智能体平台。选择与你的使用方式匹配的工具：",
+      "2026 年对比 Doitx、OpenClaw、Hermes Agent、Grok Bot、Meta Muse、OpenAI Dots、Instinct、Hark Pro 与 Claude Duet，涵盖私有部署、许可证、记忆与定价。",
+    h1: "2026 年最佳个人 AI 智能体：Grok Bot、Muse、Dots、Instinct、Hark Pro 等",
+    introLead: "Doitx 是面向希望在自己掌控的基础设施上运行 AI 队友的个人与团队的私有 AI 智能体平台。选择与你的使用方式匹配的工具：",
     introTail:
-      "Doitx、OpenClaw 和 Hermes Agent 是开源项目；Grok Bot、Meta Muse、OpenAI Dots、Instinct、Hark Pro 和 Claude Duet 是托管产品。",
+      "Doitx、OpenClaw 和 Hermes Agent 运行在自有基础设施上；Grok Bot、Meta Muse、OpenAI Dots、Instinct、Hark Pro 和 Claude Duet 是托管产品。",
     getStarted: {
-      intro: "自托管的起步只是一条命令和一个密钥。",
+      intro: "私有部署的起步只是一条命令和一个密钥。",
       stepHead: "安装并登录",
       stepBody: "安装程序拉取已发布的镜像、启动整套服务并打开浏览器。",
       startTitle: "启动 Doitx",
@@ -321,7 +321,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
       {
         slug: "hermes-alternative",
         title: "Hermes Agent",
-        description: "Nous Research 的 MIT 协议智能体。桌面应用加可选的独立网关，且每个技能都是一个可编辑文件。",
+        description: "Nous Research 的智能体。桌面应用加可选的独立网关，且每个技能都是一个可编辑文件。",
       },
       {
         slug: "claude-duet-alternative",
@@ -339,27 +339,27 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "一个免费的 MIT 协议智能体，由你自己运行，带浏览器、技能和文档中的网关。OpenClaw 与 Doitx 无关。",
+          "一个免费的智能体，由你自己运行，带浏览器、技能和文档中的网关。OpenClaw 与 Doitx 无关。",
       },
     ],
     roundupUpdated: "2026 年 11 月 3 日",
     updatedLabel: "更新于",
     topicLabel: "主题",
-    openSourceHeading: "为什么选择开源与自托管",
+    openSourceHeading: "为什么选择私有部署",
     sourcesHeading: "资料来源",
   },
   ja: {
     title: "パーソナル AI エージェント 2026: Doitx vs OpenClaw, Hermes, Grok Bot など",
     hubLabel: "代替案",
     metaDescription:
-      "2026年に Doitx、OpenClaw、Hermes Agent、Grok Bot、Meta Muse、OpenAI Dots、Instinct、Hark Pro、Claude Duet を比較。セルフホスティング、ライセンス、メモリ、価格を取り扱います。",
-    h1: "2026 年おすすめのパーソナル AI エージェント: Grok Bot, Muse, Dots, Instinct, Hark Pro & オープンソースの代替案",
+      "2026年に Doitx、OpenClaw、Hermes Agent、Grok Bot、Meta Muse、OpenAI Dots、Instinct、Hark Pro、Claude Duet を比較。デプロイオプション、ライセンス、メモリ、価格を取り扱います。",
+    h1: "2026 年おすすめのパーソナル AI エージェント: Grok Bot, Muse, Dots, Instinct, Hark Pro ほか",
     introLead:
-      "Doitx は、自分たちが管理するインフラで AI チームメンバーを動かしたい個人やチームのためのセルフホスティング型 AI エージェント基盤です。運用方法に合うツールを選んでください:",
+      "Doitx は、自分たちが管理するインフラで AI チームメンバーを動かしたい個人やチームのためのプライベートな AI エージェント基盤です。運用方法に合うツールを選んでください:",
     introTail:
-      "Doitx、OpenClaw、Hermes Agent はオープンソースです。Grok Bot、Meta Muse、OpenAI Dots、Instinct、Hark Pro、Claude Duet はホスティング製品です。",
+      "Doitx、OpenClaw、Hermes Agent は自社インフラで動作します。Grok Bot、Meta Muse、OpenAI Dots、Instinct、Hark Pro、Claude Duet はホスティング製品です。",
     getStarted: {
-      intro: "セルフホスティングの開始は、コマンドとキーが一つずつです。",
+      intro: "プライベートデプロイの開始は、コマンドとキーが一つずつです。",
       stepHead: "インストールしてサインイン",
       stepBody: "インストーラーが公開されているイメージを取得し、スタックを起動してブラウザを開きます。",
       startTitle: "Doitx を開始",
@@ -401,7 +401,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "MIT ライセンスの Nous Research 製エージェント。デスクトップアプリとオプションの独立ゲートウェイがあり、すべてのスキルは編集可能なファイルです。",
+          "Nous Research 製エージェント。デスクトップアプリとオプションの独立ゲートウェイがあり、すべてのスキルは編集可能なファイルです。",
       },
       {
         slug: "claude-duet-alternative",
@@ -419,28 +419,28 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "ブラウザ、スキル、ドキュメント内のゲートウェイを備えた無料の MIT ライセンスのエージェントで、自分で運用します。OpenClaw は Doitx と関係ありません。",
+          "ブラウザ、スキル、ドキュメント内のゲートウェイを備えた無料で自分で運用するエージェント。OpenClaw は Doitx と関係ありません。",
       },
     ],
     roundupUpdated: "2026 年 11 月 3 日",
     updatedLabel: "更新",
     topicLabel: "項目",
-    openSourceHeading: "オープンソース・セルフホストの理由",
+    openSourceHeading: "プライベートデプロイメントの理由",
     sourcesHeading: "出典",
   },
   es: {
     title: "Agentes de IA personales 2026: Doitx frente a OpenClaw, Hermes, Grok Bot y más",
     hubLabel: "Alternativas",
     metaDescription:
-      "Compara Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro y Claude Duet en 2026, cubriendo autoalojamiento, licencias, memoria y precios.",
+      "Compara Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro y Claude Duet en 2026, cubriendo opciones de despliegue, licencias, memoria y precios.",
     h1:
-      "Los mejores agentes de IA personales en 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro y alternativas de código abierto",
+      "Los mejores agentes de IA personales en 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro y más",
     introLead:
-      "Doitx es una plataforma de agentes de IA autoalojados para personas y equipos que quieren compañeres de IA en infraestructura que controlen. Elige la herramienta que encaje con tu forma de operar:",
+      "Doitx es una plataforma de agentes de IA privados para personas y equipos que quieren compañeres de IA en infraestructura que controlen. Elige la herramienta que encaje con tu forma de operar:",
     introTail:
-      "Doitx, OpenClaw y Hermes Agent son de código abierto; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro y Claude Duet son productos alojados.",
+      "Doitx, OpenClaw y Hermes Agent se ejecutan en infraestructura propia; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro y Claude Duet son productos alojados.",
     getStarted: {
-      intro: "El arranque autoalojado es un comando y una clave.",
+      intro: "El arranque con instalación privada es un comando y una clave.",
       stepHead: "Instala y entra",
       stepBody: "El instalador descarga imágenes publicadas, arranca el conjunto y abre el navegador.",
       startTitle: "Arranca Doitx",
@@ -483,7 +483,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "El agente de Nous Research con licencia MIT. Una app de escritorio más una puerta de enlace opcional e independiente; cada habilidad es un archivo que puedes editar.",
+          "El agente de Nous Research. Una app de escritorio más una puerta de enlace opcional e independiente; cada habilidad es un archivo que puedes editar.",
       },
       {
         slug: "claude-duet-alternative",
@@ -501,28 +501,28 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "Un agente gratuito con licencia MIT que ejecutas tú, con un navegador, habilidades y una puerta de enlace en su documentación. OpenClaw no tiene relación con Doitx.",
+          "Un agente gratuito que ejecutas tú, con un navegador, habilidades y una puerta de enlace en su documentación. OpenClaw no tiene relación con Doitx.",
       },
     ],
     roundupUpdated: "3 de noviembre de 2026",
     updatedLabel: "Actualizado",
     topicLabel: "Tema",
-    openSourceHeading: "Por qué código abierto y autoalojado",
+    openSourceHeading: "Por qué una implementación privada",
     sourcesHeading: "Fuentes",
   },
   fr: {
     title: "Agents IA personnels 2026 : Doitx face à OpenClaw, Hermes, Grok Bot et plus",
     hubLabel: "Alternatives",
     metaDescription:
-      "Comparez Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro et Claude Duet en 2026, avec l'auto-hébergement, les licences, la mémoire et les prix.",
+      "Comparez Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro et Claude Duet en 2026, avec les options de déploiement, les licences, la mémoire et les prix.",
     h1:
-      "Les meilleurs agents IA personnels en 2026 : Grok Bot, Muse, Dots, Instinct, Hark Pro et alternatives open source",
+      "Les meilleurs agents IA personnels en 2026 : Grok Bot, Muse, Dots, Instinct, Hark Pro et plus",
     introLead:
-      "Doitx est une plateforme d'agents IA auto-hébergés pour les personnes et les équipes qui veulent des coéquipiers IA sur des infrastructures qu'elles contrôlent. Choisissez l'outil qui correspond à votre façon de l'exploiter :",
+      "Doitx est une plateforme d'agents IA privés pour les personnes et les équipes qui veulent des coéquipiers IA sur des infrastructures qu'elles contrôlent. Choisissez l'outil qui correspond à votre façon de l'exploiter :",
     introTail:
-      "Doitx, OpenClaw et Hermes Agent sont open source ; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro et Claude Duet sont des produits hébergés.",
+      "Doitx, OpenClaw et Hermes Agent fonctionnent sur votre propre infrastructure ; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro et Claude Duet sont des produits hébergés.",
     getStarted: {
-      intro: "Le démarrage en auto-hébergement tient dans une commande et une clé.",
+      intro: "Le démarrage en déploiement privé tient dans une commande et une clé.",
       stepHead: "Installer et se connecter",
       stepBody:
         "L'installeur récupère les images publiées, démarre la pile et ouvre le navigateur.",
@@ -566,7 +566,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "L'agent de Nous Research sous licence MIT. Une application de bureau et une passerelle autonome optionnelle ; chaque compétence est un fichier modifiable.",
+          "L'agent de Nous Research. Une application de bureau et une passerelle autonome optionnelle ; chaque compétence est un fichier modifiable.",
       },
       {
         slug: "claude-duet-alternative",
@@ -584,28 +584,28 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "Un agent gratuit sous licence MIT que vous exécutez vous-même, avec un navigateur, des compétences et une passerelle dans sa documentation. OpenClaw n'est pas affilié à Doitx.",
+          "Un agent gratuit que vous exécutez vous-même, avec un navigateur, des compétences et une passerelle dans sa documentation. OpenClaw n'est pas affilié à Doitx.",
       },
     ],
     roundupUpdated: "3 novembre 2026",
     updatedLabel: "Mis à jour",
     topicLabel: "Sujet",
-    openSourceHeading: "Pourquoi open source et auto-hébergé",
+    openSourceHeading: "Pourquoi une déploiement privé",
     sourcesHeading: "Sources",
   },
   "pt-br": {
     title: "Agentes de IA pessoais 2026: Doitx vs OpenClaw, Hermes, Grok Bot e mais",
     hubLabel: "Alternativas",
     metaDescription:
-      "Compare Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro e Claude Duet em 2026, cobrindo auto-hospedagem, licencas, memoria e precos.",
+      "Compare Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro e Claude Duet em 2026, cobrindo implantação privada, licencas, memoria e precos.",
     h1:
       "Os melhores agentes de IA pessoais em 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro e alternativas de codigo aberto",
     introLead:
-      "Doitx e uma plataforma de agentes de IA auto-hospedada para pessoas e equipes que querem times de IA em infraestrutura que controlam. Escolha a ferramenta que combina com a forma como voce vai opera-la:",
+      "Doitx e uma plataforma de agentes de IA privados para pessoas e equipes que querem times de IA em infraestrutura que controlam. Escolha a ferramenta que combina com a forma como voce vai opera-la:",
     introTail:
       "Doitx, OpenClaw e Hermes Agent sao de codigo aberto; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro e Claude Duet sao produtos hospedados.",
     getStarted: {
-      intro: "O inicio auto-hospedado e um comando e uma chave.",
+      intro: "O inicio com instalacao privada e um comando e uma chave.",
       stepHead: "Instale e faca login",
       stepBody:
         "O instalador baixa imagens publicadas, inicia a pilha e abre o navegador.",
@@ -649,7 +649,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "O agente da Nous Research com licenca MIT. Um app de desktop mais um gateway independente opcional, e cada habilidade e um arquivo editavel.",
+          "O agente da Nous Research. Um app de desktop mais um gateway independente opcional, e cada habilidade e um arquivo editavel.",
       },
       {
         slug: "claude-duet-alternative",
@@ -667,28 +667,28 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "Um agente gratuito com licenca MIT que voce executa, com navegador, habilidades e um gateway na documentacao. O OpenClaw nao tem relacao com o Doitx.",
+          "Um agente gratuito que voce executa, com navegador, habilidades e um gateway na documentacao. O OpenClaw nao tem relacao com o Doitx.",
       },
     ],
     roundupUpdated: "3 de novembro de 2026",
     updatedLabel: "Atualizado",
     topicLabel: "Tema",
-    openSourceHeading: "Por que código aberto e auto-hospedado",
+    openSourceHeading: "Por que uma implementação privada",
     sourcesHeading: "Fontes",
   },
   nl: {
     title: "Persoonlijke AI-agenten 2026: Doitx vs. OpenClaw, Hermes, Grok Bot & meer",
     hubLabel: "Alternatieven",
     metaDescription:
-      "Vergelijk in 2026 Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro en Claude Duet, over zelf-hosten, licenties, geheugen en prijs.",
+      "Vergelijk in 2026 Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro en Claude Duet, over deployment-opties, licenties, geheugen en prijs.",
     h1:
-      "De beste persoonlijke AI-agenten in 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro & open source-alternatieven",
+      "De beste persoonlijke AI-agenten in 2026: Grok Bot, Muse, Dots, Instinct, Hark Pro & meer",
     introLead:
-      "Doitx is een platform voor zelf-gehoste AI-agenten voor mensen en teams die AI-teamgenoten willen op infrastructuur die zij controleren. Kies het tool dat past bij hoe je het gaat exploiteren:",
+      "Doitx is een platform voor private AI-agenten voor mensen en teams die AI-teamgenoten willen op infrastructuur die zij controleren. Kies het tool dat past bij hoe je het gaat exploiteren:",
     introTail:
-      "Doitx, OpenClaw en Hermes Agent zijn open source; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro en Claude Duet zijn gehoste producten.",
+      "Doitx, OpenClaw en Hermes Agent draaien op jouw eigen infrastructuur; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro en Claude Duet zijn gehoste producten.",
     getStarted: {
-      intro: "De zelf-gehoste start is één opdracht en één sleutel.",
+      intro: "De start met private installatie is één opdracht en één sleutel.",
       stepHead: "Installeren en aanmelden",
       stepBody:
         "De installatiehaal gehaalde images, start de stack en opent de browser.",
@@ -732,7 +732,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "De MIT-gekeurde agent van Nous Research. Een desktopapp plus een optionele eigen gateway, en elke vaardigheid is een bewerkbaar bestand.",
+          "De agent van Nous Research. Een desktopapp plus een optionele eigen gateway, en elke vaardigheid is een bewerkbaar bestand.",
       },
       {
         slug: "claude-duet-alternative",
@@ -750,28 +750,28 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "Een gratis MIT-gekeurde agent die je zelf draait, met een browser, skills en een Gateway in de documentatie. OpenClaw is niet gelieerd met Doitx.",
+          "Een gratis agent die je zelf draait, met een browser, skills en een Gateway in de documentatie. OpenClaw is niet gelieerd met Doitx.",
       },
     ],
     roundupUpdated: "3 november 2026",
     updatedLabel: "Bijgewerkt",
     topicLabel: "Onderwerp",
-    openSourceHeading: "Waarom open source en zelf-gehosted",
+    openSourceHeading: "Waarom een private implementatie",
     sourcesHeading: "Bronnen",
   },
   ru: {
     title: "Персональные ИИ-агенты 2026: Doitx против OpenClaw, Hermes, Grok Bot и других",
     hubLabel: "Альтернативы",
     metaDescription:
-      "Сравните в 2026 году Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro и Claude Duet: самохостинг, лицензии, память и цены.",
+      "Сравните в 2026 году Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro и Claude Duet: варианты развертывания, лицензии, память и цены.",
     h1:
-      "Лучшие персональные ИИ-агенты 2026 года: Grok Bot, Muse, Dots, Instinct, Hark Pro и open source-альтернативы",
+      "Лучшие персональные ИИ-агенты 2026 года: Grok Bot, Muse, Dots, Instinct, Hark Pro и другие",
     introLead:
-      "Doitx — это платформа ИИ-агентов для самохостинга, для людей и команд, которым нужны ИИ-напарники на инфраструктуре, которой они управляют. Выберите инструмент, который соответствует вашему способу работы:",
+      "Doitx — это платформа частных ИИ-агентов, для людей и команд, которым нужны ИИ-напарники на инфраструктуре, которой они управляют. Выберите инструмент, который соответствует вашему способу работы:",
     introTail:
-      "Doitx, OpenClaw и Hermes Agent — open source; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro и Claude Duet — хостинговые продукты.",
+      "Doitx, OpenClaw и Hermes Agent работают на вашей собственной инфраструктуре; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro и Claude Duet — хостинговые продукты.",
     getStarted: {
-      intro: "Старт самохостинга — одна команда и один ключ.",
+      intro: "Старт частного развертывания — одна команда и один ключ.",
       stepHead: "Установка и вход",
       stepBody:
         "Установщик скачивает опубликованные образы, запускает стек и открывает браузер.",
@@ -815,7 +815,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "Агент от Nous Research по лицензии MIT. Десктопное приложение плюс опциональный автономный шлюз, и каждый навык — редактируемый файл.",
+          "Агент от Nous Research. Десктопное приложение плюс опциональный автономный шлюз, и каждый навык — редактируемый файл.",
       },
       {
         slug: "claude-duet-alternative",
@@ -833,13 +833,13 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "Бесплатный агент с лицензией MIT, который вы запускаете сами; есть браузер, навыки и Gateway в документации. OpenClaw не связан с Doitx.",
+          "Бесплатный агент, который вы запускаете сами; есть браузер, навыки и Gateway в документации. OpenClaw не связан с Doitx.",
       },
     ],
     roundupUpdated: "3 ноября 2026",
     updatedLabel: "Обновлено",
     topicLabel: "Тема",
-    openSourceHeading: "Почему open source и self-hosted",
+    openSourceHeading: "Почему выбрать частное развёртывание",
     sourcesHeading: "Источники",
   },
   tr: {
@@ -848,11 +848,11 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
     metaDescription:
       "Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro ve Claude Duet'yi 2026'da karşılaştırın; kendi barındırma, lisanslar, hafıza ve fiyatlandırma yer alır.",
     h1:
-      "2026'da en iyi kişisel AI ajanları: Grok Bot, Muse, Dots, Instinct, Hark Pro ve açık kaynak alternatifler",
+      "2026'da en iyi kişisel AI ajanları: Grok Bot, Muse, Dots, Instinct, Hark Pro ve özel dağıtım seçenekleri",
     introLead:
       "Doitx; kendi kontrol ettiği altyapıda AI ekip arkadaşları isteyen kişilere ve ekiplere yönelik, kendi barındırmalı bir AI ajan platformudur. İşletme şeklinize uyan aracı seçin:",
     introTail:
-      "Doitx, OpenClaw ve Hermes Agent açık kaynaktır; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro ve Claude Duet barındırılan ürünlerdir.",
+      "Doitx, OpenClaw ve Hermes Agent kendi altyapınızda çalışır; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro ve Claude Duet barındırılan ürünlerdir.",
     getStarted: {
       intro: "Kendi barındırma başlangıcı tek komut ve tek anahtardır.",
       stepHead: "Yükle ve oturum aç",
@@ -898,7 +898,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "MIT lisanslı Nous Research ajanı. Masaüstü uygulama ve isteğe bağlı bağımsız bir geçit; becerilerin her biri düzenlenebilir bir dosya.",
+          "Nous Research ajanı. Masaüstü uygulama ve isteğe bağlı bağımsız bir geçit; becerilerin her biri düzenlenebilir bir dosya.",
       },
       {
         slug: "claude-duet-alternative",
@@ -916,13 +916,13 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "Kendiniz çalıştırdığınız ücretsiz MIT lisanslı ajan; tarayıcı, beceriler ve dokümantasyonunda bir geçit var. OpenClaw, Doitx ile ilişkilendirilmemiştir.",
+          "Kendiniz çalıştırdığınız ücretsiz ajan; tarayıcı, beceriler ve dokümantasyonunda bir geçit var. OpenClaw, Doitx ile ilişkilendirilmemiştir.",
       },
     ],
     roundupUpdated: "3 Kasım 2026",
     updatedLabel: "Güncellendi",
     topicLabel: "Konu",
-    openSourceHeading: "Neden açık kaynak ve self-hosted",
+    openSourceHeading: "Neden özel dağıtım seçilir",
     sourcesHeading: "Kaynaklar",
   },
   he: {
@@ -931,11 +931,11 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
     metaDescription:
       "השווה את Doitx, OpenClaw, Hermes Agent, Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro ו־Claude Duet ב־2026, כולל ארחות עצמית, רישויות, זיכרון ותמחור.",
     h1:
-      "הסוכנים האישיים הטובים ביותר של AI ב־2026: Grok Bot, Muse, Dots, Instinct, Hark Pro וחלופות קוד פתוח",
+      "הסוכנים האישיים הטובים ביותר של AI ב־2026: Grok Bot, Muse, Dots, Instinct, Hark Pro וחלופות פיילוט פרטי",
     introLead:
       "Doitx היא פלטפורמת סוכני AI לארחות עצמית לאנשים ולצוותים שרוצים שותפי AI בתשתיות שהם שולטים בהן. בחרו בכלי שתואם את אופן ההפעלה שלכם:",
     introTail:
-      "Doitx, OpenClaw ו־Hermes Agent הם קוד פתוח; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro ו־Claude Duet הם מוצרים מאוחסנים.",
+      "Doitx, OpenClaw ו־Hermes Agent פועלים באינפרה ייעודית; Grok Bot, Meta Muse, OpenAI Dots, Instinct, Hark Pro ו־Claude Duet הם מוצרים מאוחסנים.",
     getStarted: {
       intro: "התחלה בארחות עצמית היא פקודה אחת ומפתח אחד.",
       stepHead: "התקנה וכניסה",
@@ -980,7 +980,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "הסוכן של Nous Research ברישיון MIT. אפליקציית מחשב שולחן יחד עם שער עצמאי אופציונלי, וכל יכולת היא קובץ שניתן לערוך.",
+          "הסוכן של Nous Research. אפליקציית מחשב שולחן יחד עם שער עצמאי אופציונלי, וכל יכולת היא קובץ שניתן לערוך.",
       },
       {
         slug: "claude-duet-alternative",
@@ -998,13 +998,13 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "סוכן חינמי ברישיון MIT שהופעל על ידי עצמכם, עם דפדפן, יכולות ושער בתיעודו. OpenClaw אינו משויך ל־Doitx.",
+          "סוכן חינמי שהופעל על ידי עצמכם, עם דפדפן, יכולות ושער בתיעודו. OpenClaw אינו משויך ל־Doitx.",
       },
     ],
     roundupUpdated: "3 בנובמבר 2026",
     updatedLabel: "עודכן",
     topicLabel: "נושא",
-    openSourceHeading: "למה קוד פתוח ו-self-hosted",
+    openSourceHeading: "למה פיילוט פרטי",
     sourcesHeading: "מקורות",
   },
   hi: {
@@ -1062,7 +1062,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "hermes-alternative",
         title: "Hermes Agent",
         description:
-          "Nous Research का MIT लाइसेंस वाला एजैंट। एक डेस्कटॉप ऐप और एक वैकल्पिक स्वतंत्र गेटवे, और हर कौशल एक संपादन योग्य फ़ाइल है।",
+          "Nous Research का एजैंट। एक डेस्कटॉप ऐप और एक वैकल्पिक स्वतंत्र गेटवे, और हर कौशल एक संपादन योग्य फ़ाइल है।",
       },
       {
         slug: "claude-duet-alternative",
@@ -1080,13 +1080,13 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "एक निःशुल्क MIT लाइसेंस वाला एजैंट जो आप स्वयं चलाते हैं, ब्राउज़र, स्किल्स और दस्तावेजों में एक गेटवे के साथ। OpenClaw, Doitx से संबंधित नहीं है।",
+          "एक निःशुल्क एजैंट जो आप स्वयं चलाते हैं, ब्राउज़र, स्किल्स और दस्तावेजों में एक गेटवे के साथ। OpenClaw, Doitx से संबंधित नहीं है।",
       },
     ],
     roundupUpdated: "3 नवंबर 2026",
     updatedLabel: "अपडेटेड",
     topicLabel: "विषय",
-    openSourceHeading: "खुला स्रोत और स्व-होस्टेड चुनने का कारण",
+    openSourceHeading: "खुला स्रोत और स्व-होस्टेड चुनन के कारण",
     sourcesHeading: "स्रोत",
   },
   "zh-tw": {
@@ -1139,7 +1139,7 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
       {
         slug: "hermes-alternative",
         title: "Hermes Agent",
-        description: "Nous Research 的 MIT 授權智能體。桌面應用程式加上選配的獨立閘道器，且每個技能都是一個可編輯的檔案。",
+        description: "Nous Research 的智能體。桌面應用程式加上選配的獨立閘道器，且每個技能都是一個可編輯的檔案。",
       },
       {
         slug: "claude-duet-alternative",
@@ -1157,13 +1157,13 @@ export const ALTERNATIVES_HUB_COPY: Record<Locale, AlternativesHubCopy> = {
         slug: "openclaw-alternative",
         title: "OpenClaw",
         description:
-          "一個免費的 MIT 授權智能體，由你自行運行，具備瀏覽器、技能以及文件中的閘道器。OpenClaw 與 Doitx 無關。",
+          "一個免費的智能體，由你自行運行，具備瀏覽器、技能以及文件中的閘道器。OpenClaw 與 Doitx 無關。",
       },
     ],
     roundupUpdated: "2026 年 11 月 3 日",
     updatedLabel: "更新於",
     topicLabel: "主題",
-    openSourceHeading: "為什麼選擇開源與自託管",
+    openSourceHeading: "為什麼選擇私有部署",
     sourcesHeading: "資料來源",
   },
 };

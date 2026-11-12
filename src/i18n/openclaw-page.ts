@@ -64,25 +64,26 @@ const LINK = {
   docs: "https://docs.openclaw.ai/",
   features: "https://docs.openclaw.ai/concepts/features",
   sandbox: "https://docs.openclaw.ai/gateway/sandboxing",
-  source: "https://github.com/openclaw/openclaw",
+  source: "https://docs.openclaw.ai/",
   selfHost: "/self-hosted-ai-agent/",
-  github: "https://github.com/iishows/doitx",
+  downloads: "/downloads",
+  github: "",
 };
 
 const EN: OpenClawPageCopy = {
-  title: "Open Source OpenClaw Alternative – Doitx",
+  title: "OpenClaw Alternative – Doitx",
   description:
-    "Compare Doitx and OpenClaw: setup, what runs on your machine, day-to-day operations, model providers, and the open source license.",
-  h1: "Open source OpenClaw alternative",
+    "Compare Doitx and OpenClaw: setup, what runs on your machine, day-to-day operations, model providers, and licensing.",
+  h1: "OpenClaw alternative",
   updated: "October 7, 2026",
   intro: [
-    `The main difference is simplicity. Like Grok Bot, Doitx is just chat: you set up the bot and manage it from that chat. OpenClaw is also open source and self-hosted. Its [getting-started guide](${LINK.gettingStarted}) is a longer path: a CLI installer, an onboarding wizard, a Gateway you run in the terminal or install as a background service, and a config file.`,
+    `The main difference is simplicity. Like Grok Bot, Doitx is just chat: you set up the bot and manage it from that chat. OpenClaw also runs on your own infrastructure. Its [getting-started guide](${LINK.gettingStarted}) is a longer path: a CLI installer, an onboarding wizard, a Gateway you run in the terminal or install as a background service, and a config file.`,
     `They are not the same product, and Doitx does not import an OpenClaw setup. OpenClaw details below follow [OpenClaw's documentation](${LINK.docs}). Doitx details follow this project. Both change. The linked docs are the place to confirm a detail.`,
   ],
   setup: {
     heading: "Setup",
     paragraphs: [
-      "Doitx's self-host path is the published Docker installer, or the desktop app starting that stack on this computer. You create an account and connect a model. From there it is just chat, on the web, desktop, and mobile apps. A new bot interviews you about the work, and you manage the bot from that chat. Routines are readable Markdown.",
+      "Doitx's private deployment path is the published Docker installer, or the desktop app starting that stack on this computer. You create an account and connect a model. From there it is just chat, on the web, desktop, and mobile apps. A new bot interviews you about the work, and you manage the bot from that chat. Routines are readable Markdown.",
       "OpenClaw's getting-started guide installs the CLI, then runs a wizard. Quick start is the short path when a Claude Code or Codex login, or an API key, is already on the machine. Custom setup walks through the full flow, and `openclaw onboard --classic` is the step-by-step wizard. Quick start leaves the Gateway in that terminal until you stop it, so you can chat before installing a service. `openclaw gateway install` is the later step that keeps it in the background: a LaunchAgent on macOS, a systemd user unit on Linux, or a Scheduled Task on Windows. You check `openclaw gateway status` (the guide says port 18789) and open `openclaw dashboard`. Messaging from a phone, such as Telegram, is a separate Channels step.",
     ],
   },
@@ -117,9 +118,9 @@ const EN: OpenClawPageCopy = {
       {
         aspect: "What it is",
         rakazo:
-          "An open source platform for persistent AI teammates. Bots keep conversations, memory, routines, and history, and can use a browser, shell, and desktop.",
+          "A private platform for persistent AI teammates. Bots keep conversations, memory, routines, and history, and can use a browser, shell, and desktop.",
         openclaw:
-          "A self-hosted gateway that connects chat apps to an AI assistant on your machine. The project describes one Gateway for the channels you already use.",
+          "A gateway that connects chat apps to an AI assistant on your machine. The project describes one Gateway for the channels you already use.",
       },
       {
         aspect: "License",
@@ -129,7 +130,7 @@ const EN: OpenClawPageCopy = {
       {
         aspect: "Where it runs",
         rakazo:
-          "You self-host with published Docker images or from source. Web, desktop, and mobile apps are clients of that API. Hosted Doitx Cloud is in beta.",
+          "You deploy on your own infrastructure with published Docker images or from source. Web, desktop, and mobile apps are clients of that API. Hosted Doitx Cloud is in beta.",
         openclaw:
           "You run the Gateway on your own computer or a server. The docs say there is no hosted service in the middle. Interfaces include a browser Control UI, companion apps, and iOS and Android nodes.",
       },
@@ -145,7 +146,7 @@ const EN: OpenClawPageCopy = {
         rakazo:
           "The Doitx router, plus a local OpenAI-compatible endpoint the operator runs. Each person connects their own key, and each bot can use a different model.",
         openclaw:
-          "Many providers, including Anthropic, OpenAI, and Google, plus OAuth for some subscriptions such as OpenAI Codex. Self-hosted endpoints include vLLM, SGLang, Ollama, llama.cpp, LM Studio, and other OpenAI-compatible or Anthropic-compatible servers, with failover.",
+          "Many providers, including Anthropic, OpenAI, and Google, plus OAuth for some subscriptions such as OpenAI Codex. Endpoints include vLLM, SGLang, Ollama, llama.cpp, LM Studio, and other OpenAI-compatible or Anthropic-compatible servers, with failover.",
       },
       {
         aspect: "Computers and tools",
@@ -173,7 +174,7 @@ const EN: OpenClawPageCopy = {
       },
       {
         aspect: "Software cost",
-        rakazo: "No seat fee for the open source software. You pay the models and infrastructure you use.",
+        rakazo: "No seat fee for the software. You pay the models and infrastructure you use.",
         openclaw: "The docs say there is no paid tier. You pay the models and the machine you run.",
       },
     ],
@@ -192,8 +193,8 @@ const EN: OpenClawPageCopy = {
     ],
     modelsTitle: "Models and what you pay",
     models: [
-      "Both let you bring a model provider, including a server you host. Doitx connects the Doitx router or a local OpenAI-compatible server the operator runs, and each bot can use a different model. OpenClaw documents Anthropic, OpenAI, Google, and others, including self-hosted OpenAI-compatible and Anthropic-compatible endpoints, with failover.",
-      "Neither project charges a seat fee for the software. OpenClaw's docs say it has no paid tier and no hosted service. Doitx is free to self-host. Hosted Doitx Cloud is in beta. You pay for the models, machines, and optional computer providers you use.",
+      "Both let you bring a model provider, including a server you host. Doitx connects the Doitx router or a local OpenAI-compatible server the operator runs, and each bot can use a different model. OpenClaw documents Anthropic, OpenAI, Google, and others, including OpenAI-compatible and Anthropic-compatible endpoints, with failover.",
+      "Neither project charges a seat fee for the software. OpenClaw's docs say it has no paid tier and no hosted service. Doitx is free to deploy on your own infrastructure. Hosted Doitx Cloud is in beta. You pay for the models, machines, and optional computer providers you use.",
     ],
     licenseTitle: "License",
     license:
@@ -202,7 +203,7 @@ const EN: OpenClawPageCopy = {
   fits: {
     heading: "Which shape fits",
     rakazoTitle: "Doitx",
-    rakazo: `Repeated browser and shell work, scheduled operational routines, an audit log, and approval boundaries, with the same bots on the web, desktop, and mobile clients. [Self-host it from the guide](${LINK.selfHost}).`,
+    rakazo: `Repeated browser and shell work, scheduled operational routines, an audit log, and approval boundaries, with the same bots on the web, desktop, and mobile clients. [Deploy it from the guide](${LINK.selfHost}).`,
     otherTitle: "OpenClaw",
     other: `An assistant that lives in chat apps you already use, with channel plugins, skills, and a gateway on your machine. Start from the [OpenClaw docs](${LINK.docs}).`,
   },
@@ -214,23 +215,22 @@ const EN: OpenClawPageCopy = {
       { label: "OpenClaw features", href: LINK.features },
       { label: "OpenClaw sandboxing", href: LINK.sandbox },
       { label: "OpenClaw source", href: LINK.source },
-      { label: "Doitx self-host guide", href: LINK.selfHost },
-      { label: "Doitx source", href: LINK.github },
+      { label: "Doitx deployment guide", href: LINK.selfHost },
     ],
   },
-  related: { heading: "Related", home: "Doitx home", selfHost: "Self-hosted AI agent guide" },
+  related: { heading: "Related", home: "Doitx home", selfHost: "AI agent deployment guide" },
   getStarted: {
     heading: "Get started",
-    body: "Self-host Doitx on your machine, or start on Doitx Cloud.",
-    selfHostGuide: "Self-host guide",
+    body: "Deploy Doitx on your own machine, or start on Doitx Cloud.",
+    selfHostGuide: "Deployment guide",
     cloud: "Doitx Cloud",
-    github: "View on GitHub",
+    github: "Download Doitx",
   },
   faqs: [
     {
       question: "Is Doitx simpler to set up than OpenClaw?",
       answer:
-        "The documented paths are different. Doitx's self-host guide is a Docker installer, or the desktop app starting that stack, then an account and a model. After that Doitx is just chat, and you manage the bot from that chat. OpenClaw's getting-started guide is an installer and a wizard (Quick start or Custom setup). You can chat while the Gateway runs in that terminal. `openclaw gateway install` keeps it running in the background, then `openclaw gateway status` and `openclaw dashboard`. Connecting a chat app is another step. OpenClaw can be short when a model login is already detected. The ongoing surface is still the Gateway and the config file.",
+        "The documented paths are different. Doitx's deployment guide is a Docker installer, or the desktop app starting that stack, then an account and a model. After that Doitx is just chat, and you manage the bot from that chat. OpenClaw's getting-started guide is an installer and a wizard (Quick start or Custom setup). You can chat while the Gateway runs in that terminal. `openclaw gateway install` keeps it running in the background, then `openclaw gateway status` and `openclaw dashboard`. Connecting a chat app is another step. OpenClaw can be short when a model login is already detected. The ongoing surface is still the Gateway and the config file.",
     },
     {
       question: "Can I run Doitx on my own machine?",
@@ -250,7 +250,7 @@ const EN: OpenClawPageCopy = {
     {
       question: "Is it free?",
       answer:
-        "The source is Apache-2.0 and public on GitHub. You pay for your model usage and infrastructure. Doitx Cloud is a hosted option in beta.",
+        "The source is Apache-2.0. You pay for your model usage and infrastructure. Doitx Cloud is a hosted option in beta."
     },
   ],
   vsRakazo: "Doitx",
@@ -258,18 +258,18 @@ const EN: OpenClawPageCopy = {
 };
 
 const ZH: OpenClawPageCopy = {
-  title: "开源 OpenClaw 替代品 – Doitx",
-  description: "对比 Doitx 和 OpenClaw：安装、机器上运行什么、日常操作、模型提供商和开源许可证。",
-  h1: "开源 OpenClaw 替代品",
+  title: "OpenClaw 替代品 – Doitx",
+  description: "对比 Doitx 和 OpenClaw：安装、机器上运行什么、日常操作、模型提供商和许可证。",
+  h1: "OpenClaw 替代品",
   updated: "2026 年 10 月 7 日",
   intro: [
-    `主要差异在于简洁。和 Grok Bot 一样，Doitx 就是聊天：你设置好机器人，然后通过聊天管理它。OpenClaw 同样是开源、自托管的。它的[入门指南](${LINK.gettingStarted})路径更长：一个命令行安装器、一个引导向导、一个需要在终端运行或安装成后台服务的 Gateway，以及一份配置文件。`,
+    `主要差异在于简洁。和 Grok Bot 一样，Doitx 就是聊天：你设置好机器人，然后通过聊天管理它。OpenClaw 也是在自有基础设施上运行的。它的[入门指南](${LINK.gettingStarted})路径更长：一个命令行安装器、一个引导向导、一个需要在终端运行或安装成后台服务的 Gateway，以及一份配置文件。`,
     `两者并非同一产品，Doitx 也不会导入 OpenClaw 的配置。下文关于 OpenClaw 的细节来自 [OpenClaw 官方文档](${LINK.docs})，Doitx 的细节来自本项目。两者都在变化，确认细节请以链接的文档为准。`,
   ],
   setup: {
     heading: "安装",
     paragraphs: [
-      "Doitx 的自托管路径是已发布的 Docker 安装程序，或由桌面应用在本机启动同一套服务。你创建账号、连接模型，之后就是聊天：在网页版、桌面版和移动端应用中，新机器人会先和你聊聊这项工作，之后你就在同一个聊天里管理它。例行任务是可读的 Markdown。",
+      "Doitx 的私有部署路径是已发布的 Docker 安装程序，或由桌面应用在本机启动同一套服务。你创建账号、连接模型，之后就是聊天：在网页版、桌面版和移动端应用中，新机器人会先和你聊聊这项工作，之后你就在同一个聊天里管理它。例行任务是可读的 Markdown。",
       "OpenClaw 的入门指南会先安装命令行工具，然后运行向导。如果机器上已有 Claude Code 或 Codex 登录，或已有 API 密钥，Quick start 是更短的路径；Custom setup 会走完整流程，`openclaw onboard --classic` 是分步向导。Quick start 会让 Gateway 一直停在该终端里，直到你手动停止，因此你可以在安装服务之前先聊天。`openclaw gateway install` 是后续把 Gateway 常驻后台的步骤：macOS 上是 LaunchAgent，Linux 上是 systemd 用户单元，Windows 上是计划任务。你可以用 `openclaw gateway status` 查看状态（指南说端口是 18789），并打开 `openclaw dashboard`。从手机发消息（例如 Telegram）是单独的 Channels 步骤。",
     ],
   },
@@ -304,9 +304,9 @@ const ZH: OpenClawPageCopy = {
       {
         aspect: "产品定位",
         rakazo:
-          "面向持久型 AI 队友的开源平台。机器人保留对话、记忆、例行任务和历史，并能使用浏览器、终端和桌面。",
+          "面向持久型 AI 队友的私有平台。机器人保留对话、记忆、例行任务和历史，并能使用浏览器、终端和桌面。",
         openclaw:
-          "一个自托管的网关，把聊天应用连接到你自己机器上的 AI 助手。项目把它描述为面向你已在使用的各个渠道的单一 Gateway。",
+          "一个网关，把聊天应用连接到你自己机器上的 AI 助手。项目把它描述为面向你已在使用的各个渠道的单一 Gateway。",
       },
       {
         aspect: "许可证",
@@ -316,7 +316,7 @@ const ZH: OpenClawPageCopy = {
       {
         aspect: "运行位置",
         rakazo:
-          "你用已发布的 Docker 镜像或源码自托管。网页版、桌面版和移动端应用都是该 API 的客户端。托管的 Doitx Cloud 处于 beta 阶段。",
+          "你可以用已发布的 Docker 镜像或源码在自有基础设施上部署。网页版、桌面版和移动端应用都是该 API 的客户端。托管的 Doitx Cloud 处于 beta 阶段。",
         openclaw:
           "你在自己的电脑或服务器上运行 Gateway。文档称中间没有托管服务。界面包括浏览器 Control UI、配套应用，以及 iOS 和 Android 节点。",
       },
@@ -332,7 +332,7 @@ const ZH: OpenClawPageCopy = {
         rakazo:
           "Doitx 路由器，加上运维方运行的本地 OpenAI 兼容端点。每个人连接自己的密钥，每个机器人可以使用不同的模型。",
         openclaw:
-          "支持多家提供商，包括 Anthropic、OpenAI 和 Google，部分订阅（如 OpenAI Codex）支持 OAuth。自托管端点包括 vLLM、SGLang、Ollama、llama.cpp、LM Studio 以及其他 OpenAI 兼容或 Anthropic 兼容服务器，并支持故障转移。",
+          "支持多家提供商，包括 Anthropic、OpenAI 和 Google，部分订阅（如 OpenAI Codex）支持 OAuth。私有部署端点包括 vLLM、SGLang、Ollama、llama.cpp、LM Studio 以及其他 OpenAI 兼容或 Anthropic 兼容服务器，并支持故障转移。",
       },
       {
         aspect: "算力与工具",
@@ -358,7 +358,7 @@ const ZH: OpenClawPageCopy = {
       },
       {
         aspect: "软件费用",
-        rakazo: "开源软件不收席位费。你只需为使用的模型和基础设施付费。",
+        rakazo: "软件不收席位费。你只需为使用的模型和基础设施付费。",
         openclaw: "文档称没有付费档位。你只需为模型和你运行的机器付费。",
       },
     ],
@@ -377,8 +377,8 @@ const ZH: OpenClawPageCopy = {
     ],
     modelsTitle: "模型与费用",
     models: [
-      "两者都允许自带模型提供商，包括你自己托管的服务器。Doitx 连接 Doitx 路由器或运维方运行的本地 OpenAI 兼容服务器，每个机器人可以使用不同的模型。OpenClaw 文档列出 Anthropic、OpenAI、Google 等，包括自托管的 OpenAI 兼容和 Anthropic 兼容端点，并支持故障转移。",
-      "两个项目都不对软件收席位费。OpenClaw 文档称没有付费档位、也没有托管服务。Doitx 自托管免费，托管的 Doitx Cloud 处于 beta 阶段。你只需为使用的模型、机器和可选算力提供商付费。",
+      "两者都允许自带模型提供商，包括你自有的服务器。Doitx 连接 Doitx 路由器或运维方运行的本地 OpenAI 兼容服务器，每个机器人可以使用不同的模型。OpenClaw 文档列出 Anthropic、OpenAI、Google 等，包括 OpenAI 兼容和 Anthropic 兼容端点，并支持故障转移。",
+      "两个项目都不对软件收席位费。OpenClaw 文档称没有付费档位、也没有托管服务。Doitx 在自有基础设施上部署免费，托管的 Doitx Cloud 处于 beta 阶段。你只需为使用的模型、机器和可选算力提供商付费。",
     ],
     licenseTitle: "许可证",
     license:
@@ -387,7 +387,7 @@ const ZH: OpenClawPageCopy = {
   fits: {
     heading: "哪种形态适合你",
     rakazoTitle: "Doitx",
-    rakazo: `重复的浏览器和终端工作、按排程运行的操作例行任务、审计日志和审批边界，并且在网页版、桌面版和移动端使用同一批机器人。[按指南自托管](${LINK.selfHost})。`,
+    rakazo: `重复的浏览器和终端工作、按排程运行的操作例行任务、审计日志和审批边界，并且在网页版、桌面版和移动端使用同一批机器人。[按指南部署](${LINK.selfHost})。`,
     otherTitle: "OpenClaw",
     other: `一个住进你已在使用的聊天应用里的助手，带渠道插件、技能和你机器上的网关。请从 [OpenClaw 文档](${LINK.docs})开始。`,
   },
@@ -399,23 +399,22 @@ const ZH: OpenClawPageCopy = {
       { label: "OpenClaw 功能", href: LINK.features },
       { label: "OpenClaw 沙箱", href: LINK.sandbox },
       { label: "OpenClaw 源码", href: LINK.source },
-      { label: "Doitx 自托管指南", href: LINK.selfHost },
-      { label: "Doitx 源码", href: LINK.github },
+      { label: "Doitx 部署指南", href: LINK.selfHost },
     ],
   },
-  related: { heading: "相关内容", home: "Doitx 首页", selfHost: "自托管 AI 智能体指南" },
+  related: { heading: "相关内容", home: "Doitx 首页", selfHost: "AI 智能体部署指南" },
   getStarted: {
     heading: "开始使用",
-    body: "在你的机器上自托管 Doitx，或从 Doitx Cloud 开始。",
-    selfHostGuide: "自托管指南",
+    body: "在自有机器上部署 Doitx，或从 Doitx Cloud 开始。",
+    selfHostGuide: "部署指南",
     cloud: "Doitx Cloud",
-    github: "在 GitHub 查看",
+    github: "下载 Doitx",
   },
   faqs: [
     {
       question: "Doitx 的安装比 OpenClaw 更简单吗？",
       answer:
-        "文档描述的路径不同。Doitx 的自托管指南是一个 Docker 安装程序，或桌面应用启动同一套服务，然后创建账号、连接模型。之后 Doitx 就是聊天，你在聊天里管理机器人。OpenClaw 的入门指南是安装器加向导（Quick start 或 Custom setup），Gateway 在该终端运行时就能聊天。`openclaw gateway install` 让它常驻后台，之后用 `openclaw gateway status` 和 `openclaw dashboard`。接入聊天应用是另一步。当已检测到模型登录时，OpenClaw 也可以很短。长期要面对的仍然是 Gateway 和配置文件。",
+        "文档描述的路径不同。Doitx 的部署指南是一个 Docker 安装程序，或桌面应用启动同一套服务，然后创建账号、连接模型。之后 Doitx 就是聊天，你在聊天里管理机器人。OpenClaw 的入门指南是安装器加向导（Quick start 或 Custom setup），Gateway 在该终端运行时就能聊天。`openclaw gateway install` 让它常驻后台，之后用 `openclaw gateway status` 和 `openclaw dashboard`。接入聊天应用是另一步。当已检测到模型登录时，OpenClaw 也可以很短。长期要面对的仍然是 Gateway 和配置文件。",
     },
     {
       question: "我能在自己的机器上运行 Doitx 吗？",
@@ -431,7 +430,7 @@ const ZH: OpenClawPageCopy = {
     },
     {
       question: "免费吗？",
-      answer: "源码采用 Apache-2.0，公开在 GitHub 上。你只需为模型用量和基础设施付费。Doitx Cloud 是处于 beta 阶段的托管选项。",
+      answer: "源码采用 Apache-2.0。你只需为模型用量和基础设施付费。Doitx Cloud 是处于 beta 阶段的托管选项。",
     },
   ],
   vsRakazo: "Doitx",

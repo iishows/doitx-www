@@ -4,7 +4,7 @@
 // locale carries a translated date and intro and then falls back to the English sections, so a
 // page never ships with a truncated policy. The disclaimer tells the reader that is what they
 // are seeing.
-import { GITHUB_URL } from "../site";
+import { INBOX_ZERO_URL } from "../site";
 import type { Locale } from "./locales";
 
 /** A run of inline text. `href` renders an anchor; `strong` renders emphasis. */
@@ -100,7 +100,7 @@ const PRIVACY_SECTIONS: readonly LegalSection[] = [
     heading: "Service providers and AI processing",
     blocks: [
       para(
-        "Before submitting content or starting AI work, the Doitx mobile app names configured recipients, explains the data and purpose, and asks you to allow sharing. Choosing Not now prevents the mobile action. Permission applies to the selected Space and recipient. Account → AI data sharing lets you withdraw permission for new mobile actions. Stop existing runs and disable routines separately; withdrawal cannot recall data already sent. Web, desktop, and self-hosted server workflows use the connections you configure without this mobile permission flow.",
+        "Before submitting content or starting AI work, the Doitx mobile app names configured recipients, explains the data and purpose, and asks you to allow sharing. Choosing Not now prevents the mobile action. Permission applies to the selected Space and recipient. Account → AI data sharing lets you withdraw permission for new mobile actions. Stop existing runs and disable routines separately; withdrawal cannot recall data already sent. Web, desktop, and on-premise server workflows use the connections you configure without this mobile permission flow.",
       ),
       list(
         [
@@ -117,14 +117,14 @@ const PRIVACY_SECTIONS: readonly LegalSection[] = [
         ],
         [
           { text: "Memory:", strong: true },
-          " when Supermemory is configured, conversation summaries, saved memories, search queries, and bot and Space identifiers are sent to store and retrieve context. Self-hosted memory is processed by the server shown in your permission screen.",
+          " when Supermemory is configured, conversation summaries, saved memories, search queries, and bot and Space identifiers are sent to store and retrieve context. On-premise memory is processed by the server shown in your permission screen.",
         ],
       ),
       para(
         "We collect this content from what you enter, upload, record, or authorize your bots to access. We store the recipient, Space, disclosure version, and time of your permission for the mobile app to remember your choices. We do not sell personal information or use Doitx content for third-party advertising.",
       ),
       para(
-        "Services we select to process personal information must provide protection equal to or greater than the safeguards described in this policy, including limited processing purposes, appropriate security, and retention and deletion protections. Before enabling a provider, we review its terms and safeguards against these requirements. A self-hosted operator is responsible for assessing the services it selects and its own agreements with those services.",
+        "Services we select to process personal information must provide protection equal to or greater than the safeguards described in this policy, including limited processing purposes, appropriate security, and retention and deletion protections. Before enabling a provider, we review its terms and safeguards against these requirements. A on-premise operator is responsible for assessing the services it selects and its own agreements with those services.",
       ),
       para(
         "Provider terms govern their processing and retention after receipt. You can review the applicable provider policy from AI data sharing. Policies for supported services: ",
@@ -155,7 +155,7 @@ const PRIVACY_SECTIONS: readonly LegalSection[] = [
     ],
   },
   {
-    heading: "Self-hosted deployments",
+    heading: "On-premise deployments",
     blocks: [
       para(
         "The Doitx mobile app can connect to a server that you or another organization operates. In that case, the server operator, not Inbox Zero, controls the information sent to that deployment. The app stores the selected server address and session token securely on your device.",
@@ -199,12 +199,12 @@ const PRIVACY_SECTIONS: readonly LegalSection[] = [
 
 const TERMS_SECTIONS: readonly LegalSection[] = [
   {
-    heading: "Open-source software",
+    heading: "Software license",
     blocks: [
       para(
         "The Doitx source code is available under the ",
-        { text: "Apache License 2.0", href: `${GITHUB_URL}/blob/main/LICENSE` },
-        ". That license, not these terms, governs your use of the code. It does not grant rights to the Doitx name or logo; do not use them in a way that suggests we operate or endorse something we do not. A third party that operates a self-hosted Doitx deployment is responsible for that deployment and its own terms.",
+        { text: "Apache License 2.0", href: `` },
+        ". That license, not these terms, governs your use of the code. It does not grant rights to the Doitx name or logo; do not use them in a way that suggests we operate or endorse something we do not. A third party that operates a on-premise Doitx deployment is responsible for that deployment and its own terms.",
       ),
     ],
   },
@@ -277,7 +277,7 @@ const TERMS_SECTIONS: readonly LegalSection[] = [
         "Hosted plans include up to 100 computer-hours a month and up to 5 computers running at once per account, which is more than enough for most people. A computer counts toward those hours only while it is running. Computers sleep after a few minutes without activity and run for up to about two hours each time they wake, so they are not meant to stay on continuously. Each computer currently has 4 vCPUs, 8 GB of memory, and 50 GB of disk. Files are saved when a computer sleeps, up to 20 GB per computer, and kept until you delete the bot or your account.",
       ),
       para(
-        "If an account goes beyond these limits or places an unreasonable load on the Service, we may slow or pause its computers and will contact you before taking further action. We do not charge for computer use beyond your plan. These limits do not apply to self-hosted Doitx.",
+        "If an account goes beyond these limits or places an unreasonable load on the Service, we may slow or pause its computers and will contact you before taking further action. We do not charge for computer use beyond your plan. These limits do not apply to on-premise Doitx.",
       ),
     ],
   },
@@ -383,7 +383,7 @@ const PRIVACY_TRANSLATIONS: Record<Locale, LegalTranslation> = {
     h1: "Privacy",
     lastUpdated: "September 14, 2026",
     intro:
-      "This policy explains how Inbox Zero Inc. (“Inbox Zero,” “we,” or “us”) handles personal information when you use the Doitx mobile app, a Doitx service that we host, or doitx.ai. A third party that operates a self-hosted Doitx deployment is responsible for its own privacy practices.",
+      "This policy explains how Inbox Zero Inc. (“Inbox Zero,” “we,” or “us”) handles personal information when you use the Doitx mobile app, a Doitx service that we host, or doitx.ai. A third party that operates a on-premise Doitx deployment is responsible for its own privacy practices.",
     disclaimer: "",
   },
   de: {
@@ -413,7 +413,7 @@ const PRIVACY_TRANSLATIONS: Record<Locale, LegalTranslation> = {
     h1: "隐私政策",
     lastUpdated: "2026年9月14日",
     intro:
-      "本政策说明 Inbox Zero Inc.（“Inbox Zero”、“我们”或“我方”）在您使用 Doitx 移动应用、我们托管的 Doitx 服务或 doitx.ai 时如何处理个人信息。运营自托管 Doitx 部署的第三方对其自身的隐私实践负责。",
+      "本政策说明 Inbox Zero Inc.（“Inbox Zero”、“我们”或“我方”）在您使用 Doitx 移动应用、我们托管的 Doitx 服务或 doitx.ai 时如何处理个人信息。运营私有部署 Doitx 的第三方对其自身的隐私实践负责。",
     disclaimer: "本文为译文。英文版为权威版本。",
   },
   ja: {
@@ -453,7 +453,7 @@ const PRIVACY_TRANSLATIONS: Record<Locale, LegalTranslation> = {
     h1: "Privacidade",
     lastUpdated: "14 de setembro de 2026",
     intro:
-      "Esta política explica como a Inbox Zero Inc. (“Inbox Zero”, “nós”) lida com informações pessoais quando você usa o app mobile da Doitx, um serviço da Doitx que hospedamos, ou doitx.ai. Um terceiro que opera um deploy self-hosted da Doitx é responsável pelas próprias práticas de privacidade.",
+      "Esta política explica como a Inbox Zero Inc. (“Inbox Zero”, “nós”) lida com informações pessoais quando você usa o app mobile da Doitx, um serviço da Doitx que hospedamos, ou doitx.ai. Um terceiro que opera um deploy on-premise da Doitx é responsável pelas próprias práticas de privacidade.",
     disclaimer: "Esta é uma tradução. A versão em inglês é a oficial.",
   },
   nl: {
@@ -473,7 +473,7 @@ const PRIVACY_TRANSLATIONS: Record<Locale, LegalTranslation> = {
     h1: "Конфиденциальность",
     lastUpdated: "14 сентября 2026 г.",
     intro:
-      "Эта политика описывает, как Inbox Zero Inc. («Inbox Zero», «мы») обрабатывает персональные данные при использовании мобильного приложения Doitx, хостингуемого нами сервиса Doitx или doitx.ai. Третья сторона, эксплуатирующая self-hosted-развёртывание Doitx, несёт ответственность за собственную политику конфиденциальности.",
+      "Эта политика описывает, как Inbox Zero Inc. («Inbox Zero», «мы») обрабатывает персональные данные при использовании мобильного приложения Doitx, хостингуемого нами сервиса Doitx или doitx.ai. Третья сторона, эксплуатирующая on-premise-развёртывание Doitx, несёт ответственность за собственную политику конфиденциальности.",
     disclaimer: "Это перевод. Авторитетной является английская версия.",
   },
   tr: {
@@ -493,7 +493,7 @@ const PRIVACY_TRANSLATIONS: Record<Locale, LegalTranslation> = {
     h1: "פרטיות",
     lastUpdated: "14 בספטמבר 2026",
     intro:
-      "מדיניות זו מסבירה כיצד Inbox Zero Inc. (“Inbox Zero”, “אנחנו”) מטפלת בפרטים אישיים בעת השימוש באפליקציית Doitx המובילה, בשירות Doitx שמתארח אצלנו, או ב־doitx.ai. צד שלישי שמפעיל פריסה self-hosted של Doitx אחראי למנהגיו האישיים שלו.",
+      "מדיניות זו מסבירה כיצד Inbox Zero Inc. (“Inbox Zero”, “אנחנו”) מטפלת בפרטים אישיים בעת השימוש באפליקציית Doitx המובילה, בשירות Doitx שמתארח אצלנו, או ב־doitx.ai. צד שלישי שמפעיל פריסה on-premise של Doitx אחראי למנהגיו האישיים שלו.",
     disclaimer: "זוהי תרגום. הגרסה באנגלית היא הרשמית.",
   },
   hi: {

@@ -24,7 +24,7 @@ const DOCS_COPY: Record<DocsLocale, DocsCopy> = {
     sections: {
       start: "快速开始",
       using: "使用 Doitx",
-      "self-host": "自托管",
+      "self-host": "部署",
     },
     pages: {
       "getting-started": "快速开始",
@@ -51,7 +51,7 @@ const DOCS_COPY: Record<DocsLocale, DocsCopy> = {
     sections: {
       start: "Get started",
       using: "Using Doitx",
-      "self-host": "Self-hosting",
+      "self-host": "Deployment",
     },
     pages: {
       "getting-started": "Getting started",
